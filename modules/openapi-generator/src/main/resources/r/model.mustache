@@ -157,7 +157,7 @@
     fromJSON = function({{classname}}Json) {
       {{classname}}Object <- jsonlite::fromJSON({{classname}}Json)
       {{#vars}}
-      if (!is.null({{classname}}Object$`{{baseName}}`)) {
+      if (any(names({{classname}}Object) == "{{baseName}}")) {
         {{#isContainer}}
         self$`{{baseName}}` <- ApiClient$new()$deserializeObj({{classname}}Object$`{{baseName}}`, "{{dataType}}", loadNamespace("{{packageName}}"))
         {{/isContainer}}
