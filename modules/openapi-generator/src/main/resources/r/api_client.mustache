@@ -183,7 +183,7 @@ ApiClient  <- R6::R6Class(
       # To handle the "array" type
       else if (startsWith(returnType, "array[")) {
         innerReturnType <- regmatches(returnType, regexec(pattern = "array\\[(.*)\\]", returnType))[[1]][2]
-        if (c(innerReturnType) %in% primitiveTypes) {
+        if ((is.vector(obj)) || (c(innerReturnType) %in% primitiveTypes)) {
           returnObj <- vector("list", length = length(obj))
           if (length(obj) > 0) {
             for (row in 1:length(obj)) {
