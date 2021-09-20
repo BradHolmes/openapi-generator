@@ -70,7 +70,7 @@ func (o *List) SetVar123List(v string) {
 
 func (o List) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Var123List != nil {
+	if o.Var123List != nil  {
 		toSerialize["123-list"] = o.Var123List
 	}
 	return json.Marshal(toSerialize)

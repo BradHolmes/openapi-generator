@@ -48,7 +48,7 @@ export default class StoreApi {
      * @param {String} orderId ID of the order that needs to be deleted
      * @param {module:api/StoreApi~deleteOrderCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    deleteOrder(orderId, callback) {
+    deleteOrder(orderId, callback, accept='') {
       let postBody = null;
       // verify the required parameter 'orderId' is set
       if (orderId === undefined || orderId === null) {
@@ -68,6 +68,10 @@ export default class StoreApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = [];
+      if (accept !== '') {
+        const index = accepts.indexOf(accept);
+        accepts = index > -1 ? [accepts[index]] : accepts;
+      } 
       let returnType = null;
       return this.apiClient.callApi(
         '/store/order/{order_id}', 'DELETE',
@@ -90,7 +94,7 @@ export default class StoreApi {
      * @param {module:api/StoreApi~getInventoryCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Object.<String, {String: Number}>}
      */
-    getInventory(callback) {
+    getInventory(callback, accept='') {
       let postBody = null;
 
       let pathParams = {
@@ -105,6 +109,10 @@ export default class StoreApi {
       let authNames = ['api_key'];
       let contentTypes = [];
       let accepts = ['application/json'];
+      if (accept !== '') {
+        const index = accepts.indexOf(accept);
+        accepts = index > -1 ? [accepts[index]] : accepts;
+      } 
       let returnType = {'String': 'Number'};
       return this.apiClient.callApi(
         '/store/inventory', 'GET',
@@ -128,7 +136,7 @@ export default class StoreApi {
      * @param {module:api/StoreApi~getOrderByIdCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/Order}
      */
-    getOrderById(orderId, callback) {
+    getOrderById(orderId, callback, accept='') {
       let postBody = null;
       // verify the required parameter 'orderId' is set
       if (orderId === undefined || orderId === null) {
@@ -148,6 +156,10 @@ export default class StoreApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = ['application/xml', 'application/json'];
+      if (accept !== '') {
+        const index = accepts.indexOf(accept);
+        accepts = index > -1 ? [accepts[index]] : accepts;
+      } 
       let returnType = Order;
       return this.apiClient.callApi(
         '/store/order/{order_id}', 'GET',
@@ -170,7 +182,7 @@ export default class StoreApi {
      * @param {module:api/StoreApi~placeOrderCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/Order}
      */
-    placeOrder(order, callback) {
+    placeOrder(order, callback, accept='') {
       let postBody = order;
       // verify the required parameter 'order' is set
       if (order === undefined || order === null) {
@@ -189,6 +201,10 @@ export default class StoreApi {
       let authNames = [];
       let contentTypes = ['application/json'];
       let accepts = ['application/xml', 'application/json'];
+      if (accept !== '') {
+        const index = accepts.indexOf(accept);
+        accepts = index > -1 ? [accepts[index]] : accepts;
+      } 
       let returnType = Order;
       return this.apiClient.callApi(
         '/store/order', 'POST',

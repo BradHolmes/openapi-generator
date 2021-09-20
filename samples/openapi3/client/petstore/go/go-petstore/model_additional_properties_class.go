@@ -106,10 +106,10 @@ func (o *AdditionalPropertiesClass) SetMapOfMapProperty(v map[string]map[string]
 
 func (o AdditionalPropertiesClass) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.MapProperty != nil {
+	if o.MapProperty != nil  {
 		toSerialize["map_property"] = o.MapProperty
 	}
-	if o.MapOfMapProperty != nil {
+	if o.MapOfMapProperty != nil  {
 		toSerialize["map_of_map_property"] = o.MapOfMapProperty
 	}
 

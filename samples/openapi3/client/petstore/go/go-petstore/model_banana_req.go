@@ -102,7 +102,7 @@ func (o BananaReq) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["lengthCm"] = o.LengthCm
 	}
-	if o.Sweet != nil {
+	if o.Sweet != nil  {
 		toSerialize["sweet"] = o.Sweet
 	}
 

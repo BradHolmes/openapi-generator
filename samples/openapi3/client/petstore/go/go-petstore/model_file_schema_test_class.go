@@ -106,10 +106,10 @@ func (o *FileSchemaTestClass) SetFiles(v []File) {
 
 func (o FileSchemaTestClass) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.File != nil {
+	if o.File != nil  {
 		toSerialize["file"] = o.File
 	}
-	if o.Files != nil {
+	if o.Files != nil && len(o.GetFiles()) > 0  {
 		toSerialize["files"] = o.Files
 	}
 

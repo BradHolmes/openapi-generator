@@ -49,7 +49,7 @@ export default class FakeClassnameTags123Api {
      * @param {module:api/FakeClassnameTags123Api~testClassnameCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/Client}
      */
-    testClassname(client, callback) {
+    testClassname(client, callback, accept='') {
       let postBody = client;
       // verify the required parameter 'client' is set
       if (client === undefined || client === null) {
@@ -68,6 +68,10 @@ export default class FakeClassnameTags123Api {
       let authNames = ['api_key_query'];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
+      if (accept !== '') {
+        const index = accepts.indexOf(accept);
+        accepts = index > -1 ? [accepts[index]] : accepts;
+      } 
       let returnType = Client;
       return this.apiClient.callApi(
         '/fake_classname_test', 'PATCH',

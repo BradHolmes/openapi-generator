@@ -136,13 +136,13 @@ func (o *OuterComposite) SetMyBoolean(v bool) {
 
 func (o OuterComposite) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.MyNumber != nil {
+	if o.MyNumber != nil  {
 		toSerialize["my_number"] = o.MyNumber
 	}
-	if o.MyString != nil {
+	if o.MyString != nil  {
 		toSerialize["my_string"] = o.MyString
 	}
-	if o.MyBoolean != nil {
+	if o.MyBoolean != nil  {
 		toSerialize["my_boolean"] = o.MyBoolean
 	}
 	return json.Marshal(toSerialize)

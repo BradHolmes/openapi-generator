@@ -38,7 +38,7 @@ export default class DefaultApi {
     /**
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/InlineResponseDefault} and HTTP response
      */
-    fooGetWithHttpInfo() {
+    fooGetWithHttpInfo(, accept='') {
       let postBody = null;
 
       let pathParams = {
@@ -53,6 +53,10 @@ export default class DefaultApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = ['application/json'];
+      if (accept !== '') {
+        const index = accepts.indexOf(accept);
+        accepts = index > -1 ? [accepts[index]] : accepts;
+      } 
       let returnType = InlineResponseDefault;
       return this.apiClient.callApi(
         '/foo', 'GET',

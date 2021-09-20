@@ -103,10 +103,10 @@ func (o *EnumArrays) SetArrayEnum(v []string) {
 
 func (o EnumArrays) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.JustSymbol != nil {
+	if o.JustSymbol != nil  {
 		toSerialize["just_symbol"] = o.JustSymbol
 	}
-	if o.ArrayEnum != nil {
+	if o.ArrayEnum != nil && len(o.GetArrayEnum()) > 0  {
 		toSerialize["array_enum"] = o.ArrayEnum
 	}
 	return json.Marshal(toSerialize)

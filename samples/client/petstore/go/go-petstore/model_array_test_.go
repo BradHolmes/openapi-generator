@@ -136,13 +136,13 @@ func (o *ArrayTest) SetArrayArrayOfModel(v [][]ReadOnlyFirst) {
 
 func (o ArrayTest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.ArrayOfString != nil {
+	if o.ArrayOfString != nil && len(o.GetArrayOfString()) > 0  {
 		toSerialize["array_of_string"] = o.ArrayOfString
 	}
-	if o.ArrayArrayOfInteger != nil {
+	if o.ArrayArrayOfInteger != nil && len(o.GetArrayArrayOfInteger()) > 0  {
 		toSerialize["array_array_of_integer"] = o.ArrayArrayOfInteger
 	}
-	if o.ArrayArrayOfModel != nil {
+	if o.ArrayArrayOfModel != nil && len(o.GetArrayArrayOfModel()) > 0  {
 		toSerialize["array_array_of_model"] = o.ArrayArrayOfModel
 	}
 	return json.Marshal(toSerialize)

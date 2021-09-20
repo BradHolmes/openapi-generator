@@ -283,25 +283,25 @@ func (o *ReadOnlyWithDefault) SetIntProp2(v float32) {
 
 func (o ReadOnlyWithDefault) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Prop1 != nil {
+	if o.Prop1 != nil  {
 		toSerialize["prop1"] = o.Prop1
 	}
-	if o.Prop2 != nil {
+	if o.Prop2 != nil  {
 		toSerialize["prop2"] = o.Prop2
 	}
-	if o.Prop3 != nil {
+	if o.Prop3 != nil  {
 		toSerialize["prop3"] = o.Prop3
 	}
-	if o.BoolProp1 != nil {
+	if o.BoolProp1 != nil  {
 		toSerialize["boolProp1"] = o.BoolProp1
 	}
-	if o.BoolProp2 != nil {
+	if o.BoolProp2 != nil  {
 		toSerialize["boolProp2"] = o.BoolProp2
 	}
-	if o.IntProp1 != nil {
+	if o.IntProp1 != nil  {
 		toSerialize["intProp1"] = o.IntProp1
 	}
-	if o.IntProp2 != nil {
+	if o.IntProp2 != nil  {
 		toSerialize["intProp2"] = o.IntProp2
 	}
 

@@ -136,7 +136,7 @@ type ApiCreateUserRequest struct {
 }
 
 // Created user object
-func (r ApiCreateUserRequest) Body(body User) ApiCreateUserRequest {
+func (r *ApiCreateUserRequest) Body(body User) *ApiCreateUserRequest {
 	r.body = &body
 	return r
 }
@@ -149,14 +149,14 @@ func (r ApiCreateUserRequest) Execute() (*_nethttp.Response, error) {
 CreateUser Create user
 
 This can only be done by the logged in user.
-
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateUserRequest
 */
-func (a *UserApiService) CreateUser(ctx _context.Context) ApiCreateUserRequest {
+func (a *UserApiService) CreateUser(ctx _context.Context, body *User) ApiCreateUserRequest {
 	return ApiCreateUserRequest{
 		ApiService: a,
 		ctx: ctx,
+		body: body,
 	}
 }
 
@@ -212,6 +212,9 @@ func (a *UserApiService) CreateUserExecute(r ApiCreateUserRequest) (*_nethttp.Re
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarHTTPResponse, err
 	}
+	if localVarHTTPResponse.Header.Get("Content-Type") != "application/json" {
+		return localVarHTTPResponse, nil
+	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
@@ -238,7 +241,7 @@ type ApiCreateUsersWithArrayInputRequest struct {
 }
 
 // List of user object
-func (r ApiCreateUsersWithArrayInputRequest) Body(body []User) ApiCreateUsersWithArrayInputRequest {
+func (r *ApiCreateUsersWithArrayInputRequest) Body(body []User) *ApiCreateUsersWithArrayInputRequest {
 	r.body = &body
 	return r
 }
@@ -249,14 +252,14 @@ func (r ApiCreateUsersWithArrayInputRequest) Execute() (*_nethttp.Response, erro
 
 /*
 CreateUsersWithArrayInput Creates list of users with given input array
-
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateUsersWithArrayInputRequest
 */
-func (a *UserApiService) CreateUsersWithArrayInput(ctx _context.Context) ApiCreateUsersWithArrayInputRequest {
+func (a *UserApiService) CreateUsersWithArrayInput(ctx _context.Context, body *[]User) ApiCreateUsersWithArrayInputRequest {
 	return ApiCreateUsersWithArrayInputRequest{
 		ApiService: a,
 		ctx: ctx,
+		body: body,
 	}
 }
 
@@ -312,6 +315,9 @@ func (a *UserApiService) CreateUsersWithArrayInputExecute(r ApiCreateUsersWithAr
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarHTTPResponse, err
 	}
+	if localVarHTTPResponse.Header.Get("Content-Type") != "application/json" {
+		return localVarHTTPResponse, nil
+	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
@@ -338,7 +344,7 @@ type ApiCreateUsersWithListInputRequest struct {
 }
 
 // List of user object
-func (r ApiCreateUsersWithListInputRequest) Body(body []User) ApiCreateUsersWithListInputRequest {
+func (r *ApiCreateUsersWithListInputRequest) Body(body []User) *ApiCreateUsersWithListInputRequest {
 	r.body = &body
 	return r
 }
@@ -349,14 +355,14 @@ func (r ApiCreateUsersWithListInputRequest) Execute() (*_nethttp.Response, error
 
 /*
 CreateUsersWithListInput Creates list of users with given input array
-
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateUsersWithListInputRequest
 */
-func (a *UserApiService) CreateUsersWithListInput(ctx _context.Context) ApiCreateUsersWithListInputRequest {
+func (a *UserApiService) CreateUsersWithListInput(ctx _context.Context, body *[]User) ApiCreateUsersWithListInputRequest {
 	return ApiCreateUsersWithListInputRequest{
 		ApiService: a,
 		ctx: ctx,
+		body: body,
 	}
 }
 
@@ -412,6 +418,9 @@ func (a *UserApiService) CreateUsersWithListInputExecute(r ApiCreateUsersWithLis
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarHTTPResponse, err
 	}
+	if localVarHTTPResponse.Header.Get("Content-Type") != "application/json" {
+		return localVarHTTPResponse, nil
+	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
@@ -446,7 +455,6 @@ func (r ApiDeleteUserRequest) Execute() (*_nethttp.Response, error) {
 DeleteUser Delete user
 
 This can only be done by the logged in user.
-
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param username The name that needs to be deleted
  @return ApiDeleteUserRequest
@@ -507,6 +515,9 @@ func (a *UserApiService) DeleteUserExecute(r ApiDeleteUserRequest) (*_nethttp.Re
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarHTTPResponse, err
 	}
+	if localVarHTTPResponse.Header.Get("Content-Type") != "application/json" {
+		return localVarHTTPResponse, nil
+	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
@@ -539,7 +550,6 @@ func (r ApiGetUserByNameRequest) Execute() (User, *_nethttp.Response, error) {
 
 /*
 GetUserByName Get user by user name
-
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param username The name that needs to be fetched. Use user1 for testing.
  @return ApiGetUserByNameRequest
@@ -602,6 +612,9 @@ func (a *UserApiService) GetUserByNameExecute(r ApiGetUserByNameRequest) (User, 
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
+	if localVarHTTPResponse.Header.Get("Content-Type") != "application/json" {
+		return localVarReturnValue, localVarHTTPResponse, nil
+	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
@@ -638,12 +651,12 @@ type ApiLoginUserRequest struct {
 }
 
 // The user name for login
-func (r ApiLoginUserRequest) Username(username string) ApiLoginUserRequest {
+func (r *ApiLoginUserRequest) Username(username string) *ApiLoginUserRequest {
 	r.username = &username
 	return r
 }
 // The password for login in clear text
-func (r ApiLoginUserRequest) Password(password string) ApiLoginUserRequest {
+func (r *ApiLoginUserRequest) Password(password string) *ApiLoginUserRequest {
 	r.password = &password
 	return r
 }
@@ -654,7 +667,6 @@ func (r ApiLoginUserRequest) Execute() (string, *_nethttp.Response, error) {
 
 /*
 LoginUser Logs user into the system
-
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiLoginUserRequest
 */
@@ -722,6 +734,9 @@ func (a *UserApiService) LoginUserExecute(r ApiLoginUserRequest) (string, *_neth
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
+	if localVarHTTPResponse.Header.Get("Content-Type") != "application/json" {
+		return localVarReturnValue, localVarHTTPResponse, nil
+	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
@@ -762,7 +777,6 @@ func (r ApiLogoutUserRequest) Execute() (*_nethttp.Response, error) {
 
 /*
 LogoutUser Logs out current logged in user session
-
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiLogoutUserRequest
 */
@@ -820,6 +834,9 @@ func (a *UserApiService) LogoutUserExecute(r ApiLogoutUserRequest) (*_nethttp.Re
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarHTTPResponse, err
 	}
+	if localVarHTTPResponse.Header.Get("Content-Type") != "application/json" {
+		return localVarHTTPResponse, nil
+	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
@@ -847,7 +864,7 @@ type ApiUpdateUserRequest struct {
 }
 
 // Updated user object
-func (r ApiUpdateUserRequest) Body(body User) ApiUpdateUserRequest {
+func (r *ApiUpdateUserRequest) Body(body User) *ApiUpdateUserRequest {
 	r.body = &body
 	return r
 }
@@ -860,16 +877,16 @@ func (r ApiUpdateUserRequest) Execute() (*_nethttp.Response, error) {
 UpdateUser Updated user
 
 This can only be done by the logged in user.
-
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param username name that need to be deleted
  @return ApiUpdateUserRequest
 */
-func (a *UserApiService) UpdateUser(ctx _context.Context, username string) ApiUpdateUserRequest {
+func (a *UserApiService) UpdateUser(ctx _context.Context, username string, body *User) ApiUpdateUserRequest {
 	return ApiUpdateUserRequest{
 		ApiService: a,
 		ctx: ctx,
 		username: username,
+		body: body,
 	}
 }
 
@@ -925,6 +942,9 @@ func (a *UserApiService) UpdateUserExecute(r ApiUpdateUserRequest) (*_nethttp.Re
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarHTTPResponse, err
+	}
+	if localVarHTTPResponse.Header.Get("Content-Type") != "application/json" {
+		return localVarHTTPResponse, nil
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)

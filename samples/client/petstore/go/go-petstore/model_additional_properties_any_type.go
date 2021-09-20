@@ -70,7 +70,7 @@ func (o *AdditionalPropertiesAnyType) SetName(v string) {
 
 func (o AdditionalPropertiesAnyType) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
+	if o.Name != nil  {
 		toSerialize["name"] = o.Name
 	}
 	return json.Marshal(toSerialize)

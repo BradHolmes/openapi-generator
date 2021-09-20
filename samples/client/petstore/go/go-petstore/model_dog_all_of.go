@@ -70,7 +70,7 @@ func (o *DogAllOf) SetBreed(v string) {
 
 func (o DogAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Breed != nil {
+	if o.Breed != nil  {
 		toSerialize["breed"] = o.Breed
 	}
 	return json.Marshal(toSerialize)

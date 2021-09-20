@@ -70,7 +70,7 @@ func (o *BigCatAllOf) SetKind(v string) {
 
 func (o BigCatAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Kind != nil {
+	if o.Kind != nil  {
 		toSerialize["kind"] = o.Kind
 	}
 	return json.Marshal(toSerialize)

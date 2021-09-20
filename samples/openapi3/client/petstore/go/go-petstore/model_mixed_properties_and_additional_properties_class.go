@@ -140,13 +140,13 @@ func (o *MixedPropertiesAndAdditionalPropertiesClass) SetMap(v map[string]Animal
 
 func (o MixedPropertiesAndAdditionalPropertiesClass) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Uuid != nil {
+	if o.Uuid != nil  {
 		toSerialize["uuid"] = o.Uuid
 	}
-	if o.DateTime != nil {
+	if o.DateTime != nil  {
 		toSerialize["dateTime"] = o.DateTime
 	}
-	if o.Map != nil {
+	if o.Map != nil  {
 		toSerialize["map"] = o.Map
 	}
 

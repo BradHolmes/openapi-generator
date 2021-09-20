@@ -73,7 +73,7 @@ func (o *ClassModel) SetClass(v string) {
 
 func (o ClassModel) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Class != nil {
+	if o.Class != nil  {
 		toSerialize["_class"] = o.Class
 	}
 

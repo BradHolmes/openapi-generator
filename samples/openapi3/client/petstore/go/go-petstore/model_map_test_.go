@@ -172,16 +172,16 @@ func (o *MapTest) SetIndirectMap(v map[string]bool) {
 
 func (o MapTest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.MapMapOfString != nil {
+	if o.MapMapOfString != nil  {
 		toSerialize["map_map_of_string"] = o.MapMapOfString
 	}
-	if o.MapOfEnumString != nil {
+	if o.MapOfEnumString != nil  {
 		toSerialize["map_of_enum_string"] = o.MapOfEnumString
 	}
-	if o.DirectMap != nil {
+	if o.DirectMap != nil  {
 		toSerialize["direct_map"] = o.DirectMap
 	}
-	if o.IndirectMap != nil {
+	if o.IndirectMap != nil  {
 		toSerialize["indirect_map"] = o.IndirectMap
 	}
 

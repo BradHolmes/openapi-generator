@@ -99,7 +99,7 @@ func (o *Zebra) SetClassName(v string) {
 
 func (o Zebra) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Type != nil {
+	if o.Type != nil  {
 		toSerialize["type"] = o.Type
 	}
 	if true {

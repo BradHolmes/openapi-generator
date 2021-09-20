@@ -106,10 +106,10 @@ func (o *Model200Response) SetClass(v string) {
 
 func (o Model200Response) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name != nil {
+	if o.Name != nil  {
 		toSerialize["name"] = o.Name
 	}
-	if o.Class != nil {
+	if o.Class != nil  {
 		toSerialize["class"] = o.Class
 	}
 

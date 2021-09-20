@@ -73,7 +73,7 @@ func (o *InlineResponseDefault) SetString(v Foo) {
 
 func (o InlineResponseDefault) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.String != nil {
+	if o.String != nil  {
 		toSerialize["string"] = o.String
 	}
 

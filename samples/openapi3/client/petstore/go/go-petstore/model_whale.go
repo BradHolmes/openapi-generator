@@ -132,10 +132,10 @@ func (o *Whale) SetClassName(v string) {
 
 func (o Whale) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.HasBaleen != nil {
+	if o.HasBaleen != nil  {
 		toSerialize["hasBaleen"] = o.HasBaleen
 	}
-	if o.HasTeeth != nil {
+	if o.HasTeeth != nil  {
 		toSerialize["hasTeeth"] = o.HasTeeth
 	}
 	if true {

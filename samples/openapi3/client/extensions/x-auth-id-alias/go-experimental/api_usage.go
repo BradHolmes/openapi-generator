@@ -40,7 +40,6 @@ func (r ApiAnyKeyRequest) Execute() (map[string]interface{}, *_nethttp.Response,
 AnyKey Use any API key
 
 Use any API key
-
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAnyKeyRequest
 */
@@ -128,6 +127,9 @@ func (a *UsageApiService) AnyKeyExecute(r ApiAnyKeyRequest) (map[string]interfac
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
+	if localVarHTTPResponse.Header.Get("Content-Type") != "application/json" {
+		return localVarReturnValue, localVarHTTPResponse, nil
+	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
@@ -170,7 +172,6 @@ func (r ApiBothKeysRequest) Execute() (map[string]interface{}, *_nethttp.Respons
 BothKeys Use both API keys
 
 Use both API keys
-
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiBothKeysRequest
 */
@@ -258,6 +259,9 @@ func (a *UsageApiService) BothKeysExecute(r ApiBothKeysRequest) (map[string]inte
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
+	if localVarHTTPResponse.Header.Get("Content-Type") != "application/json" {
+		return localVarReturnValue, localVarHTTPResponse, nil
+	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
@@ -300,7 +304,6 @@ func (r ApiKeyInHeaderRequest) Execute() (map[string]interface{}, *_nethttp.Resp
 KeyInHeader Use API key in header
 
 Use API key in header
-
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiKeyInHeaderRequest
 */
@@ -374,6 +377,9 @@ func (a *UsageApiService) KeyInHeaderExecute(r ApiKeyInHeaderRequest) (map[strin
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
+	if localVarHTTPResponse.Header.Get("Content-Type") != "application/json" {
+		return localVarReturnValue, localVarHTTPResponse, nil
+	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
@@ -416,7 +422,6 @@ func (r ApiKeyInQueryRequest) Execute() (map[string]interface{}, *_nethttp.Respo
 KeyInQuery Use API key in query
 
 Use API key in query
-
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiKeyInQueryRequest
 */
@@ -489,6 +494,9 @@ func (a *UsageApiService) KeyInQueryExecute(r ApiKeyInQueryRequest) (map[string]
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
+	}
+	if localVarHTTPResponse.Header.Get("Content-Type") != "application/json" {
+		return localVarReturnValue, localVarHTTPResponse, nil
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)

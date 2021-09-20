@@ -241,22 +241,22 @@ func (o *Order) SetComplete(v bool) {
 
 func (o Order) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
+	if o.Id != nil  {
 		toSerialize["id"] = o.Id
 	}
-	if o.PetId != nil {
+	if o.PetId != nil  {
 		toSerialize["petId"] = o.PetId
 	}
-	if o.Quantity != nil {
+	if o.Quantity != nil  {
 		toSerialize["quantity"] = o.Quantity
 	}
-	if o.ShipDate != nil {
+	if o.ShipDate != nil  {
 		toSerialize["shipDate"] = o.ShipDate
 	}
-	if o.Status != nil {
+	if o.Status != nil  {
 		toSerialize["status"] = o.Status
 	}
-	if o.Complete != nil {
+	if o.Complete != nil  {
 		toSerialize["complete"] = o.Complete
 	}
 	return json.Marshal(toSerialize)

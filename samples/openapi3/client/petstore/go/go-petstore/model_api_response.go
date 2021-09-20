@@ -139,13 +139,13 @@ func (o *ApiResponse) SetMessage(v string) {
 
 func (o ApiResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Code != nil {
+	if o.Code != nil  {
 		toSerialize["code"] = o.Code
 	}
-	if o.Type != nil {
+	if o.Type != nil  {
 		toSerialize["type"] = o.Type
 	}
-	if o.Message != nil {
+	if o.Message != nil  {
 		toSerialize["message"] = o.Message
 	}
 

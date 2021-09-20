@@ -73,7 +73,7 @@ func (o *Banana) SetLengthCm(v float32) {
 
 func (o Banana) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.LengthCm != nil {
+	if o.LengthCm != nil  {
 		toSerialize["lengthCm"] = o.LengthCm
 	}
 
