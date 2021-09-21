@@ -43,7 +43,7 @@ public class FormatTest   {
   private byte[] _byte;
 
   @JsonProperty("binary")
-  private org.springframework.web.multipart.MultipartFile binary;
+  private org.springframework.core.io.Resource binary;
 
   @JsonProperty("date")
   @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE)
@@ -205,7 +205,7 @@ public class FormatTest   {
   */
   @ApiModelProperty(value = "")
 
-@Pattern(regexp="/[a-z]/i") 
+@Pattern(regexp = "/[a-z]/i") 
   public String getString() {
     return string;
   }
@@ -235,7 +235,7 @@ public class FormatTest   {
     this._byte = _byte;
   }
 
-  public FormatTest binary(org.springframework.web.multipart.MultipartFile binary) {
+  public FormatTest binary(org.springframework.core.io.Resource binary) {
     this.binary = binary;
     return this;
   }
@@ -248,11 +248,11 @@ public class FormatTest   {
 
   @Valid
 
-  public org.springframework.web.multipart.MultipartFile getBinary() {
+  public org.springframework.core.io.Resource getBinary() {
     return binary;
   }
 
-  public void setBinary(org.springframework.web.multipart.MultipartFile binary) {
+  public void setBinary(org.springframework.core.io.Resource binary) {
     this.binary = binary;
   }
 
@@ -332,7 +332,7 @@ public class FormatTest   {
   @ApiModelProperty(required = true, value = "")
   @NotNull
 
-@Size(min=10,max=64) 
+@Size(min = 10, max = 64) 
   public String getPassword() {
     return password;
   }

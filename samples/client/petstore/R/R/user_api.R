@@ -131,7 +131,7 @@
 #'
 #' \tabular{ll}{
 #' X-Rate-Limit \tab calls per hour allowed by the user \cr
-#' X-Expires-After \tab date in UTC when toekn expires \cr
+#' X-Expires-After \tab date in UTC when token expires \cr
 #' }
 #' \item status code : 400 | Invalid username/password supplied
 #'
@@ -522,13 +522,18 @@ UserApi <- R6::R6Class(
                                  ...)
 
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        deserializedRespObj <- tryCatch(
-          self$apiClient$deserialize(resp, "User", loadNamespace("petstore")),
-          error = function(e){
-             stop("Failed to deserialize response")
-          }
-        )
-        ApiResponse$new(deserializedRespObj, resp)
+        if (httr::headers(resp)$'content-type' != 'application/json') {
+          ApiResponse$new(resp$content, resp)
+        }
+        else {
+          deserializedRespObj <- tryCatch(
+            self$apiClient$deserialize(resp, "User", loadNamespace("petstore")),
+            error = function(e){
+               stop("Failed to deserialize response")
+            }
+          )
+          ApiResponse$new(deserializedRespObj, resp)
+        }
       } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
         ApiResponse$new(paste("Server returned " , httr::status_code(resp) , " response status code."), resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
@@ -579,13 +584,18 @@ UserApi <- R6::R6Class(
                                  ...)
 
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        deserializedRespObj <- tryCatch(
-          self$apiClient$deserialize(resp, "character", loadNamespace("petstore")),
-          error = function(e){
-             stop("Failed to deserialize response")
-          }
-        )
-        ApiResponse$new(deserializedRespObj, resp)
+        if (httr::headers(resp)$'content-type' != 'application/json') {
+          ApiResponse$new(resp$content, resp)
+        }
+        else {
+          deserializedRespObj <- tryCatch(
+            self$apiClient$deserialize(resp, "character", loadNamespace("petstore")),
+            error = function(e){
+               stop("Failed to deserialize response")
+            }
+          )
+          ApiResponse$new(deserializedRespObj, resp)
+        }
       } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
         ApiResponse$new(paste("Server returned " , httr::status_code(resp) , " response status code."), resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
