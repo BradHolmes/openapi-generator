@@ -520,13 +520,13 @@ func (o NullableClass) MarshalJSON() ([]byte, error) {
 	if o.DatetimeProp.IsSet() {
 		toSerialize["datetime_prop"] = o.DatetimeProp.Get()
 	}
-	if o.ArrayNullableProp != nil {
+	if o.ArrayNullableProp != nil && len(o.GetArrayNullableProp()) > 0 {
 		toSerialize["array_nullable_prop"] = o.ArrayNullableProp
 	}
-	if o.ArrayAndItemsNullableProp != nil {
+	if o.ArrayAndItemsNullableProp != nil && len(o.GetArrayAndItemsNullableProp()) > 0 {
 		toSerialize["array_and_items_nullable_prop"] = o.ArrayAndItemsNullableProp
 	}
-	if o.ArrayItemsNullable != nil {
+	if o.ArrayItemsNullable != nil && len(o.GetArrayItemsNullable()) > 0  {
 		toSerialize["array_items_nullable"] = o.ArrayItemsNullable
 	}
 	if o.ObjectNullableProp != nil {
@@ -535,7 +535,7 @@ func (o NullableClass) MarshalJSON() ([]byte, error) {
 	if o.ObjectAndItemsNullableProp != nil {
 		toSerialize["object_and_items_nullable_prop"] = o.ObjectAndItemsNullableProp
 	}
-	if o.ObjectItemsNullable != nil {
+	if o.ObjectItemsNullable != nil  {
 		toSerialize["object_items_nullable"] = o.ObjectItemsNullable
 	}
 	return json.Marshal(toSerialize)

@@ -102,7 +102,7 @@ func (o AppleReq) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["cultivar"] = o.Cultivar
 	}
-	if o.Mealy != nil {
+	if o.Mealy != nil  {
 		toSerialize["mealy"] = o.Mealy
 	}
 

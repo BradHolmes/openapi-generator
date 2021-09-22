@@ -106,10 +106,10 @@ func (o *HasOnlyReadOnly) SetFoo(v string) {
 
 func (o HasOnlyReadOnly) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Bar != nil {
+	if o.Bar != nil  {
 		toSerialize["bar"] = o.Bar
 	}
-	if o.Foo != nil {
+	if o.Foo != nil  {
 		toSerialize["foo"] = o.Foo
 	}
 

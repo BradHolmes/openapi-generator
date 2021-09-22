@@ -364,7 +364,7 @@ class ApiClient {
             data = response.text;
         }
 
-        return ApiClient.convertToType(data, returnType);
+        return ApiClient.convertToType(data, returnType, response.headers["content-type"]);
     }
 
    /**
@@ -463,10 +463,7 @@ class ApiClient {
             request.send(bodyParam);
         }
 
-        var accept = this.jsonPreferredMime(accepts);
-        if (accept) {
-            request.accept(accept);
-        }
+        request.accept(accepts[0]);
 
         if (returnType === 'Blob') {
           request.responseType('blob');
@@ -526,7 +523,7 @@ class ApiClient {
     * all properties on <code>data<code> will be converted to this type.
     * @returns An instance of the specified type or null or undefined if data is null or undefined.
     */
-    static convertToType(data, type) {
+    static convertToType(data, type, contentType=null) {
         if (data === null || data === undefined)
             return data
 
@@ -548,8 +545,59 @@ class ApiClient {
                     // generic object, return directly
                     return data;
                 } else if (typeof type.constructFromObject === 'function') {
-                    // for model type like User and enum class
-                    return type.constructFromObject(data);
+                    // ndjson => Newline delimited json is returned as an array of
+                    // bytes that needs to be split by newline and converted into objects
+                    if (contentType === 'application/x-ndjson' && (data || data.buffer)) {
+                        const bufferContainsInvalidJSON = (buffer) => {
+                            const chars = buffer.reduce((acc, i) => acc += String.fromCharCode.apply(null, [i]), '');
+                            return chars.includes('exports.default') || chars.includes('module.exports');
+                        }
+
+                        let char_buf = data;
+                        let separator = '\n'
+                        if (data.buffer) {
+                            // In npm we get an array of uints that must be converted to string
+                            char_buf = new Uint8Array(data.buffer);
+                            separator = 0xA;
+
+                            // when running with jest, superagent's response.body.buffer or data.buffer may contain invalid JSON objects
+                            if (bufferContainsInvalidJSON(char_buf)) {
+                                char_buf = data;
+                                separator = '\n';
+                            }
+                        }
+
+                        let from_idx = 0;
+                        let to_idx = char_buf.indexOf(separator);
+                        let results = [];
+                        while (to_idx >= 0) {
+                            let msg = char_buf.slice(from_idx, to_idx);
+                            if (data.buffer) {
+                                msg = msg.reduce((acc, i) => acc += String.fromCharCode.apply(null, [i]), '');
+                            }
+
+                            let gene_json = {};
+                            try {
+                                gene_json = JSON.parse(msg);
+                            } catch(error) {
+                                // pass, ignore invalid JSON
+                                console.log("Error: failed to parse: ", error);
+                                from_idx = to_idx + 1;
+                                to_idx = char_buf.indexOf(separator, from_idx);
+                                continue;
+                            }
+
+                            if (gene_json.gene || gene_json.messages || gene_json.warnings || gene_json.errors) {
+                                results.push(type.constructFromObject(gene_json));
+                            }
+                            from_idx = to_idx + 1;
+                            to_idx = char_buf.indexOf(separator, from_idx);
+                        }
+                        return results;
+                    }
+                    else {
+                        return type.constructFromObject(data);
+                    }
                 } else if (Array.isArray(type)) {
                     // for array type like: ['String']
                     var itemType = type[0];

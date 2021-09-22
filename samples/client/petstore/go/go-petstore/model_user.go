@@ -302,28 +302,28 @@ func (o *User) SetUserStatus(v int32) {
 
 func (o User) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
+	if o.Id != nil  {
 		toSerialize["id"] = o.Id
 	}
-	if o.Username != nil {
+	if o.Username != nil  {
 		toSerialize["username"] = o.Username
 	}
-	if o.FirstName != nil {
+	if o.FirstName != nil  {
 		toSerialize["firstName"] = o.FirstName
 	}
-	if o.LastName != nil {
+	if o.LastName != nil  {
 		toSerialize["lastName"] = o.LastName
 	}
-	if o.Email != nil {
+	if o.Email != nil  {
 		toSerialize["email"] = o.Email
 	}
-	if o.Password != nil {
+	if o.Password != nil  {
 		toSerialize["password"] = o.Password
 	}
-	if o.Phone != nil {
+	if o.Phone != nil  {
 		toSerialize["phone"] = o.Phone
 	}
-	if o.UserStatus != nil {
+	if o.UserStatus != nil  {
 		toSerialize["userStatus"] = o.UserStatus
 	}
 	return json.Marshal(toSerialize)

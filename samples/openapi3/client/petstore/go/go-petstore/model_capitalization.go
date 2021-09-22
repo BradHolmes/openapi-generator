@@ -239,22 +239,22 @@ func (o *Capitalization) SetATT_NAME(v string) {
 
 func (o Capitalization) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.SmallCamel != nil {
+	if o.SmallCamel != nil  {
 		toSerialize["smallCamel"] = o.SmallCamel
 	}
-	if o.CapitalCamel != nil {
+	if o.CapitalCamel != nil  {
 		toSerialize["CapitalCamel"] = o.CapitalCamel
 	}
-	if o.SmallSnake != nil {
+	if o.SmallSnake != nil  {
 		toSerialize["small_Snake"] = o.SmallSnake
 	}
-	if o.CapitalSnake != nil {
+	if o.CapitalSnake != nil  {
 		toSerialize["Capital_Snake"] = o.CapitalSnake
 	}
-	if o.SCAETHFlowPoints != nil {
+	if o.SCAETHFlowPoints != nil  {
 		toSerialize["SCA_ETH_Flow_Points"] = o.SCAETHFlowPoints
 	}
-	if o.ATT_NAME != nil {
+	if o.ATT_NAME != nil  {
 		toSerialize["ATT_NAME"] = o.ATT_NAME
 	}
 

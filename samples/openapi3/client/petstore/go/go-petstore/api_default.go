@@ -53,7 +53,6 @@ func (r ApiFooGetRequest) Execute() (InlineResponseDefault, *_nethttp.Response, 
 
 /*
 FooGet Method for FooGet
-
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFooGetRequest
 */
@@ -112,6 +111,9 @@ func (a *DefaultApiService) FooGetExecute(r ApiFooGetRequest) (InlineResponseDef
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
+	}
+	if localVarHTTPResponse.Header.Get("Content-Type") != "application/json" {
+		return localVarReturnValue, localVarHTTPResponse, nil
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)

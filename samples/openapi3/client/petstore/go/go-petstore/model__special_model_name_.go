@@ -73,7 +73,7 @@ func (o *SpecialModelName) SetSpecialPropertyName(v int64) {
 
 func (o SpecialModelName) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.SpecialPropertyName != nil {
+	if o.SpecialPropertyName != nil  {
 		toSerialize["$special[property.name]"] = o.SpecialPropertyName
 	}
 

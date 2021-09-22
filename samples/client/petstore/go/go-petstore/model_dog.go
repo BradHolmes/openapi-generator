@@ -82,7 +82,7 @@ func (o Dog) MarshalJSON() ([]byte, error) {
 	if errAnimal != nil {
 		return []byte{}, errAnimal
 	}
-	if o.Breed != nil {
+	if o.Breed != nil  {
 		toSerialize["breed"] = o.Breed
 	}
 	return json.Marshal(toSerialize)

@@ -195,19 +195,19 @@ func (o *EnumTest) SetOuterEnum(v OuterEnum) {
 
 func (o EnumTest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.EnumString != nil {
+	if o.EnumString != nil  {
 		toSerialize["enum_string"] = o.EnumString
 	}
 	if true {
 		toSerialize["enum_string_required"] = o.EnumStringRequired
 	}
-	if o.EnumInteger != nil {
+	if o.EnumInteger != nil  {
 		toSerialize["enum_integer"] = o.EnumInteger
 	}
-	if o.EnumNumber != nil {
+	if o.EnumNumber != nil  {
 		toSerialize["enum_number"] = o.EnumNumber
 	}
-	if o.OuterEnum != nil {
+	if o.OuterEnum != nil  {
 		toSerialize["outerEnum"] = o.OuterEnum
 	}
 	return json.Marshal(toSerialize)

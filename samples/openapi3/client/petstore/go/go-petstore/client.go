@@ -112,10 +112,6 @@ func selectHeaderAccept(accepts []string) string {
 		return ""
 	}
 
-	if contains(accepts, "application/json") {
-		return "application/json"
-	}
-
 	return strings.Join(accepts, ",")
 }
 
@@ -159,7 +155,12 @@ func parameterToString(obj interface{}, collectionFormat string) string {
 	}
 
 	if reflect.TypeOf(obj).Kind() == reflect.Slice {
-		return strings.Trim(strings.Replace(fmt.Sprint(obj), " ", delimiter, -1), "[]")
+		s := reflect.ValueOf(obj)
+		vals := make([]string, s.Len())
+		for i := 0; i < s.Len(); i++ {
+			vals[i] = fmt.Sprint(s.Index(i))
+		}
+		return strings.Join(vals, delimiter)
 	} else if t, ok := obj.(time.Time); ok {
 		return t.Format(time.RFC3339)
 	}
@@ -192,7 +193,7 @@ func (c *APIClient) callAPI(request *http.Request) (*http.Response, error) {
 	}
 
 	if c.cfg.Debug {
-		dump, err := httputil.DumpResponse(resp, true)
+		dump, err := httputil.DumpResponse(resp, false)
 		if err != nil {
 			return resp, err
 		}
@@ -327,7 +328,10 @@ func (c *APIClient) prepareRequest(
 	if len(headerParams) > 0 {
 		headers := http.Header{}
 		for h, v := range headerParams {
-			headers.Set(h, v)
+			header_values := strings.Split(v, ",")
+			for _, v_part := range header_values {
+				headers.Add(h, v_part)
+			}
 		}
 		localVarRequest.Header = headers
 	}

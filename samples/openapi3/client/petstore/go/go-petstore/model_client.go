@@ -73,7 +73,7 @@ func (o *Client) SetClient(v string) {
 
 func (o Client) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Client != nil {
+	if o.Client != nil  {
 		toSerialize["client"] = o.Client
 	}
 

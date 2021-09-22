@@ -73,7 +73,7 @@ func (o *NumberOnly) SetJustNumber(v float32) {
 
 func (o NumberOnly) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.JustNumber != nil {
+	if o.JustNumber != nil  {
 		toSerialize["JustNumber"] = o.JustNumber
 	}
 

@@ -73,7 +73,7 @@ func (o *Apple) SetCultivar(v string) {
 
 func (o Apple) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Cultivar != nil {
+	if o.Cultivar != nil  {
 		toSerialize["cultivar"] = o.Cultivar
 	}
 

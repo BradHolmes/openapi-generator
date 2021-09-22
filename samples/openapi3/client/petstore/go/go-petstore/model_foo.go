@@ -77,7 +77,7 @@ func (o *Foo) SetBar(v string) {
 
 func (o Foo) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Bar != nil {
+	if o.Bar != nil  {
 		toSerialize["bar"] = o.Bar
 	}
 

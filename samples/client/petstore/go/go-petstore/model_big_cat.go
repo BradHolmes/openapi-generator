@@ -82,7 +82,7 @@ func (o BigCat) MarshalJSON() ([]byte, error) {
 	if errCat != nil {
 		return []byte{}, errCat
 	}
-	if o.Kind != nil {
+	if o.Kind != nil  {
 		toSerialize["kind"] = o.Kind
 	}
 	return json.Marshal(toSerialize)

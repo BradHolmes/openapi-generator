@@ -70,7 +70,7 @@ func (o *ArrayOfNumberOnly) SetArrayNumber(v []float32) {
 
 func (o ArrayOfNumberOnly) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.ArrayNumber != nil {
+	if o.ArrayNumber != nil && len(o.GetArrayNumber()) > 0  {
 		toSerialize["ArrayNumber"] = o.ArrayNumber
 	}
 	return json.Marshal(toSerialize)

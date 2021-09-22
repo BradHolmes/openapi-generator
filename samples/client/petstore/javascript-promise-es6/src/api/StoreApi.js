@@ -41,7 +41,7 @@ export default class StoreApi {
      * @param {String} orderId ID of the order that needs to be deleted
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    deleteOrderWithHttpInfo(orderId) {
+    deleteOrderWithHttpInfo(orderId, accept='') {
       let postBody = null;
       // verify the required parameter 'orderId' is set
       if (orderId === undefined || orderId === null) {
@@ -61,6 +61,10 @@ export default class StoreApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = [];
+      if (accept !== '') {
+        const index = accepts.indexOf(accept);
+        accepts = index > -1 ? [accepts[index]] : accepts;
+      } 
       let returnType = null;
       return this.apiClient.callApi(
         '/store/order/{order_id}', 'DELETE',
@@ -88,7 +92,7 @@ export default class StoreApi {
      * Returns a map of status codes to quantities
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Object.<String, {String: Number}>} and HTTP response
      */
-    getInventoryWithHttpInfo() {
+    getInventoryWithHttpInfo(, accept='') {
       let postBody = null;
 
       let pathParams = {
@@ -103,6 +107,10 @@ export default class StoreApi {
       let authNames = ['api_key'];
       let contentTypes = [];
       let accepts = ['application/json'];
+      if (accept !== '') {
+        const index = accepts.indexOf(accept);
+        accepts = index > -1 ? [accepts[index]] : accepts;
+      } 
       let returnType = {'String': 'Number'};
       return this.apiClient.callApi(
         '/store/inventory', 'GET',
@@ -130,7 +138,7 @@ export default class StoreApi {
      * @param {Number} orderId ID of pet that needs to be fetched
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Order} and HTTP response
      */
-    getOrderByIdWithHttpInfo(orderId) {
+    getOrderByIdWithHttpInfo(orderId, accept='') {
       let postBody = null;
       // verify the required parameter 'orderId' is set
       if (orderId === undefined || orderId === null) {
@@ -150,6 +158,10 @@ export default class StoreApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = ['application/xml', 'application/json'];
+      if (accept !== '') {
+        const index = accepts.indexOf(accept);
+        accepts = index > -1 ? [accepts[index]] : accepts;
+      } 
       let returnType = Order;
       return this.apiClient.callApi(
         '/store/order/{order_id}', 'GET',
@@ -177,7 +189,7 @@ export default class StoreApi {
      * @param {module:model/Order} order order placed for purchasing the pet
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Order} and HTTP response
      */
-    placeOrderWithHttpInfo(order) {
+    placeOrderWithHttpInfo(order, accept='') {
       let postBody = order;
       // verify the required parameter 'order' is set
       if (order === undefined || order === null) {
@@ -196,6 +208,10 @@ export default class StoreApi {
       let authNames = [];
       let contentTypes = ['application/json'];
       let accepts = ['application/xml', 'application/json'];
+      if (accept !== '') {
+        const index = accepts.indexOf(accept);
+        accepts = index > -1 ? [accepts[index]] : accepts;
+      } 
       let returnType = Order;
       return this.apiClient.callApi(
         '/store/order', 'POST',

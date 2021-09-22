@@ -71,7 +71,7 @@ func (o *File) SetSourceURI(v string) {
 
 func (o File) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.SourceURI != nil {
+	if o.SourceURI != nil  {
 		toSerialize["sourceURI"] = o.SourceURI
 	}
 	return json.Marshal(toSerialize)

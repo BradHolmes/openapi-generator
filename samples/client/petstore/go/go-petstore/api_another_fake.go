@@ -50,7 +50,7 @@ type ApiCall123TestSpecialTagsRequest struct {
 }
 
 // client model
-func (r ApiCall123TestSpecialTagsRequest) Body(body Client) ApiCall123TestSpecialTagsRequest {
+func (r *ApiCall123TestSpecialTagsRequest) Body(body Client) *ApiCall123TestSpecialTagsRequest {
 	r.body = &body
 	return r
 }
@@ -63,14 +63,14 @@ func (r ApiCall123TestSpecialTagsRequest) Execute() (Client, *_nethttp.Response,
 Call123TestSpecialTags To test special tags
 
 To test special tags and operation ID starting with number
-
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCall123TestSpecialTagsRequest
 */
-func (a *AnotherFakeApiService) Call123TestSpecialTags(ctx _context.Context) ApiCall123TestSpecialTagsRequest {
+func (a *AnotherFakeApiService) Call123TestSpecialTags(ctx _context.Context, body *Client) ApiCall123TestSpecialTagsRequest {
 	return ApiCall123TestSpecialTagsRequest{
 		ApiService: a,
 		ctx: ctx,
+		body: body,
 	}
 }
 
@@ -127,6 +127,9 @@ func (a *AnotherFakeApiService) Call123TestSpecialTagsExecute(r ApiCall123TestSp
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
+	}
+	if localVarHTTPResponse.Header.Get("Content-Type") != "application/json" {
+		return localVarReturnValue, localVarHTTPResponse, nil
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)

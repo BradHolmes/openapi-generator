@@ -73,7 +73,7 @@ func (o *Return) SetReturn(v int32) {
 
 func (o Return) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Return != nil {
+	if o.Return != nil  {
 		toSerialize["return"] = o.Return
 	}
 

@@ -168,13 +168,13 @@ func (o Name) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["name"] = o.Name
 	}
-	if o.SnakeCase != nil {
+	if o.SnakeCase != nil  {
 		toSerialize["snake_case"] = o.SnakeCase
 	}
-	if o.Property != nil {
+	if o.Property != nil  {
 		toSerialize["property"] = o.Property
 	}
-	if o.Var123Number != nil {
+	if o.Var123Number != nil  {
 		toSerialize["123Number"] = o.Var123Number
 	}
 

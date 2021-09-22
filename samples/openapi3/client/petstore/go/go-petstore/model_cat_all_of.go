@@ -73,7 +73,7 @@ func (o *CatAllOf) SetDeclawed(v bool) {
 
 func (o CatAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Declawed != nil {
+	if o.Declawed != nil  {
 		toSerialize["declawed"] = o.Declawed
 	}
 

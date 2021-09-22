@@ -50,7 +50,7 @@ type ApiTestClassnameRequest struct {
 }
 
 // client model
-func (r ApiTestClassnameRequest) Client(client Client) ApiTestClassnameRequest {
+func (r *ApiTestClassnameRequest) Client(client Client) *ApiTestClassnameRequest {
 	r.client = &client
 	return r
 }
@@ -63,14 +63,14 @@ func (r ApiTestClassnameRequest) Execute() (Client, *_nethttp.Response, error) {
 TestClassname To test class name in snake case
 
 To test class name in snake case
-
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTestClassnameRequest
 */
-func (a *FakeClassnameTags123ApiService) TestClassname(ctx _context.Context) ApiTestClassnameRequest {
+func (a *FakeClassnameTags123ApiService) TestClassname(ctx _context.Context, client *Client) ApiTestClassnameRequest {
 	return ApiTestClassnameRequest{
 		ApiService: a,
 		ctx: ctx,
+		client: client,
 	}
 }
 
@@ -141,6 +141,9 @@ func (a *FakeClassnameTags123ApiService) TestClassnameExecute(r ApiTestClassname
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
+	}
+	if localVarHTTPResponse.Header.Get("Content-Type") != "application/json" {
+		return localVarReturnValue, localVarHTTPResponse, nil
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)

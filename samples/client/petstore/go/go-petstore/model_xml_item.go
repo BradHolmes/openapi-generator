@@ -994,91 +994,91 @@ func (o *XmlItem) SetPrefixNsWrappedArray(v []int32) {
 
 func (o XmlItem) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.AttributeString != nil {
+	if o.AttributeString != nil  {
 		toSerialize["attribute_string"] = o.AttributeString
 	}
-	if o.AttributeNumber != nil {
+	if o.AttributeNumber != nil  {
 		toSerialize["attribute_number"] = o.AttributeNumber
 	}
-	if o.AttributeInteger != nil {
+	if o.AttributeInteger != nil  {
 		toSerialize["attribute_integer"] = o.AttributeInteger
 	}
-	if o.AttributeBoolean != nil {
+	if o.AttributeBoolean != nil  {
 		toSerialize["attribute_boolean"] = o.AttributeBoolean
 	}
-	if o.WrappedArray != nil {
+	if o.WrappedArray != nil && len(o.GetWrappedArray()) > 0  {
 		toSerialize["wrapped_array"] = o.WrappedArray
 	}
-	if o.NameString != nil {
+	if o.NameString != nil  {
 		toSerialize["name_string"] = o.NameString
 	}
-	if o.NameNumber != nil {
+	if o.NameNumber != nil  {
 		toSerialize["name_number"] = o.NameNumber
 	}
-	if o.NameInteger != nil {
+	if o.NameInteger != nil  {
 		toSerialize["name_integer"] = o.NameInteger
 	}
-	if o.NameBoolean != nil {
+	if o.NameBoolean != nil  {
 		toSerialize["name_boolean"] = o.NameBoolean
 	}
-	if o.NameArray != nil {
+	if o.NameArray != nil && len(o.GetNameArray()) > 0  {
 		toSerialize["name_array"] = o.NameArray
 	}
-	if o.NameWrappedArray != nil {
+	if o.NameWrappedArray != nil && len(o.GetNameWrappedArray()) > 0  {
 		toSerialize["name_wrapped_array"] = o.NameWrappedArray
 	}
-	if o.PrefixString != nil {
+	if o.PrefixString != nil  {
 		toSerialize["prefix_string"] = o.PrefixString
 	}
-	if o.PrefixNumber != nil {
+	if o.PrefixNumber != nil  {
 		toSerialize["prefix_number"] = o.PrefixNumber
 	}
-	if o.PrefixInteger != nil {
+	if o.PrefixInteger != nil  {
 		toSerialize["prefix_integer"] = o.PrefixInteger
 	}
-	if o.PrefixBoolean != nil {
+	if o.PrefixBoolean != nil  {
 		toSerialize["prefix_boolean"] = o.PrefixBoolean
 	}
-	if o.PrefixArray != nil {
+	if o.PrefixArray != nil && len(o.GetPrefixArray()) > 0  {
 		toSerialize["prefix_array"] = o.PrefixArray
 	}
-	if o.PrefixWrappedArray != nil {
+	if o.PrefixWrappedArray != nil && len(o.GetPrefixWrappedArray()) > 0  {
 		toSerialize["prefix_wrapped_array"] = o.PrefixWrappedArray
 	}
-	if o.NamespaceString != nil {
+	if o.NamespaceString != nil  {
 		toSerialize["namespace_string"] = o.NamespaceString
 	}
-	if o.NamespaceNumber != nil {
+	if o.NamespaceNumber != nil  {
 		toSerialize["namespace_number"] = o.NamespaceNumber
 	}
-	if o.NamespaceInteger != nil {
+	if o.NamespaceInteger != nil  {
 		toSerialize["namespace_integer"] = o.NamespaceInteger
 	}
-	if o.NamespaceBoolean != nil {
+	if o.NamespaceBoolean != nil  {
 		toSerialize["namespace_boolean"] = o.NamespaceBoolean
 	}
-	if o.NamespaceArray != nil {
+	if o.NamespaceArray != nil && len(o.GetNamespaceArray()) > 0  {
 		toSerialize["namespace_array"] = o.NamespaceArray
 	}
-	if o.NamespaceWrappedArray != nil {
+	if o.NamespaceWrappedArray != nil && len(o.GetNamespaceWrappedArray()) > 0  {
 		toSerialize["namespace_wrapped_array"] = o.NamespaceWrappedArray
 	}
-	if o.PrefixNsString != nil {
+	if o.PrefixNsString != nil  {
 		toSerialize["prefix_ns_string"] = o.PrefixNsString
 	}
-	if o.PrefixNsNumber != nil {
+	if o.PrefixNsNumber != nil  {
 		toSerialize["prefix_ns_number"] = o.PrefixNsNumber
 	}
-	if o.PrefixNsInteger != nil {
+	if o.PrefixNsInteger != nil  {
 		toSerialize["prefix_ns_integer"] = o.PrefixNsInteger
 	}
-	if o.PrefixNsBoolean != nil {
+	if o.PrefixNsBoolean != nil  {
 		toSerialize["prefix_ns_boolean"] = o.PrefixNsBoolean
 	}
-	if o.PrefixNsArray != nil {
+	if o.PrefixNsArray != nil && len(o.GetPrefixNsArray()) > 0  {
 		toSerialize["prefix_ns_array"] = o.PrefixNsArray
 	}
-	if o.PrefixNsWrappedArray != nil {
+	if o.PrefixNsWrappedArray != nil && len(o.GetPrefixNsWrappedArray()) > 0  {
 		toSerialize["prefix_ns_wrapped_array"] = o.PrefixNsWrappedArray
 	}
 	return json.Marshal(toSerialize)

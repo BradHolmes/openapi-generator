@@ -106,7 +106,7 @@ func (o Animal) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["className"] = o.ClassName
 	}
-	if o.Color != nil {
+	if o.Color != nil  {
 		toSerialize["color"] = o.Color
 	}
 

@@ -222,10 +222,10 @@ func (o *Pet) SetStatus(v string) {
 
 func (o Pet) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
+	if o.Id != nil  {
 		toSerialize["id"] = o.Id
 	}
-	if o.Category != nil {
+	if o.Category != nil  {
 		toSerialize["category"] = o.Category
 	}
 	if true {
@@ -234,10 +234,10 @@ func (o Pet) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["photoUrls"] = o.PhotoUrls
 	}
-	if o.Tags != nil {
+	if o.Tags != nil && len(o.GetTags()) > 0  {
 		toSerialize["tags"] = o.Tags
 	}
-	if o.Status != nil {
+	if o.Status != nil  {
 		toSerialize["status"] = o.Status
 	}
 	return json.Marshal(toSerialize)

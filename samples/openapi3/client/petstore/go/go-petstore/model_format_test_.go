@@ -511,49 +511,49 @@ func (o *FormatTest) SetPatternWithDigitsAndDelimiter(v string) {
 
 func (o FormatTest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Integer != nil {
+	if o.Integer != nil  {
 		toSerialize["integer"] = o.Integer
 	}
-	if o.Int32 != nil {
+	if o.Int32 != nil  {
 		toSerialize["int32"] = o.Int32
 	}
-	if o.Int64 != nil {
+	if o.Int64 != nil  {
 		toSerialize["int64"] = o.Int64
 	}
 	if true {
 		toSerialize["number"] = o.Number
 	}
-	if o.Float != nil {
+	if o.Float != nil  {
 		toSerialize["float"] = o.Float
 	}
-	if o.Double != nil {
+	if o.Double != nil  {
 		toSerialize["double"] = o.Double
 	}
-	if o.String != nil {
+	if o.String != nil  {
 		toSerialize["string"] = o.String
 	}
 	if true {
 		toSerialize["byte"] = o.Byte
 	}
-	if o.Binary != nil {
+	if o.Binary != nil  {
 		toSerialize["binary"] = o.Binary
 	}
 	if true {
 		toSerialize["date"] = o.Date
 	}
-	if o.DateTime != nil {
+	if o.DateTime != nil  {
 		toSerialize["dateTime"] = o.DateTime
 	}
-	if o.Uuid != nil {
+	if o.Uuid != nil  {
 		toSerialize["uuid"] = o.Uuid
 	}
 	if true {
 		toSerialize["password"] = o.Password
 	}
-	if o.PatternWithDigits != nil {
+	if o.PatternWithDigits != nil  {
 		toSerialize["pattern_with_digits"] = o.PatternWithDigits
 	}
-	if o.PatternWithDigitsAndDelimiter != nil {
+	if o.PatternWithDigitsAndDelimiter != nil  {
 		toSerialize["pattern_with_digits_and_delimiter"] = o.PatternWithDigitsAndDelimiter
 	}
 

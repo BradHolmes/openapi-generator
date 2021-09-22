@@ -315,28 +315,28 @@ func (o *EnumTest) SetOuterEnumIntegerDefaultValue(v OuterEnumIntegerDefaultValu
 
 func (o EnumTest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.EnumString != nil {
+	if o.EnumString != nil  {
 		toSerialize["enum_string"] = o.EnumString
 	}
 	if true {
 		toSerialize["enum_string_required"] = o.EnumStringRequired
 	}
-	if o.EnumInteger != nil {
+	if o.EnumInteger != nil  {
 		toSerialize["enum_integer"] = o.EnumInteger
 	}
-	if o.EnumNumber != nil {
+	if o.EnumNumber != nil  {
 		toSerialize["enum_number"] = o.EnumNumber
 	}
 	if o.OuterEnum.IsSet() {
 		toSerialize["outerEnum"] = o.OuterEnum.Get()
 	}
-	if o.OuterEnumInteger != nil {
+	if o.OuterEnumInteger != nil  {
 		toSerialize["outerEnumInteger"] = o.OuterEnumInteger
 	}
-	if o.OuterEnumDefaultValue != nil {
+	if o.OuterEnumDefaultValue != nil  {
 		toSerialize["outerEnumDefaultValue"] = o.OuterEnumDefaultValue
 	}
-	if o.OuterEnumIntegerDefaultValue != nil {
+	if o.OuterEnumIntegerDefaultValue != nil  {
 		toSerialize["outerEnumIntegerDefaultValue"] = o.OuterEnumIntegerDefaultValue
 	}
 

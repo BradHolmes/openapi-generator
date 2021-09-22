@@ -400,37 +400,37 @@ func (o *AdditionalPropertiesClass) SetAnytype3(v map[string]interface{}) {
 
 func (o AdditionalPropertiesClass) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.MapString != nil {
+	if o.MapString != nil  {
 		toSerialize["map_string"] = o.MapString
 	}
-	if o.MapNumber != nil {
+	if o.MapNumber != nil  {
 		toSerialize["map_number"] = o.MapNumber
 	}
-	if o.MapInteger != nil {
+	if o.MapInteger != nil  {
 		toSerialize["map_integer"] = o.MapInteger
 	}
-	if o.MapBoolean != nil {
+	if o.MapBoolean != nil  {
 		toSerialize["map_boolean"] = o.MapBoolean
 	}
-	if o.MapArrayInteger != nil {
+	if o.MapArrayInteger != nil  {
 		toSerialize["map_array_integer"] = o.MapArrayInteger
 	}
-	if o.MapArrayAnytype != nil {
+	if o.MapArrayAnytype != nil  {
 		toSerialize["map_array_anytype"] = o.MapArrayAnytype
 	}
-	if o.MapMapString != nil {
+	if o.MapMapString != nil  {
 		toSerialize["map_map_string"] = o.MapMapString
 	}
-	if o.MapMapAnytype != nil {
+	if o.MapMapAnytype != nil  {
 		toSerialize["map_map_anytype"] = o.MapMapAnytype
 	}
-	if o.Anytype1 != nil {
+	if o.Anytype1 != nil  {
 		toSerialize["anytype_1"] = o.Anytype1
 	}
-	if o.Anytype2 != nil {
+	if o.Anytype2 != nil  {
 		toSerialize["anytype_2"] = o.Anytype2
 	}
-	if o.Anytype3 != nil {
+	if o.Anytype3 != nil  {
 		toSerialize["anytype_3"] = o.Anytype3
 	}
 	return json.Marshal(toSerialize)

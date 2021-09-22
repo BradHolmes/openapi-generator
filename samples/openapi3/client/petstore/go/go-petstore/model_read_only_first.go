@@ -106,10 +106,10 @@ func (o *ReadOnlyFirst) SetBaz(v string) {
 
 func (o ReadOnlyFirst) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Bar != nil {
+	if o.Bar != nil  {
 		toSerialize["bar"] = o.Bar
 	}
-	if o.Baz != nil {
+	if o.Baz != nil  {
 		toSerialize["baz"] = o.Baz
 	}
 

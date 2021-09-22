@@ -98,7 +98,7 @@ func (o *Category) SetName(v string) {
 
 func (o Category) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id != nil {
+	if o.Id != nil  {
 		toSerialize["id"] = o.Id
 	}
 	if true {

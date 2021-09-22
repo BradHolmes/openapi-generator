@@ -100,7 +100,6 @@ func (r ApiDeleteOrderRequest) Execute() (*_nethttp.Response, error) {
 DeleteOrder Delete purchase order by ID
 
 For valid response try integer IDs with value < 1000. Anything above 1000 or nonintegers will generate API errors
-
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orderId ID of the order that needs to be deleted
  @return ApiDeleteOrderRequest
@@ -161,6 +160,9 @@ func (a *StoreApiService) DeleteOrderExecute(r ApiDeleteOrderRequest) (*_nethttp
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarHTTPResponse, err
 	}
+	if localVarHTTPResponse.Header.Get("Content-Type") != "application/json" {
+		return localVarHTTPResponse, nil
+	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
@@ -194,7 +196,6 @@ func (r ApiGetInventoryRequest) Execute() (map[string]int32, *_nethttp.Response,
 GetInventory Returns pet inventories by status
 
 Returns a map of status codes to quantities
-
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetInventoryRequest
 */
@@ -268,6 +269,9 @@ func (a *StoreApiService) GetInventoryExecute(r ApiGetInventoryRequest) (map[str
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
+	if localVarHTTPResponse.Header.Get("Content-Type") != "application/json" {
+		return localVarReturnValue, localVarHTTPResponse, nil
+	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
@@ -311,7 +315,6 @@ func (r ApiGetOrderByIdRequest) Execute() (Order, *_nethttp.Response, error) {
 GetOrderById Find purchase order by ID
 
 For valid response try integer IDs with value <= 5 or > 10. Other values will generated exceptions
-
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param orderId ID of pet that needs to be fetched
  @return ApiGetOrderByIdRequest
@@ -380,6 +383,9 @@ func (a *StoreApiService) GetOrderByIdExecute(r ApiGetOrderByIdRequest) (Order, 
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
+	if localVarHTTPResponse.Header.Get("Content-Type") != "application/json" {
+		return localVarReturnValue, localVarHTTPResponse, nil
+	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
@@ -415,7 +421,7 @@ type ApiPlaceOrderRequest struct {
 }
 
 // order placed for purchasing the pet
-func (r ApiPlaceOrderRequest) Order(order Order) ApiPlaceOrderRequest {
+func (r *ApiPlaceOrderRequest) Order(order Order) *ApiPlaceOrderRequest {
 	r.order = &order
 	return r
 }
@@ -426,14 +432,14 @@ func (r ApiPlaceOrderRequest) Execute() (Order, *_nethttp.Response, error) {
 
 /*
 PlaceOrder Place an order for a pet
-
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPlaceOrderRequest
 */
-func (a *StoreApiService) PlaceOrder(ctx _context.Context) ApiPlaceOrderRequest {
+func (a *StoreApiService) PlaceOrder(ctx _context.Context, order *Order) ApiPlaceOrderRequest {
 	return ApiPlaceOrderRequest{
 		ApiService: a,
 		ctx: ctx,
+		order: order,
 	}
 }
 
@@ -490,6 +496,9 @@ func (a *StoreApiService) PlaceOrderExecute(r ApiPlaceOrderRequest) (Order, *_ne
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
+	}
+	if localVarHTTPResponse.Header.Get("Content-Type") != "application/json" {
+		return localVarReturnValue, localVarHTTPResponse, nil
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
