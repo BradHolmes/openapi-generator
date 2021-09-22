@@ -237,6 +237,7 @@ class StoreApi(object):
     def delete_order(
         self,
         order_id,
+        accept=None,
         **kwargs
     ):
         """Delete purchase order by ID  # noqa: E501
@@ -298,10 +299,17 @@ class StoreApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['order_id'] = \
             order_id
+        if accept and self.delete_order_endpoint.headers_map:
+            updated_header_maps = self.delete_order_endpoint.headers_map.copy()
+            if accept in updated_header_maps:
+                updated_header_maps['accept'] = [accept]
+                self.delete_order_endpoint.headers_map = updated_header_maps
+
         return self.delete_order_endpoint.call_with_http_info(**kwargs)
 
     def get_inventory(
         self,
+        accept=None,
         **kwargs
     ):
         """Returns pet inventories by status  # noqa: E501
@@ -359,11 +367,18 @@ class StoreApi(object):
             '_check_return_type', True
         )
         kwargs['_host_index'] = kwargs.get('_host_index')
+        if accept and self.get_inventory_endpoint.headers_map:
+            updated_header_maps = self.get_inventory_endpoint.headers_map.copy()
+            if accept in updated_header_maps:
+                updated_header_maps['accept'] = [accept]
+                self.get_inventory_endpoint.headers_map = updated_header_maps
+
         return self.get_inventory_endpoint.call_with_http_info(**kwargs)
 
     def get_order_by_id(
         self,
         order_id,
+        accept=None,
         **kwargs
     ):
         """Find purchase order by ID  # noqa: E501
@@ -425,11 +440,18 @@ class StoreApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['order_id'] = \
             order_id
+        if accept and self.get_order_by_id_endpoint.headers_map:
+            updated_header_maps = self.get_order_by_id_endpoint.headers_map.copy()
+            if accept in updated_header_maps:
+                updated_header_maps['accept'] = [accept]
+                self.get_order_by_id_endpoint.headers_map = updated_header_maps
+
         return self.get_order_by_id_endpoint.call_with_http_info(**kwargs)
 
     def place_order(
         self,
         order,
+        accept=None,
         **kwargs
     ):
         """Place an order for a pet  # noqa: E501
@@ -490,5 +512,11 @@ class StoreApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['order'] = \
             order
+        if accept and self.place_order_endpoint.headers_map:
+            updated_header_maps = self.place_order_endpoint.headers_map.copy()
+            if accept in updated_header_maps:
+                updated_header_maps['accept'] = [accept]
+                self.place_order_endpoint.headers_map = updated_header_maps
+
         return self.place_order_endpoint.call_with_http_info(**kwargs)
 

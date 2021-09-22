@@ -430,6 +430,7 @@ class UserApi(object):
     def create_user(
         self,
         user,
+        accept=None,
         **kwargs
     ):
         """Create user  # noqa: E501
@@ -491,11 +492,18 @@ class UserApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['user'] = \
             user
+        if accept and self.create_user_endpoint.headers_map:
+            updated_header_maps = self.create_user_endpoint.headers_map.copy()
+            if accept in updated_header_maps:
+                updated_header_maps['accept'] = [accept]
+                self.create_user_endpoint.headers_map = updated_header_maps
+
         return self.create_user_endpoint.call_with_http_info(**kwargs)
 
     def create_users_with_array_input(
         self,
         user,
+        accept=None,
         **kwargs
     ):
         """Creates list of users with given input array  # noqa: E501
@@ -556,11 +564,18 @@ class UserApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['user'] = \
             user
+        if accept and self.create_users_with_array_input_endpoint.headers_map:
+            updated_header_maps = self.create_users_with_array_input_endpoint.headers_map.copy()
+            if accept in updated_header_maps:
+                updated_header_maps['accept'] = [accept]
+                self.create_users_with_array_input_endpoint.headers_map = updated_header_maps
+
         return self.create_users_with_array_input_endpoint.call_with_http_info(**kwargs)
 
     def create_users_with_list_input(
         self,
         user,
+        accept=None,
         **kwargs
     ):
         """Creates list of users with given input array  # noqa: E501
@@ -621,11 +636,18 @@ class UserApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['user'] = \
             user
+        if accept and self.create_users_with_list_input_endpoint.headers_map:
+            updated_header_maps = self.create_users_with_list_input_endpoint.headers_map.copy()
+            if accept in updated_header_maps:
+                updated_header_maps['accept'] = [accept]
+                self.create_users_with_list_input_endpoint.headers_map = updated_header_maps
+
         return self.create_users_with_list_input_endpoint.call_with_http_info(**kwargs)
 
     def delete_user(
         self,
         username,
+        accept=None,
         **kwargs
     ):
         """Delete user  # noqa: E501
@@ -687,11 +709,18 @@ class UserApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['username'] = \
             username
+        if accept and self.delete_user_endpoint.headers_map:
+            updated_header_maps = self.delete_user_endpoint.headers_map.copy()
+            if accept in updated_header_maps:
+                updated_header_maps['accept'] = [accept]
+                self.delete_user_endpoint.headers_map = updated_header_maps
+
         return self.delete_user_endpoint.call_with_http_info(**kwargs)
 
     def get_user_by_name(
         self,
         username,
+        accept=None,
         **kwargs
     ):
         """Get user by user name  # noqa: E501
@@ -752,12 +781,19 @@ class UserApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['username'] = \
             username
+        if accept and self.get_user_by_name_endpoint.headers_map:
+            updated_header_maps = self.get_user_by_name_endpoint.headers_map.copy()
+            if accept in updated_header_maps:
+                updated_header_maps['accept'] = [accept]
+                self.get_user_by_name_endpoint.headers_map = updated_header_maps
+
         return self.get_user_by_name_endpoint.call_with_http_info(**kwargs)
 
     def login_user(
         self,
         username,
         password,
+        accept=None,
         **kwargs
     ):
         """Logs user into the system  # noqa: E501
@@ -821,10 +857,17 @@ class UserApi(object):
             username
         kwargs['password'] = \
             password
+        if accept and self.login_user_endpoint.headers_map:
+            updated_header_maps = self.login_user_endpoint.headers_map.copy()
+            if accept in updated_header_maps:
+                updated_header_maps['accept'] = [accept]
+                self.login_user_endpoint.headers_map = updated_header_maps
+
         return self.login_user_endpoint.call_with_http_info(**kwargs)
 
     def logout_user(
         self,
+        accept=None,
         **kwargs
     ):
         """Logs out current logged in user session  # noqa: E501
@@ -881,12 +924,19 @@ class UserApi(object):
             '_check_return_type', True
         )
         kwargs['_host_index'] = kwargs.get('_host_index')
+        if accept and self.logout_user_endpoint.headers_map:
+            updated_header_maps = self.logout_user_endpoint.headers_map.copy()
+            if accept in updated_header_maps:
+                updated_header_maps['accept'] = [accept]
+                self.logout_user_endpoint.headers_map = updated_header_maps
+
         return self.logout_user_endpoint.call_with_http_info(**kwargs)
 
     def update_user(
         self,
         username,
         user,
+        accept=None,
         **kwargs
     ):
         """Updated user  # noqa: E501
@@ -951,5 +1001,11 @@ class UserApi(object):
             username
         kwargs['user'] = \
             user
+        if accept and self.update_user_endpoint.headers_map:
+            updated_header_maps = self.update_user_endpoint.headers_map.copy()
+            if accept in updated_header_maps:
+                updated_header_maps['accept'] = [accept]
+                self.update_user_endpoint.headers_map = updated_header_maps
+
         return self.update_user_endpoint.call_with_http_info(**kwargs)
 

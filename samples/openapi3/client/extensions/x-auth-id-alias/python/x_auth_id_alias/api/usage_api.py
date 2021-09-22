@@ -215,6 +215,7 @@ class UsageApi(object):
 
     def any_key(
         self,
+        accept=None,
         **kwargs
     ):
         """Use any API key  # noqa: E501
@@ -272,10 +273,17 @@ class UsageApi(object):
             '_check_return_type', True
         )
         kwargs['_host_index'] = kwargs.get('_host_index')
+        if accept and self.any_key_endpoint.headers_map:
+            updated_header_maps = self.any_key_endpoint.headers_map.copy()
+            if accept in updated_header_maps:
+                updated_header_maps['accept'] = [accept]
+                self.any_key_endpoint.headers_map = updated_header_maps
+
         return self.any_key_endpoint.call_with_http_info(**kwargs)
 
     def both_keys(
         self,
+        accept=None,
         **kwargs
     ):
         """Use both API keys  # noqa: E501
@@ -333,10 +341,17 @@ class UsageApi(object):
             '_check_return_type', True
         )
         kwargs['_host_index'] = kwargs.get('_host_index')
+        if accept and self.both_keys_endpoint.headers_map:
+            updated_header_maps = self.both_keys_endpoint.headers_map.copy()
+            if accept in updated_header_maps:
+                updated_header_maps['accept'] = [accept]
+                self.both_keys_endpoint.headers_map = updated_header_maps
+
         return self.both_keys_endpoint.call_with_http_info(**kwargs)
 
     def key_in_header(
         self,
+        accept=None,
         **kwargs
     ):
         """Use API key in header  # noqa: E501
@@ -394,10 +409,17 @@ class UsageApi(object):
             '_check_return_type', True
         )
         kwargs['_host_index'] = kwargs.get('_host_index')
+        if accept and self.key_in_header_endpoint.headers_map:
+            updated_header_maps = self.key_in_header_endpoint.headers_map.copy()
+            if accept in updated_header_maps:
+                updated_header_maps['accept'] = [accept]
+                self.key_in_header_endpoint.headers_map = updated_header_maps
+
         return self.key_in_header_endpoint.call_with_http_info(**kwargs)
 
     def key_in_query(
         self,
+        accept=None,
         **kwargs
     ):
         """Use API key in query  # noqa: E501
@@ -455,5 +477,11 @@ class UsageApi(object):
             '_check_return_type', True
         )
         kwargs['_host_index'] = kwargs.get('_host_index')
+        if accept and self.key_in_query_endpoint.headers_map:
+            updated_header_maps = self.key_in_query_endpoint.headers_map.copy()
+            if accept in updated_header_maps:
+                updated_header_maps['accept'] = [accept]
+                self.key_in_query_endpoint.headers_map = updated_header_maps
+
         return self.key_in_query_endpoint.call_with_http_info(**kwargs)
 
