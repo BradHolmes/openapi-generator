@@ -224,6 +224,7 @@ class {{classname}}(object):
         {{paramName}}={{{defaultValue}}},
 {{/defaultValue}}
 {{/requiredParams}}
+        accept=None,
         **kwargs
     ):
         """{{{summary}}}{{^summary}}{{operationId}}{{/summary}}  # noqa: E501
@@ -303,6 +304,12 @@ class {{classname}}(object):
         kwargs['{{paramName}}'] = \
             {{paramName}}
 {{/requiredParams}}
+        if accept and self.{{operationId}}_endpoint.headers_map:
+            updated_header_maps = self.{{operationId}}_endpoint.headers_map.copy()
+            if accept in updated_header_maps:
+                updated_header_maps['accept'] = [accept]
+                self.{{operationId}}_endpoint.headers_map = updated_header_maps
+
         return self.{{operationId}}_endpoint.call_with_http_info(**kwargs)
 
 {{/operation}}

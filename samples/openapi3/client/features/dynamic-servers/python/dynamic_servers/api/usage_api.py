@@ -170,6 +170,7 @@ class UsageApi(object):
 
     def custom_server(
         self,
+        accept=None,
         **kwargs
     ):
         """Use custom server  # noqa: E501
@@ -227,10 +228,17 @@ class UsageApi(object):
             '_check_return_type', True
         )
         kwargs['_host_index'] = kwargs.get('_host_index')
+        if accept and self.custom_server_endpoint.headers_map:
+            updated_header_maps = self.custom_server_endpoint.headers_map.copy()
+            if accept in updated_header_maps:
+                updated_header_maps['accept'] = [accept]
+                self.custom_server_endpoint.headers_map = updated_header_maps
+
         return self.custom_server_endpoint.call_with_http_info(**kwargs)
 
     def default_server(
         self,
+        accept=None,
         **kwargs
     ):
         """Use default server  # noqa: E501
@@ -288,5 +296,11 @@ class UsageApi(object):
             '_check_return_type', True
         )
         kwargs['_host_index'] = kwargs.get('_host_index')
+        if accept and self.default_server_endpoint.headers_map:
+            updated_header_maps = self.default_server_endpoint.headers_map.copy()
+            if accept in updated_header_maps:
+                updated_header_maps['accept'] = [accept]
+                self.default_server_endpoint.headers_map = updated_header_maps
+
         return self.default_server_endpoint.call_with_http_info(**kwargs)
 

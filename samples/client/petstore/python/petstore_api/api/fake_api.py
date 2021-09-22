@@ -1103,6 +1103,7 @@ class FakeApi(object):
 
     def array_model(
         self,
+        accept=None,
         **kwargs
     ):
         """array_model  # noqa: E501
@@ -1161,10 +1162,17 @@ class FakeApi(object):
             '_check_return_type', True
         )
         kwargs['_host_index'] = kwargs.get('_host_index')
+        if accept and self.array_model_endpoint.headers_map:
+            updated_header_maps = self.array_model_endpoint.headers_map.copy()
+            if accept in updated_header_maps:
+                updated_header_maps['accept'] = [accept]
+                self.array_model_endpoint.headers_map = updated_header_maps
+
         return self.array_model_endpoint.call_with_http_info(**kwargs)
 
     def boolean(
         self,
+        accept=None,
         **kwargs
     ):
         """boolean  # noqa: E501
@@ -1223,11 +1231,18 @@ class FakeApi(object):
             '_check_return_type', True
         )
         kwargs['_host_index'] = kwargs.get('_host_index')
+        if accept and self.boolean_endpoint.headers_map:
+            updated_header_maps = self.boolean_endpoint.headers_map.copy()
+            if accept in updated_header_maps:
+                updated_header_maps['accept'] = [accept]
+                self.boolean_endpoint.headers_map = updated_header_maps
+
         return self.boolean_endpoint.call_with_http_info(**kwargs)
 
     def create_xml_item(
         self,
         xml_item,
+        accept=None,
         **kwargs
     ):
         """creates an XmlItem  # noqa: E501
@@ -1289,10 +1304,17 @@ class FakeApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['xml_item'] = \
             xml_item
+        if accept and self.create_xml_item_endpoint.headers_map:
+            updated_header_maps = self.create_xml_item_endpoint.headers_map.copy()
+            if accept in updated_header_maps:
+                updated_header_maps['accept'] = [accept]
+                self.create_xml_item_endpoint.headers_map = updated_header_maps
+
         return self.create_xml_item_endpoint.call_with_http_info(**kwargs)
 
     def number_with_validations(
         self,
+        accept=None,
         **kwargs
     ):
         """number_with_validations  # noqa: E501
@@ -1351,10 +1373,17 @@ class FakeApi(object):
             '_check_return_type', True
         )
         kwargs['_host_index'] = kwargs.get('_host_index')
+        if accept and self.number_with_validations_endpoint.headers_map:
+            updated_header_maps = self.number_with_validations_endpoint.headers_map.copy()
+            if accept in updated_header_maps:
+                updated_header_maps['accept'] = [accept]
+                self.number_with_validations_endpoint.headers_map = updated_header_maps
+
         return self.number_with_validations_endpoint.call_with_http_info(**kwargs)
 
     def object_model_with_ref_props(
         self,
+        accept=None,
         **kwargs
     ):
         """object_model_with_ref_props  # noqa: E501
@@ -1413,10 +1442,17 @@ class FakeApi(object):
             '_check_return_type', True
         )
         kwargs['_host_index'] = kwargs.get('_host_index')
+        if accept and self.object_model_with_ref_props_endpoint.headers_map:
+            updated_header_maps = self.object_model_with_ref_props_endpoint.headers_map.copy()
+            if accept in updated_header_maps:
+                updated_header_maps['accept'] = [accept]
+                self.object_model_with_ref_props_endpoint.headers_map = updated_header_maps
+
         return self.object_model_with_ref_props_endpoint.call_with_http_info(**kwargs)
 
     def string(
         self,
+        accept=None,
         **kwargs
     ):
         """string  # noqa: E501
@@ -1475,10 +1511,17 @@ class FakeApi(object):
             '_check_return_type', True
         )
         kwargs['_host_index'] = kwargs.get('_host_index')
+        if accept and self.string_endpoint.headers_map:
+            updated_header_maps = self.string_endpoint.headers_map.copy()
+            if accept in updated_header_maps:
+                updated_header_maps['accept'] = [accept]
+                self.string_endpoint.headers_map = updated_header_maps
+
         return self.string_endpoint.call_with_http_info(**kwargs)
 
     def string_enum(
         self,
+        accept=None,
         **kwargs
     ):
         """string_enum  # noqa: E501
@@ -1537,11 +1580,18 @@ class FakeApi(object):
             '_check_return_type', True
         )
         kwargs['_host_index'] = kwargs.get('_host_index')
+        if accept and self.string_enum_endpoint.headers_map:
+            updated_header_maps = self.string_enum_endpoint.headers_map.copy()
+            if accept in updated_header_maps:
+                updated_header_maps['accept'] = [accept]
+                self.string_enum_endpoint.headers_map = updated_header_maps
+
         return self.string_enum_endpoint.call_with_http_info(**kwargs)
 
     def test_body_with_file_schema(
         self,
         body,
+        accept=None,
         **kwargs
     ):
         """test_body_with_file_schema  # noqa: E501
@@ -1603,12 +1653,19 @@ class FakeApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['body'] = \
             body
+        if accept and self.test_body_with_file_schema_endpoint.headers_map:
+            updated_header_maps = self.test_body_with_file_schema_endpoint.headers_map.copy()
+            if accept in updated_header_maps:
+                updated_header_maps['accept'] = [accept]
+                self.test_body_with_file_schema_endpoint.headers_map = updated_header_maps
+
         return self.test_body_with_file_schema_endpoint.call_with_http_info(**kwargs)
 
     def test_body_with_query_params(
         self,
         query,
         body,
+        accept=None,
         **kwargs
     ):
         """test_body_with_query_params  # noqa: E501
@@ -1672,11 +1729,18 @@ class FakeApi(object):
             query
         kwargs['body'] = \
             body
+        if accept and self.test_body_with_query_params_endpoint.headers_map:
+            updated_header_maps = self.test_body_with_query_params_endpoint.headers_map.copy()
+            if accept in updated_header_maps:
+                updated_header_maps['accept'] = [accept]
+                self.test_body_with_query_params_endpoint.headers_map = updated_header_maps
+
         return self.test_body_with_query_params_endpoint.call_with_http_info(**kwargs)
 
     def test_client_model(
         self,
         body,
+        accept=None,
         **kwargs
     ):
         """To test \"client\" model  # noqa: E501
@@ -1738,6 +1802,12 @@ class FakeApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['body'] = \
             body
+        if accept and self.test_client_model_endpoint.headers_map:
+            updated_header_maps = self.test_client_model_endpoint.headers_map.copy()
+            if accept in updated_header_maps:
+                updated_header_maps['accept'] = [accept]
+                self.test_client_model_endpoint.headers_map = updated_header_maps
+
         return self.test_client_model_endpoint.call_with_http_info(**kwargs)
 
     def test_endpoint_enums_length_one(
@@ -1747,6 +1817,7 @@ class FakeApi(object):
         path_string="hello",
         path_integer=34,
         header_number=1.234,
+        accept=None,
         **kwargs
     ):
         """test_endpoint_enums_length_one  # noqa: E501
@@ -1820,6 +1891,12 @@ class FakeApi(object):
             path_integer
         kwargs['header_number'] = \
             header_number
+        if accept and self.test_endpoint_enums_length_one_endpoint.headers_map:
+            updated_header_maps = self.test_endpoint_enums_length_one_endpoint.headers_map.copy()
+            if accept in updated_header_maps:
+                updated_header_maps['accept'] = [accept]
+                self.test_endpoint_enums_length_one_endpoint.headers_map = updated_header_maps
+
         return self.test_endpoint_enums_length_one_endpoint.call_with_http_info(**kwargs)
 
     def test_endpoint_parameters(
@@ -1828,6 +1905,7 @@ class FakeApi(object):
         double,
         pattern_without_delimiter,
         byte,
+        accept=None,
         **kwargs
     ):
         """Fake endpoint for testing various parameters  假端點  偽のエンドポイント  가짜 엔드 포인트  # noqa: E501
@@ -1908,10 +1986,17 @@ class FakeApi(object):
             pattern_without_delimiter
         kwargs['byte'] = \
             byte
+        if accept and self.test_endpoint_parameters_endpoint.headers_map:
+            updated_header_maps = self.test_endpoint_parameters_endpoint.headers_map.copy()
+            if accept in updated_header_maps:
+                updated_header_maps['accept'] = [accept]
+                self.test_endpoint_parameters_endpoint.headers_map = updated_header_maps
+
         return self.test_endpoint_parameters_endpoint.call_with_http_info(**kwargs)
 
     def test_enum_parameters(
         self,
+        accept=None,
         **kwargs
     ):
         """To test enum parameters  # noqa: E501
@@ -1977,6 +2062,12 @@ class FakeApi(object):
             '_check_return_type', True
         )
         kwargs['_host_index'] = kwargs.get('_host_index')
+        if accept and self.test_enum_parameters_endpoint.headers_map:
+            updated_header_maps = self.test_enum_parameters_endpoint.headers_map.copy()
+            if accept in updated_header_maps:
+                updated_header_maps['accept'] = [accept]
+                self.test_enum_parameters_endpoint.headers_map = updated_header_maps
+
         return self.test_enum_parameters_endpoint.call_with_http_info(**kwargs)
 
     def test_group_parameters(
@@ -1984,6 +2075,7 @@ class FakeApi(object):
         required_string_group,
         required_boolean_group,
         required_int64_group,
+        accept=None,
         **kwargs
     ):
         """Fake endpoint to test group parameters (optional)  # noqa: E501
@@ -2054,11 +2146,18 @@ class FakeApi(object):
             required_boolean_group
         kwargs['required_int64_group'] = \
             required_int64_group
+        if accept and self.test_group_parameters_endpoint.headers_map:
+            updated_header_maps = self.test_group_parameters_endpoint.headers_map.copy()
+            if accept in updated_header_maps:
+                updated_header_maps['accept'] = [accept]
+                self.test_group_parameters_endpoint.headers_map = updated_header_maps
+
         return self.test_group_parameters_endpoint.call_with_http_info(**kwargs)
 
     def test_inline_additional_properties(
         self,
         param,
+        accept=None,
         **kwargs
     ):
         """test inline additionalProperties  # noqa: E501
@@ -2119,12 +2218,19 @@ class FakeApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['param'] = \
             param
+        if accept and self.test_inline_additional_properties_endpoint.headers_map:
+            updated_header_maps = self.test_inline_additional_properties_endpoint.headers_map.copy()
+            if accept in updated_header_maps:
+                updated_header_maps['accept'] = [accept]
+                self.test_inline_additional_properties_endpoint.headers_map = updated_header_maps
+
         return self.test_inline_additional_properties_endpoint.call_with_http_info(**kwargs)
 
     def test_json_form_data(
         self,
         param,
         param2,
+        accept=None,
         **kwargs
     ):
         """test json serialization of form data  # noqa: E501
@@ -2188,5 +2294,11 @@ class FakeApi(object):
             param
         kwargs['param2'] = \
             param2
+        if accept and self.test_json_form_data_endpoint.headers_map:
+            updated_header_maps = self.test_json_form_data_endpoint.headers_map.copy()
+            if accept in updated_header_maps:
+                updated_header_maps['accept'] = [accept]
+                self.test_json_form_data_endpoint.headers_map = updated_header_maps
+
         return self.test_json_form_data_endpoint.call_with_http_info(**kwargs)
 
