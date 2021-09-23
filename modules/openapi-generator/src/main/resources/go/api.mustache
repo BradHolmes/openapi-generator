@@ -16,6 +16,15 @@ import (
 var (
 	_ _context.Context
 )
+
+func inArray(a string, list []string) bool {
+    for _, b := range list {
+        if b == a {
+            return true
+        }
+    }
+    return false
+}
 {{#generateInterfaces}}
 
 type {{classname}} interface {
@@ -57,6 +66,7 @@ type {{#structPrefix}}{{&classname}}{{/structPrefix}}Api{{operationId}}Request s
 	ApiService {{#generateInterfaces}}{{classname}}{{/generateInterfaces}}{{^generateInterfaces}}*{{classname}}Service{{/generateInterfaces}}
 {{#allParams}}
 	{{paramName}} {{^isPathParam}}*{{/isPathParam}}{{{dataType}}}
+	accept *string
 {{/allParams}}
 }
 {{#allParams}}{{^isPathParam}}
@@ -88,7 +98,7 @@ func (r {{#structPrefix}}{{&classname}}{{/structPrefix}}Api{{operationId}}Reques
 Deprecated
 {{/isDeprecated}}
 */
-func (a *{{{classname}}}Service) {{{nickname}}}(ctx _context.Context{{#pathParams}}, {{paramName}} {{{dataType}}}{{/pathParams}}{{#bodyParams}}, {{paramName}} *{{{dataType}}}{{/bodyParams}}) {{#structPrefix}}{{&classname}}{{/structPrefix}}Api{{operationId}}Request {
+func (a *{{{classname}}}Service) {{{nickname}}}(ctx _context.Context{{#pathParams}}, {{paramName}} {{{dataType}}}{{/pathParams}}{{#bodyParams}}, {{paramName}} *{{{dataType}}}{{/bodyParams}}, accept string) {{#structPrefix}}{{&classname}}{{/structPrefix}}Api{{operationId}}Request {
 	return {{#structPrefix}}{{&classname}}{{/structPrefix}}Api{{operationId}}Request{
 		ApiService: a,
 		ctx: ctx,
@@ -98,6 +108,7 @@ func (a *{{{classname}}}Service) {{{nickname}}}(ctx _context.Context{{#pathParam
 		{{#bodyParams}}
 		{{paramName}}: {{paramName}},
 		{{/bodyParams}}
+		accept: accept
 	}
 }
 
@@ -222,7 +233,7 @@ func (a *{{{classname}}}Service) {{nickname}}Execute(r {{#structPrefix}}{{&class
 	// to determine the Content-Type header
 {{=<% %>=}}
 	localVarHTTPContentTypes := []string{<%#consumes%>"<%&mediaType%>"<%^-last%>, <%/-last%><%/consumes%>}
-<%={{ }}=%>
+<%={{ }}=%>	
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -233,8 +244,10 @@ func (a *{{{classname}}}Service) {{nickname}}Execute(r {{#structPrefix}}{{&class
 	// to determine the Accept header
 {{=<% %>=}}
 	localVarHTTPHeaderAccepts := []string{<%#produces%>"<%&mediaType%>"<%^-last%>, <%/-last%><%/produces%>}
-<%={{ }}=%>
-
+<%={{ }}=%>	
+	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+		localVarHTTPHeaderAccepts := []string {r.accept}
+	}	
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
