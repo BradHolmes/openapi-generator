@@ -23,6 +23,15 @@ var (
 	_ _context.Context
 )
 
+func inArray(a string, list []string) bool {
+    for _, b := range list {
+        if b == a {
+            return true
+        }
+    }
+    return false
+}
+
 type AnotherFakeApi interface {
 
 	/*
@@ -47,6 +56,7 @@ type ApiCall123TestSpecialTagsRequest struct {
 	ctx _context.Context
 	ApiService AnotherFakeApi
 	client *Client
+	accept *string
 }
 
 // client model
@@ -66,11 +76,12 @@ To test special tags and operation ID starting with number
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCall123TestSpecialTagsRequest
 */
-func (a *AnotherFakeApiService) Call123TestSpecialTags(ctx _context.Context, client *Client) ApiCall123TestSpecialTagsRequest {
+func (a *AnotherFakeApiService) Call123TestSpecialTags(ctx _context.Context, client *Client, accept string) ApiCall123TestSpecialTagsRequest {
 	return ApiCall123TestSpecialTagsRequest{
 		ApiService: a,
 		ctx: ctx,
 		client: client,
+		accept: accept
 	}
 }
 
@@ -111,7 +122,9 @@ func (a *AnotherFakeApiService) Call123TestSpecialTagsExecute(r ApiCall123TestSp
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/json"}
-
+	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+		localVarHTTPHeaderAccepts := []string {r.accept}
+	}	
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {

@@ -24,6 +24,15 @@ var (
 	_ _context.Context
 )
 
+func inArray(a string, list []string) bool {
+    for _, b := range list {
+        if b == a {
+            return true
+        }
+    }
+    return false
+}
+
 type StoreApi interface {
 
 	/*
@@ -89,6 +98,7 @@ type ApiDeleteOrderRequest struct {
 	ctx _context.Context
 	ApiService StoreApi
 	orderId string
+	accept *string
 }
 
 
@@ -104,11 +114,12 @@ For valid response try integer IDs with value < 1000. Anything above 1000 or non
  @param orderId ID of the order that needs to be deleted
  @return ApiDeleteOrderRequest
 */
-func (a *StoreApiService) DeleteOrder(ctx _context.Context, orderId string) ApiDeleteOrderRequest {
+func (a *StoreApiService) DeleteOrder(ctx _context.Context, orderId string, accept string) ApiDeleteOrderRequest {
 	return ApiDeleteOrderRequest{
 		ApiService: a,
 		ctx: ctx,
 		orderId: orderId,
+		accept: accept
 	}
 }
 
@@ -145,7 +156,9 @@ func (a *StoreApiService) DeleteOrderExecute(r ApiDeleteOrderRequest) (*_nethttp
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{}
-
+	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+		localVarHTTPHeaderAccepts := []string {r.accept}
+	}	
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
@@ -199,10 +212,11 @@ Returns a map of status codes to quantities
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetInventoryRequest
 */
-func (a *StoreApiService) GetInventory(ctx _context.Context) ApiGetInventoryRequest {
+func (a *StoreApiService) GetInventory(ctx _context.Context, accept string) ApiGetInventoryRequest {
 	return ApiGetInventoryRequest{
 		ApiService: a,
 		ctx: ctx,
+		accept: accept
 	}
 }
 
@@ -240,7 +254,9 @@ func (a *StoreApiService) GetInventoryExecute(r ApiGetInventoryRequest) (map[str
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/json"}
-
+	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+		localVarHTTPHeaderAccepts := []string {r.accept}
+	}	
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
@@ -304,6 +320,7 @@ type ApiGetOrderByIdRequest struct {
 	ctx _context.Context
 	ApiService StoreApi
 	orderId int64
+	accept *string
 }
 
 
@@ -319,11 +336,12 @@ For valid response try integer IDs with value <= 5 or > 10. Other values will ge
  @param orderId ID of pet that needs to be fetched
  @return ApiGetOrderByIdRequest
 */
-func (a *StoreApiService) GetOrderById(ctx _context.Context, orderId int64) ApiGetOrderByIdRequest {
+func (a *StoreApiService) GetOrderById(ctx _context.Context, orderId int64, accept string) ApiGetOrderByIdRequest {
 	return ApiGetOrderByIdRequest{
 		ApiService: a,
 		ctx: ctx,
 		orderId: orderId,
+		accept: accept
 	}
 }
 
@@ -368,7 +386,9 @@ func (a *StoreApiService) GetOrderByIdExecute(r ApiGetOrderByIdRequest) (Order, 
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/xml", "application/json"}
-
+	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+		localVarHTTPHeaderAccepts := []string {r.accept}
+	}	
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
@@ -418,6 +438,7 @@ type ApiPlaceOrderRequest struct {
 	ctx _context.Context
 	ApiService StoreApi
 	order *Order
+	accept *string
 }
 
 // order placed for purchasing the pet
@@ -435,11 +456,12 @@ PlaceOrder Place an order for a pet
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPlaceOrderRequest
 */
-func (a *StoreApiService) PlaceOrder(ctx _context.Context, order *Order) ApiPlaceOrderRequest {
+func (a *StoreApiService) PlaceOrder(ctx _context.Context, order *Order, accept string) ApiPlaceOrderRequest {
 	return ApiPlaceOrderRequest{
 		ApiService: a,
 		ctx: ctx,
 		order: order,
+		accept: accept
 	}
 }
 
@@ -480,7 +502,9 @@ func (a *StoreApiService) PlaceOrderExecute(r ApiPlaceOrderRequest) (Order, *_ne
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/xml", "application/json"}
-
+	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+		localVarHTTPHeaderAccepts := []string {r.accept}
+	}	
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {

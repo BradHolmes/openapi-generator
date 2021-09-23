@@ -23,6 +23,15 @@ var (
 	_ _context.Context
 )
 
+func inArray(a string, list []string) bool {
+    for _, b := range list {
+        if b == a {
+            return true
+        }
+    }
+    return false
+}
+
 // UsageApiService UsageApi service
 type UsageApiService service
 
@@ -43,10 +52,11 @@ Use any API key
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAnyKeyRequest
 */
-func (a *UsageApiService) AnyKey(ctx _context.Context) ApiAnyKeyRequest {
+func (a *UsageApiService) AnyKey(ctx _context.Context, accept string) ApiAnyKeyRequest {
 	return ApiAnyKeyRequest{
 		ApiService: a,
 		ctx: ctx,
+		accept: accept
 	}
 }
 
@@ -84,7 +94,9 @@ func (a *UsageApiService) AnyKeyExecute(r ApiAnyKeyRequest) (map[string]interfac
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/json"}
-
+	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+		localVarHTTPHeaderAccepts := []string {r.accept}
+	}	
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
@@ -175,10 +187,11 @@ Use both API keys
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiBothKeysRequest
 */
-func (a *UsageApiService) BothKeys(ctx _context.Context) ApiBothKeysRequest {
+func (a *UsageApiService) BothKeys(ctx _context.Context, accept string) ApiBothKeysRequest {
 	return ApiBothKeysRequest{
 		ApiService: a,
 		ctx: ctx,
+		accept: accept
 	}
 }
 
@@ -216,7 +229,9 @@ func (a *UsageApiService) BothKeysExecute(r ApiBothKeysRequest) (map[string]inte
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/json"}
-
+	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+		localVarHTTPHeaderAccepts := []string {r.accept}
+	}	
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
@@ -307,10 +322,11 @@ Use API key in header
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiKeyInHeaderRequest
 */
-func (a *UsageApiService) KeyInHeader(ctx _context.Context) ApiKeyInHeaderRequest {
+func (a *UsageApiService) KeyInHeader(ctx _context.Context, accept string) ApiKeyInHeaderRequest {
 	return ApiKeyInHeaderRequest{
 		ApiService: a,
 		ctx: ctx,
+		accept: accept
 	}
 }
 
@@ -348,7 +364,9 @@ func (a *UsageApiService) KeyInHeaderExecute(r ApiKeyInHeaderRequest) (map[strin
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/json"}
-
+	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+		localVarHTTPHeaderAccepts := []string {r.accept}
+	}	
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
@@ -425,10 +443,11 @@ Use API key in query
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiKeyInQueryRequest
 */
-func (a *UsageApiService) KeyInQuery(ctx _context.Context) ApiKeyInQueryRequest {
+func (a *UsageApiService) KeyInQuery(ctx _context.Context, accept string) ApiKeyInQueryRequest {
 	return ApiKeyInQueryRequest{
 		ApiService: a,
 		ctx: ctx,
+		accept: accept
 	}
 }
 
@@ -466,7 +485,9 @@ func (a *UsageApiService) KeyInQueryExecute(r ApiKeyInQueryRequest) (map[string]
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/json"}
-
+	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+		localVarHTTPHeaderAccepts := []string {r.accept}
+	}	
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {

@@ -23,6 +23,15 @@ var (
 	_ _context.Context
 )
 
+func inArray(a string, list []string) bool {
+    for _, b := range list {
+        if b == a {
+            return true
+        }
+    }
+    return false
+}
+
 type FakeClassnameTags123Api interface {
 
 	/*
@@ -47,6 +56,7 @@ type ApiTestClassnameRequest struct {
 	ctx _context.Context
 	ApiService FakeClassnameTags123Api
 	client *Client
+	accept *string
 }
 
 // client model
@@ -66,11 +76,12 @@ To test class name in snake case
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTestClassnameRequest
 */
-func (a *FakeClassnameTags123ApiService) TestClassname(ctx _context.Context, client *Client) ApiTestClassnameRequest {
+func (a *FakeClassnameTags123ApiService) TestClassname(ctx _context.Context, client *Client, accept string) ApiTestClassnameRequest {
 	return ApiTestClassnameRequest{
 		ApiService: a,
 		ctx: ctx,
 		client: client,
+		accept: accept
 	}
 }
 
@@ -111,7 +122,9 @@ func (a *FakeClassnameTags123ApiService) TestClassnameExecute(r ApiTestClassname
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/json"}
-
+	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+		localVarHTTPHeaderAccepts := []string {r.accept}
+	}	
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {

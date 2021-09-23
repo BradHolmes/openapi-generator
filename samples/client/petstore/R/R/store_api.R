@@ -188,7 +188,7 @@ StoreApi <- R6::R6Class(
       }
     },
 
-    DeleteOrderWithHttpInfo = function(order.id, ...){
+    DeleteOrderWithHttpInfo = function(order.id, accept=NULL, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- c()
@@ -204,6 +204,10 @@ StoreApi <- R6::R6Class(
       }
 
 
+      if (!is.null(accept) && names(headerParams) == "accept")
+        headerParams = c(accept)
+      }
+      
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
                                  method = "DELETE",
                                  queryParams = queryParams,
@@ -235,7 +239,7 @@ StoreApi <- R6::R6Class(
       }
     },
 
-    GetInventoryWithHttpInfo = function(...){
+    GetInventoryWithHttpInfo = function(accept=NULL, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- c()
@@ -247,6 +251,10 @@ StoreApi <- R6::R6Class(
         headerParams['api_key'] <- paste(unlist(self$apiClient$apiKeys["api_key"]), collapse='')
       }
 
+      if (!is.null(accept) && names(headerParams) == "accept")
+        headerParams = c(accept)
+      }
+      
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
                                  method = "GET",
                                  queryParams = queryParams,
@@ -289,7 +297,7 @@ StoreApi <- R6::R6Class(
       }
     },
 
-    GetOrderByIdWithHttpInfo = function(order.id, ...){
+    GetOrderByIdWithHttpInfo = function(order.id, accept=NULL, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- c()
@@ -305,6 +313,10 @@ StoreApi <- R6::R6Class(
       }
 
 
+      if (!is.null(accept) && names(headerParams) == "accept")
+        headerParams = c(accept)
+      }
+      
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
                                  method = "GET",
                                  queryParams = queryParams,
@@ -347,7 +359,7 @@ StoreApi <- R6::R6Class(
       }
     },
 
-    PlaceOrderWithHttpInfo = function(body, ...){
+    PlaceOrderWithHttpInfo = function(body, accept=NULL, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- c()
@@ -364,6 +376,10 @@ StoreApi <- R6::R6Class(
 
       urlPath <- "/store/order"
 
+      if (!is.null(accept) && names(headerParams) == "accept")
+        headerParams = c(accept)
+      }
+      
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
                                  method = "POST",
                                  queryParams = queryParams,
