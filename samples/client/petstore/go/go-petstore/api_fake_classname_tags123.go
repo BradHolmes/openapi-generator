@@ -76,12 +76,16 @@ To test class name in snake case
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTestClassnameRequest
 */
-func (a *FakeClassnameTags123ApiService) TestClassname(ctx _context.Context, body *Client, accept string) ApiTestClassnameRequest {
+func (a *FakeClassnameTags123ApiService) TestClassname(ctx _context.Context, body *Client, accept ...string) ApiTestClassnameRequest {
+	_accept := ""
+	if len(accept) > 0 {
+		_accept  = accept[0]
+	}	
 	return ApiTestClassnameRequest{
 		ApiService: a,
 		ctx: ctx,
 		body: body,
-		accept: accept
+		accept: _accept
 	}
 }
 
@@ -122,7 +126,7 @@ func (a *FakeClassnameTags123ApiService) TestClassnameExecute(r ApiTestClassname
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/json"}
-	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
 		localVarHTTPHeaderAccepts := []string {r.accept}
 	}	
 	// set Accept header

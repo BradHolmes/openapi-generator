@@ -162,12 +162,16 @@ This can only be done by the logged in user.
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateUserRequest
 */
-func (a *UserApiService) CreateUser(ctx _context.Context, body *User, accept string) ApiCreateUserRequest {
+func (a *UserApiService) CreateUser(ctx _context.Context, body *User, accept ...string) ApiCreateUserRequest {
+	_accept := ""
+	if len(accept) > 0 {
+		_accept  = accept[0]
+	}	
 	return ApiCreateUserRequest{
 		ApiService: a,
 		ctx: ctx,
 		body: body,
-		accept: accept
+		accept: _accept
 	}
 }
 
@@ -206,7 +210,7 @@ func (a *UserApiService) CreateUserExecute(r ApiCreateUserRequest) (*_nethttp.Re
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{}
-	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
 		localVarHTTPHeaderAccepts := []string {r.accept}
 	}	
 	// set Accept header
@@ -269,12 +273,16 @@ CreateUsersWithArrayInput Creates list of users with given input array
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateUsersWithArrayInputRequest
 */
-func (a *UserApiService) CreateUsersWithArrayInput(ctx _context.Context, body *[]User, accept string) ApiCreateUsersWithArrayInputRequest {
+func (a *UserApiService) CreateUsersWithArrayInput(ctx _context.Context, body *[]User, accept ...string) ApiCreateUsersWithArrayInputRequest {
+	_accept := ""
+	if len(accept) > 0 {
+		_accept  = accept[0]
+	}	
 	return ApiCreateUsersWithArrayInputRequest{
 		ApiService: a,
 		ctx: ctx,
 		body: body,
-		accept: accept
+		accept: _accept
 	}
 }
 
@@ -313,7 +321,7 @@ func (a *UserApiService) CreateUsersWithArrayInputExecute(r ApiCreateUsersWithAr
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{}
-	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
 		localVarHTTPHeaderAccepts := []string {r.accept}
 	}	
 	// set Accept header
@@ -376,12 +384,16 @@ CreateUsersWithListInput Creates list of users with given input array
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateUsersWithListInputRequest
 */
-func (a *UserApiService) CreateUsersWithListInput(ctx _context.Context, body *[]User, accept string) ApiCreateUsersWithListInputRequest {
+func (a *UserApiService) CreateUsersWithListInput(ctx _context.Context, body *[]User, accept ...string) ApiCreateUsersWithListInputRequest {
+	_accept := ""
+	if len(accept) > 0 {
+		_accept  = accept[0]
+	}	
 	return ApiCreateUsersWithListInputRequest{
 		ApiService: a,
 		ctx: ctx,
 		body: body,
-		accept: accept
+		accept: _accept
 	}
 }
 
@@ -420,7 +432,7 @@ func (a *UserApiService) CreateUsersWithListInputExecute(r ApiCreateUsersWithLis
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{}
-	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
 		localVarHTTPHeaderAccepts := []string {r.accept}
 	}	
 	// set Accept header
@@ -481,12 +493,16 @@ This can only be done by the logged in user.
  @param username The name that needs to be deleted
  @return ApiDeleteUserRequest
 */
-func (a *UserApiService) DeleteUser(ctx _context.Context, username string, accept string) ApiDeleteUserRequest {
+func (a *UserApiService) DeleteUser(ctx _context.Context, username string, accept ...string) ApiDeleteUserRequest {
+	_accept := ""
+	if len(accept) > 0 {
+		_accept  = accept[0]
+	}	
 	return ApiDeleteUserRequest{
 		ApiService: a,
 		ctx: ctx,
 		username: username,
-		accept: accept
+		accept: _accept
 	}
 }
 
@@ -523,7 +539,7 @@ func (a *UserApiService) DeleteUserExecute(r ApiDeleteUserRequest) (*_nethttp.Re
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{}
-	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
 		localVarHTTPHeaderAccepts := []string {r.accept}
 	}	
 	// set Accept header
@@ -580,12 +596,16 @@ GetUserByName Get user by user name
  @param username The name that needs to be fetched. Use user1 for testing.
  @return ApiGetUserByNameRequest
 */
-func (a *UserApiService) GetUserByName(ctx _context.Context, username string, accept string) ApiGetUserByNameRequest {
+func (a *UserApiService) GetUserByName(ctx _context.Context, username string, accept ...string) ApiGetUserByNameRequest {
+	_accept := ""
+	if len(accept) > 0 {
+		_accept  = accept[0]
+	}	
 	return ApiGetUserByNameRequest{
 		ApiService: a,
 		ctx: ctx,
 		username: username,
-		accept: accept
+		accept: _accept
 	}
 }
 
@@ -624,7 +644,7 @@ func (a *UserApiService) GetUserByNameExecute(r ApiGetUserByNameRequest) (User, 
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/xml", "application/json"}
-	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
 		localVarHTTPHeaderAccepts := []string {r.accept}
 	}	
 	// set Accept header
@@ -701,11 +721,15 @@ LoginUser Logs user into the system
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiLoginUserRequest
 */
-func (a *UserApiService) LoginUser(ctx _context.Context, accept string) ApiLoginUserRequest {
+func (a *UserApiService) LoginUser(ctx _context.Context, accept ...string) ApiLoginUserRequest {
+	_accept := ""
+	if len(accept) > 0 {
+		_accept  = accept[0]
+	}	
 	return ApiLoginUserRequest{
 		ApiService: a,
 		ctx: ctx,
-		accept: accept
+		accept: _accept
 	}
 }
 
@@ -751,7 +775,7 @@ func (a *UserApiService) LoginUserExecute(r ApiLoginUserRequest) (string, *_neth
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/xml", "application/json"}
-	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
 		localVarHTTPHeaderAccepts := []string {r.accept}
 	}	
 	// set Accept header
@@ -814,11 +838,15 @@ LogoutUser Logs out current logged in user session
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiLogoutUserRequest
 */
-func (a *UserApiService) LogoutUser(ctx _context.Context, accept string) ApiLogoutUserRequest {
+func (a *UserApiService) LogoutUser(ctx _context.Context, accept ...string) ApiLogoutUserRequest {
+	_accept := ""
+	if len(accept) > 0 {
+		_accept  = accept[0]
+	}	
 	return ApiLogoutUserRequest{
 		ApiService: a,
 		ctx: ctx,
-		accept: accept
+		accept: _accept
 	}
 }
 
@@ -854,7 +882,7 @@ func (a *UserApiService) LogoutUserExecute(r ApiLogoutUserRequest) (*_nethttp.Re
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{}
-	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
 		localVarHTTPHeaderAccepts := []string {r.accept}
 	}	
 	// set Accept header
@@ -920,13 +948,17 @@ This can only be done by the logged in user.
  @param username name that need to be deleted
  @return ApiUpdateUserRequest
 */
-func (a *UserApiService) UpdateUser(ctx _context.Context, username string, body *User, accept string) ApiUpdateUserRequest {
+func (a *UserApiService) UpdateUser(ctx _context.Context, username string, body *User, accept ...string) ApiUpdateUserRequest {
+	_accept := ""
+	if len(accept) > 0 {
+		_accept  = accept[0]
+	}	
 	return ApiUpdateUserRequest{
 		ApiService: a,
 		ctx: ctx,
 		username: username,
 		body: body,
-		accept: accept
+		accept: _accept
 	}
 }
 
@@ -966,7 +998,7 @@ func (a *UserApiService) UpdateUserExecute(r ApiUpdateUserRequest) (*_nethttp.Re
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{}
-	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
 		localVarHTTPHeaderAccepts := []string {r.accept}
 	}	
 	// set Accept header

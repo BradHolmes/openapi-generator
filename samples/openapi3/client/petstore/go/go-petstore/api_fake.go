@@ -254,11 +254,15 @@ FakeHealthGet Health check endpoint
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFakeHealthGetRequest
 */
-func (a *FakeApiService) FakeHealthGet(ctx _context.Context, accept string) ApiFakeHealthGetRequest {
+func (a *FakeApiService) FakeHealthGet(ctx _context.Context, accept ...string) ApiFakeHealthGetRequest {
+	_accept := ""
+	if len(accept) > 0 {
+		_accept  = accept[0]
+	}	
 	return ApiFakeHealthGetRequest{
 		ApiService: a,
 		ctx: ctx,
-		accept: accept
+		accept: _accept
 	}
 }
 
@@ -296,7 +300,7 @@ func (a *FakeApiService) FakeHealthGetExecute(r ApiFakeHealthGetRequest) (Health
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/json"}
-	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
 		localVarHTTPHeaderAccepts := []string {r.accept}
 	}	
 	// set Accept header
@@ -368,12 +372,16 @@ Test serialization of outer boolean types
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFakeOuterBooleanSerializeRequest
 */
-func (a *FakeApiService) FakeOuterBooleanSerialize(ctx _context.Context, body *bool, accept string) ApiFakeOuterBooleanSerializeRequest {
+func (a *FakeApiService) FakeOuterBooleanSerialize(ctx _context.Context, body *bool, accept ...string) ApiFakeOuterBooleanSerializeRequest {
+	_accept := ""
+	if len(accept) > 0 {
+		_accept  = accept[0]
+	}	
 	return ApiFakeOuterBooleanSerializeRequest{
 		ApiService: a,
 		ctx: ctx,
 		body: body,
-		accept: accept
+		accept: _accept
 	}
 }
 
@@ -411,7 +419,7 @@ func (a *FakeApiService) FakeOuterBooleanSerializeExecute(r ApiFakeOuterBooleanS
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"*/*"}
-	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
 		localVarHTTPHeaderAccepts := []string {r.accept}
 	}	
 	// set Accept header
@@ -485,12 +493,16 @@ Test serialization of object with outer number type
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFakeOuterCompositeSerializeRequest
 */
-func (a *FakeApiService) FakeOuterCompositeSerialize(ctx _context.Context, outerComposite *OuterComposite, accept string) ApiFakeOuterCompositeSerializeRequest {
+func (a *FakeApiService) FakeOuterCompositeSerialize(ctx _context.Context, outerComposite *OuterComposite, accept ...string) ApiFakeOuterCompositeSerializeRequest {
+	_accept := ""
+	if len(accept) > 0 {
+		_accept  = accept[0]
+	}	
 	return ApiFakeOuterCompositeSerializeRequest{
 		ApiService: a,
 		ctx: ctx,
 		outerComposite: outerComposite,
-		accept: accept
+		accept: _accept
 	}
 }
 
@@ -528,7 +540,7 @@ func (a *FakeApiService) FakeOuterCompositeSerializeExecute(r ApiFakeOuterCompos
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"*/*"}
-	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
 		localVarHTTPHeaderAccepts := []string {r.accept}
 	}	
 	// set Accept header
@@ -602,12 +614,16 @@ Test serialization of outer number types
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFakeOuterNumberSerializeRequest
 */
-func (a *FakeApiService) FakeOuterNumberSerialize(ctx _context.Context, body *float32, accept string) ApiFakeOuterNumberSerializeRequest {
+func (a *FakeApiService) FakeOuterNumberSerialize(ctx _context.Context, body *float32, accept ...string) ApiFakeOuterNumberSerializeRequest {
+	_accept := ""
+	if len(accept) > 0 {
+		_accept  = accept[0]
+	}	
 	return ApiFakeOuterNumberSerializeRequest{
 		ApiService: a,
 		ctx: ctx,
 		body: body,
-		accept: accept
+		accept: _accept
 	}
 }
 
@@ -645,7 +661,7 @@ func (a *FakeApiService) FakeOuterNumberSerializeExecute(r ApiFakeOuterNumberSer
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"*/*"}
-	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
 		localVarHTTPHeaderAccepts := []string {r.accept}
 	}	
 	// set Accept header
@@ -719,12 +735,16 @@ Test serialization of outer string types
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFakeOuterStringSerializeRequest
 */
-func (a *FakeApiService) FakeOuterStringSerialize(ctx _context.Context, body *string, accept string) ApiFakeOuterStringSerializeRequest {
+func (a *FakeApiService) FakeOuterStringSerialize(ctx _context.Context, body *string, accept ...string) ApiFakeOuterStringSerializeRequest {
+	_accept := ""
+	if len(accept) > 0 {
+		_accept  = accept[0]
+	}	
 	return ApiFakeOuterStringSerializeRequest{
 		ApiService: a,
 		ctx: ctx,
 		body: body,
-		accept: accept
+		accept: _accept
 	}
 }
 
@@ -762,7 +782,7 @@ func (a *FakeApiService) FakeOuterStringSerializeExecute(r ApiFakeOuterStringSer
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"*/*"}
-	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
 		localVarHTTPHeaderAccepts := []string {r.accept}
 	}	
 	// set Accept header
@@ -835,12 +855,16 @@ For this test, the body for this request much reference a schema named `File`.
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTestBodyWithFileSchemaRequest
 */
-func (a *FakeApiService) TestBodyWithFileSchema(ctx _context.Context, fileSchemaTestClass *FileSchemaTestClass, accept string) ApiTestBodyWithFileSchemaRequest {
+func (a *FakeApiService) TestBodyWithFileSchema(ctx _context.Context, fileSchemaTestClass *FileSchemaTestClass, accept ...string) ApiTestBodyWithFileSchemaRequest {
+	_accept := ""
+	if len(accept) > 0 {
+		_accept  = accept[0]
+	}	
 	return ApiTestBodyWithFileSchemaRequest{
 		ApiService: a,
 		ctx: ctx,
 		fileSchemaTestClass: fileSchemaTestClass,
-		accept: accept
+		accept: _accept
 	}
 }
 
@@ -879,7 +903,7 @@ func (a *FakeApiService) TestBodyWithFileSchemaExecute(r ApiTestBodyWithFileSche
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{}
-	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
 		localVarHTTPHeaderAccepts := []string {r.accept}
 	}	
 	// set Accept header
@@ -947,12 +971,16 @@ TestBodyWithQueryParams Method for TestBodyWithQueryParams
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTestBodyWithQueryParamsRequest
 */
-func (a *FakeApiService) TestBodyWithQueryParams(ctx _context.Context, user *User, accept string) ApiTestBodyWithQueryParamsRequest {
+func (a *FakeApiService) TestBodyWithQueryParams(ctx _context.Context, user *User, accept ...string) ApiTestBodyWithQueryParamsRequest {
+	_accept := ""
+	if len(accept) > 0 {
+		_accept  = accept[0]
+	}	
 	return ApiTestBodyWithQueryParamsRequest{
 		ApiService: a,
 		ctx: ctx,
 		user: user,
-		accept: accept
+		accept: _accept
 	}
 }
 
@@ -995,7 +1023,7 @@ func (a *FakeApiService) TestBodyWithQueryParamsExecute(r ApiTestBodyWithQueryPa
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{}
-	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
 		localVarHTTPHeaderAccepts := []string {r.accept}
 	}	
 	// set Accept header
@@ -1060,12 +1088,16 @@ To test "client" model
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTestClientModelRequest
 */
-func (a *FakeApiService) TestClientModel(ctx _context.Context, client *Client, accept string) ApiTestClientModelRequest {
+func (a *FakeApiService) TestClientModel(ctx _context.Context, client *Client, accept ...string) ApiTestClientModelRequest {
+	_accept := ""
+	if len(accept) > 0 {
+		_accept  = accept[0]
+	}	
 	return ApiTestClientModelRequest{
 		ApiService: a,
 		ctx: ctx,
 		client: client,
-		accept: accept
+		accept: _accept
 	}
 }
 
@@ -1106,7 +1138,7 @@ func (a *FakeApiService) TestClientModelExecute(r ApiTestClientModelRequest) (Cl
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/json"}
-	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
 		localVarHTTPHeaderAccepts := []string {r.accept}
 	}	
 	// set Accept header
@@ -1275,11 +1307,15 @@ Fake endpoint for testing various parameters
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTestEndpointParametersRequest
 */
-func (a *FakeApiService) TestEndpointParameters(ctx _context.Context, accept string) ApiTestEndpointParametersRequest {
+func (a *FakeApiService) TestEndpointParameters(ctx _context.Context, accept ...string) ApiTestEndpointParametersRequest {
+	_accept := ""
+	if len(accept) > 0 {
+		_accept  = accept[0]
+	}	
 	return ApiTestEndpointParametersRequest{
 		ApiService: a,
 		ctx: ctx,
-		accept: accept
+		accept: _accept
 	}
 }
 
@@ -1339,7 +1375,7 @@ func (a *FakeApiService) TestEndpointParametersExecute(r ApiTestEndpointParamete
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{}
-	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
 		localVarHTTPHeaderAccepts := []string {r.accept}
 	}	
 	// set Accept header
@@ -1493,11 +1529,15 @@ To test enum parameters
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTestEnumParametersRequest
 */
-func (a *FakeApiService) TestEnumParameters(ctx _context.Context, accept string) ApiTestEnumParametersRequest {
+func (a *FakeApiService) TestEnumParameters(ctx _context.Context, accept ...string) ApiTestEnumParametersRequest {
+	_accept := ""
+	if len(accept) > 0 {
+		_accept  = accept[0]
+	}	
 	return ApiTestEnumParametersRequest{
 		ApiService: a,
 		ctx: ctx,
-		accept: accept
+		accept: _accept
 	}
 }
 
@@ -1553,7 +1593,7 @@ func (a *FakeApiService) TestEnumParametersExecute(r ApiTestEnumParametersReques
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{}
-	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
 		localVarHTTPHeaderAccepts := []string {r.accept}
 	}	
 	// set Accept header
@@ -1663,11 +1703,15 @@ Fake endpoint to test group parameters (optional)
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTestGroupParametersRequest
 */
-func (a *FakeApiService) TestGroupParameters(ctx _context.Context, accept string) ApiTestGroupParametersRequest {
+func (a *FakeApiService) TestGroupParameters(ctx _context.Context, accept ...string) ApiTestGroupParametersRequest {
+	_accept := ""
+	if len(accept) > 0 {
+		_accept  = accept[0]
+	}	
 	return ApiTestGroupParametersRequest{
 		ApiService: a,
 		ctx: ctx,
-		accept: accept
+		accept: _accept
 	}
 }
 
@@ -1720,7 +1764,7 @@ func (a *FakeApiService) TestGroupParametersExecute(r ApiTestGroupParametersRequ
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{}
-	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
 		localVarHTTPHeaderAccepts := []string {r.accept}
 	}	
 	// set Accept header
@@ -1785,12 +1829,16 @@ TestInlineAdditionalProperties test inline additionalProperties
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTestInlineAdditionalPropertiesRequest
 */
-func (a *FakeApiService) TestInlineAdditionalProperties(ctx _context.Context, requestBody *map[string]string, accept string) ApiTestInlineAdditionalPropertiesRequest {
+func (a *FakeApiService) TestInlineAdditionalProperties(ctx _context.Context, requestBody *map[string]string, accept ...string) ApiTestInlineAdditionalPropertiesRequest {
+	_accept := ""
+	if len(accept) > 0 {
+		_accept  = accept[0]
+	}	
 	return ApiTestInlineAdditionalPropertiesRequest{
 		ApiService: a,
 		ctx: ctx,
 		requestBody: requestBody,
-		accept: accept
+		accept: _accept
 	}
 }
 
@@ -1829,7 +1877,7 @@ func (a *FakeApiService) TestInlineAdditionalPropertiesExecute(r ApiTestInlineAd
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{}
-	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
 		localVarHTTPHeaderAccepts := []string {r.accept}
 	}	
 	// set Accept header
@@ -1899,11 +1947,15 @@ TestJsonFormData test json serialization of form data
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTestJsonFormDataRequest
 */
-func (a *FakeApiService) TestJsonFormData(ctx _context.Context, accept string) ApiTestJsonFormDataRequest {
+func (a *FakeApiService) TestJsonFormData(ctx _context.Context, accept ...string) ApiTestJsonFormDataRequest {
+	_accept := ""
+	if len(accept) > 0 {
+		_accept  = accept[0]
+	}	
 	return ApiTestJsonFormDataRequest{
 		ApiService: a,
 		ctx: ctx,
-		accept: accept
+		accept: _accept
 	}
 }
 
@@ -1945,7 +1997,7 @@ func (a *FakeApiService) TestJsonFormDataExecute(r ApiTestJsonFormDataRequest) (
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{}
-	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
 		localVarHTTPHeaderAccepts := []string {r.accept}
 	}	
 	// set Accept header
@@ -2033,11 +2085,15 @@ To test the collection format in query parameters
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTestQueryParameterCollectionFormatRequest
 */
-func (a *FakeApiService) TestQueryParameterCollectionFormat(ctx _context.Context, accept string) ApiTestQueryParameterCollectionFormatRequest {
+func (a *FakeApiService) TestQueryParameterCollectionFormat(ctx _context.Context, accept ...string) ApiTestQueryParameterCollectionFormatRequest {
+	_accept := ""
+	if len(accept) > 0 {
+		_accept  = accept[0]
+	}	
 	return ApiTestQueryParameterCollectionFormatRequest{
 		ApiService: a,
 		ctx: ctx,
-		accept: accept
+		accept: _accept
 	}
 }
 
@@ -2113,7 +2169,7 @@ func (a *FakeApiService) TestQueryParameterCollectionFormatExecute(r ApiTestQuer
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{}
-	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
 		localVarHTTPHeaderAccepts := []string {r.accept}
 	}	
 	// set Accept header
@@ -2181,11 +2237,15 @@ To test unique items in header and query parameters
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTestUniqueItemsHeaderAndQueryParameterCollectionFormatRequest
 */
-func (a *FakeApiService) TestUniqueItemsHeaderAndQueryParameterCollectionFormat(ctx _context.Context, accept string) ApiTestUniqueItemsHeaderAndQueryParameterCollectionFormatRequest {
+func (a *FakeApiService) TestUniqueItemsHeaderAndQueryParameterCollectionFormat(ctx _context.Context, accept ...string) ApiTestUniqueItemsHeaderAndQueryParameterCollectionFormatRequest {
+	_accept := ""
+	if len(accept) > 0 {
+		_accept  = accept[0]
+	}	
 	return ApiTestUniqueItemsHeaderAndQueryParameterCollectionFormatRequest{
 		ApiService: a,
 		ctx: ctx,
-		accept: accept
+		accept: _accept
 	}
 }
 
@@ -2240,7 +2300,7 @@ func (a *FakeApiService) TestUniqueItemsHeaderAndQueryParameterCollectionFormatE
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/json"}
-	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
 		localVarHTTPHeaderAccepts := []string {r.accept}
 	}	
 	// set Accept header

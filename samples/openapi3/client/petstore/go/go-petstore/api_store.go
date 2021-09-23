@@ -114,12 +114,16 @@ For valid response try integer IDs with value < 1000. Anything above 1000 or non
  @param orderId ID of the order that needs to be deleted
  @return ApiDeleteOrderRequest
 */
-func (a *StoreApiService) DeleteOrder(ctx _context.Context, orderId string, accept string) ApiDeleteOrderRequest {
+func (a *StoreApiService) DeleteOrder(ctx _context.Context, orderId string, accept ...string) ApiDeleteOrderRequest {
+	_accept := ""
+	if len(accept) > 0 {
+		_accept  = accept[0]
+	}	
 	return ApiDeleteOrderRequest{
 		ApiService: a,
 		ctx: ctx,
 		orderId: orderId,
-		accept: accept
+		accept: _accept
 	}
 }
 
@@ -156,7 +160,7 @@ func (a *StoreApiService) DeleteOrderExecute(r ApiDeleteOrderRequest) (*_nethttp
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{}
-	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
 		localVarHTTPHeaderAccepts := []string {r.accept}
 	}	
 	// set Accept header
@@ -212,11 +216,15 @@ Returns a map of status codes to quantities
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetInventoryRequest
 */
-func (a *StoreApiService) GetInventory(ctx _context.Context, accept string) ApiGetInventoryRequest {
+func (a *StoreApiService) GetInventory(ctx _context.Context, accept ...string) ApiGetInventoryRequest {
+	_accept := ""
+	if len(accept) > 0 {
+		_accept  = accept[0]
+	}	
 	return ApiGetInventoryRequest{
 		ApiService: a,
 		ctx: ctx,
-		accept: accept
+		accept: _accept
 	}
 }
 
@@ -254,7 +262,7 @@ func (a *StoreApiService) GetInventoryExecute(r ApiGetInventoryRequest) (map[str
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/json"}
-	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
 		localVarHTTPHeaderAccepts := []string {r.accept}
 	}	
 	// set Accept header
@@ -336,12 +344,16 @@ For valid response try integer IDs with value <= 5 or > 10. Other values will ge
  @param orderId ID of pet that needs to be fetched
  @return ApiGetOrderByIdRequest
 */
-func (a *StoreApiService) GetOrderById(ctx _context.Context, orderId int64, accept string) ApiGetOrderByIdRequest {
+func (a *StoreApiService) GetOrderById(ctx _context.Context, orderId int64, accept ...string) ApiGetOrderByIdRequest {
+	_accept := ""
+	if len(accept) > 0 {
+		_accept  = accept[0]
+	}	
 	return ApiGetOrderByIdRequest{
 		ApiService: a,
 		ctx: ctx,
 		orderId: orderId,
-		accept: accept
+		accept: _accept
 	}
 }
 
@@ -386,7 +398,7 @@ func (a *StoreApiService) GetOrderByIdExecute(r ApiGetOrderByIdRequest) (Order, 
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/xml", "application/json"}
-	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
 		localVarHTTPHeaderAccepts := []string {r.accept}
 	}	
 	// set Accept header
@@ -456,12 +468,16 @@ PlaceOrder Place an order for a pet
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPlaceOrderRequest
 */
-func (a *StoreApiService) PlaceOrder(ctx _context.Context, order *Order, accept string) ApiPlaceOrderRequest {
+func (a *StoreApiService) PlaceOrder(ctx _context.Context, order *Order, accept ...string) ApiPlaceOrderRequest {
+	_accept := ""
+	if len(accept) > 0 {
+		_accept  = accept[0]
+	}	
 	return ApiPlaceOrderRequest{
 		ApiService: a,
 		ctx: ctx,
 		order: order,
-		accept: accept
+		accept: _accept
 	}
 }
 
@@ -502,7 +518,7 @@ func (a *StoreApiService) PlaceOrderExecute(r ApiPlaceOrderRequest) (Order, *_ne
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/xml", "application/json"}
-	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
 		localVarHTTPHeaderAccepts := []string {r.accept}
 	}	
 	// set Accept header

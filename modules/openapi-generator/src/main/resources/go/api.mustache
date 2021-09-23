@@ -98,7 +98,11 @@ func (r {{#structPrefix}}{{&classname}}{{/structPrefix}}Api{{operationId}}Reques
 Deprecated
 {{/isDeprecated}}
 */
-func (a *{{{classname}}}Service) {{{nickname}}}(ctx _context.Context{{#pathParams}}, {{paramName}} {{{dataType}}}{{/pathParams}}{{#bodyParams}}, {{paramName}} *{{{dataType}}}{{/bodyParams}}, accept string) {{#structPrefix}}{{&classname}}{{/structPrefix}}Api{{operationId}}Request {
+func (a *{{{classname}}}Service) {{{nickname}}}(ctx _context.Context{{#pathParams}}, {{paramName}} {{{dataType}}}{{/pathParams}}{{#bodyParams}}, {{paramName}} *{{{dataType}}}{{/bodyParams}}, accept ...string) {{#structPrefix}}{{&classname}}{{/structPrefix}}Api{{operationId}}Request {
+	_accept := ""
+	if len(accept) > 0 {
+		_accept  = accept[0]
+	}	
 	return {{#structPrefix}}{{&classname}}{{/structPrefix}}Api{{operationId}}Request{
 		ApiService: a,
 		ctx: ctx,
@@ -108,7 +112,7 @@ func (a *{{{classname}}}Service) {{{nickname}}}(ctx _context.Context{{#pathParam
 		{{#bodyParams}}
 		{{paramName}}: {{paramName}},
 		{{/bodyParams}}
-		accept: accept
+		accept: _accept
 	}
 }
 
@@ -245,7 +249,7 @@ func (a *{{{classname}}}Service) {{nickname}}Execute(r {{#structPrefix}}{{&class
 {{=<% %>=}}
 	localVarHTTPHeaderAccepts := []string{<%#produces%>"<%&mediaType%>"<%^-last%>, <%/-last%><%/produces%>}
 <%={{ }}=%>	
-	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
 		localVarHTTPHeaderAccepts := []string {r.accept}
 	}	
 	// set Accept header

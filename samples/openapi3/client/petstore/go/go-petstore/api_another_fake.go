@@ -76,12 +76,16 @@ To test special tags and operation ID starting with number
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCall123TestSpecialTagsRequest
 */
-func (a *AnotherFakeApiService) Call123TestSpecialTags(ctx _context.Context, client *Client, accept string) ApiCall123TestSpecialTagsRequest {
+func (a *AnotherFakeApiService) Call123TestSpecialTags(ctx _context.Context, client *Client, accept ...string) ApiCall123TestSpecialTagsRequest {
+	_accept := ""
+	if len(accept) > 0 {
+		_accept  = accept[0]
+	}	
 	return ApiCall123TestSpecialTagsRequest{
 		ApiService: a,
 		ctx: ctx,
 		client: client,
-		accept: accept
+		accept: _accept
 	}
 }
 
@@ -122,7 +126,7 @@ func (a *AnotherFakeApiService) Call123TestSpecialTagsExecute(r ApiCall123TestSp
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/json"}
-	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
 		localVarHTTPHeaderAccepts := []string {r.accept}
 	}	
 	// set Accept header

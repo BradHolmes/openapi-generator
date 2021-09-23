@@ -180,12 +180,16 @@ AddPet Add a new pet to the store
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAddPetRequest
 */
-func (a *PetApiService) AddPet(ctx _context.Context, pet *Pet, accept string) ApiAddPetRequest {
+func (a *PetApiService) AddPet(ctx _context.Context, pet *Pet, accept ...string) ApiAddPetRequest {
+	_accept := ""
+	if len(accept) > 0 {
+		_accept  = accept[0]
+	}	
 	return ApiAddPetRequest{
 		ApiService: a,
 		ctx: ctx,
 		pet: pet,
-		accept: accept
+		accept: _accept
 	}
 }
 
@@ -224,7 +228,7 @@ func (a *PetApiService) AddPetExecute(r ApiAddPetRequest) (*_nethttp.Response, e
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{}
-	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
 		localVarHTTPHeaderAccepts := []string {r.accept}
 	}	
 	// set Accept header
@@ -289,12 +293,16 @@ DeletePet Deletes a pet
  @param petId Pet id to delete
  @return ApiDeletePetRequest
 */
-func (a *PetApiService) DeletePet(ctx _context.Context, petId int64, accept string) ApiDeletePetRequest {
+func (a *PetApiService) DeletePet(ctx _context.Context, petId int64, accept ...string) ApiDeletePetRequest {
+	_accept := ""
+	if len(accept) > 0 {
+		_accept  = accept[0]
+	}	
 	return ApiDeletePetRequest{
 		ApiService: a,
 		ctx: ctx,
 		petId: petId,
-		accept: accept
+		accept: _accept
 	}
 }
 
@@ -331,7 +339,7 @@ func (a *PetApiService) DeletePetExecute(r ApiDeletePetRequest) (*_nethttp.Respo
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{}
-	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
 		localVarHTTPHeaderAccepts := []string {r.accept}
 	}	
 	// set Accept header
@@ -398,11 +406,15 @@ Multiple status values can be provided with comma separated strings
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFindPetsByStatusRequest
 */
-func (a *PetApiService) FindPetsByStatus(ctx _context.Context, accept string) ApiFindPetsByStatusRequest {
+func (a *PetApiService) FindPetsByStatus(ctx _context.Context, accept ...string) ApiFindPetsByStatusRequest {
+	_accept := ""
+	if len(accept) > 0 {
+		_accept  = accept[0]
+	}	
 	return ApiFindPetsByStatusRequest{
 		ApiService: a,
 		ctx: ctx,
-		accept: accept
+		accept: _accept
 	}
 }
 
@@ -444,7 +456,7 @@ func (a *PetApiService) FindPetsByStatusExecute(r ApiFindPetsByStatusRequest) ([
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/xml", "application/json"}
-	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
 		localVarHTTPHeaderAccepts := []string {r.accept}
 	}	
 	// set Accept header
@@ -517,11 +529,15 @@ Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3
  @return ApiFindPetsByTagsRequest
 Deprecated
 */
-func (a *PetApiService) FindPetsByTags(ctx _context.Context, accept string) ApiFindPetsByTagsRequest {
+func (a *PetApiService) FindPetsByTags(ctx _context.Context, accept ...string) ApiFindPetsByTagsRequest {
+	_accept := ""
+	if len(accept) > 0 {
+		_accept  = accept[0]
+	}	
 	return ApiFindPetsByTagsRequest{
 		ApiService: a,
 		ctx: ctx,
-		accept: accept
+		accept: _accept
 	}
 }
 
@@ -564,7 +580,7 @@ func (a *PetApiService) FindPetsByTagsExecute(r ApiFindPetsByTagsRequest) ([]Pet
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/xml", "application/json"}
-	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
 		localVarHTTPHeaderAccepts := []string {r.accept}
 	}	
 	// set Accept header
@@ -632,12 +648,16 @@ Returns a single pet
  @param petId ID of pet to return
  @return ApiGetPetByIdRequest
 */
-func (a *PetApiService) GetPetById(ctx _context.Context, petId int64, accept string) ApiGetPetByIdRequest {
+func (a *PetApiService) GetPetById(ctx _context.Context, petId int64, accept ...string) ApiGetPetByIdRequest {
+	_accept := ""
+	if len(accept) > 0 {
+		_accept  = accept[0]
+	}	
 	return ApiGetPetByIdRequest{
 		ApiService: a,
 		ctx: ctx,
 		petId: petId,
-		accept: accept
+		accept: _accept
 	}
 }
 
@@ -676,7 +696,7 @@ func (a *PetApiService) GetPetByIdExecute(r ApiGetPetByIdRequest) (Pet, *_nethtt
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/xml", "application/json"}
-	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
 		localVarHTTPHeaderAccepts := []string {r.accept}
 	}	
 	// set Accept header
@@ -760,12 +780,16 @@ UpdatePet Update an existing pet
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiUpdatePetRequest
 */
-func (a *PetApiService) UpdatePet(ctx _context.Context, pet *Pet, accept string) ApiUpdatePetRequest {
+func (a *PetApiService) UpdatePet(ctx _context.Context, pet *Pet, accept ...string) ApiUpdatePetRequest {
+	_accept := ""
+	if len(accept) > 0 {
+		_accept  = accept[0]
+	}	
 	return ApiUpdatePetRequest{
 		ApiService: a,
 		ctx: ctx,
 		pet: pet,
-		accept: accept
+		accept: _accept
 	}
 }
 
@@ -804,7 +828,7 @@ func (a *PetApiService) UpdatePetExecute(r ApiUpdatePetRequest) (*_nethttp.Respo
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{}
-	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
 		localVarHTTPHeaderAccepts := []string {r.accept}
 	}	
 	// set Accept header
@@ -877,12 +901,16 @@ UpdatePetWithForm Updates a pet in the store with form data
  @param petId ID of pet that needs to be updated
  @return ApiUpdatePetWithFormRequest
 */
-func (a *PetApiService) UpdatePetWithForm(ctx _context.Context, petId int64, accept string) ApiUpdatePetWithFormRequest {
+func (a *PetApiService) UpdatePetWithForm(ctx _context.Context, petId int64, accept ...string) ApiUpdatePetWithFormRequest {
+	_accept := ""
+	if len(accept) > 0 {
+		_accept  = accept[0]
+	}	
 	return ApiUpdatePetWithFormRequest{
 		ApiService: a,
 		ctx: ctx,
 		petId: petId,
-		accept: accept
+		accept: _accept
 	}
 }
 
@@ -919,7 +947,7 @@ func (a *PetApiService) UpdatePetWithFormExecute(r ApiUpdatePetWithFormRequest) 
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{}
-	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
 		localVarHTTPHeaderAccepts := []string {r.accept}
 	}	
 	// set Accept header
@@ -996,12 +1024,16 @@ UploadFile uploads an image
  @param petId ID of pet to update
  @return ApiUploadFileRequest
 */
-func (a *PetApiService) UploadFile(ctx _context.Context, petId int64, accept string) ApiUploadFileRequest {
+func (a *PetApiService) UploadFile(ctx _context.Context, petId int64, accept ...string) ApiUploadFileRequest {
+	_accept := ""
+	if len(accept) > 0 {
+		_accept  = accept[0]
+	}	
 	return ApiUploadFileRequest{
 		ApiService: a,
 		ctx: ctx,
 		petId: petId,
-		accept: accept
+		accept: _accept
 	}
 }
 
@@ -1040,7 +1072,7 @@ func (a *PetApiService) UploadFileExecute(r ApiUploadFileRequest) (ApiResponse, 
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/json"}
-	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
 		localVarHTTPHeaderAccepts := []string {r.accept}
 	}	
 	// set Accept header
@@ -1134,12 +1166,16 @@ UploadFileWithRequiredFile uploads an image (required)
  @param petId ID of pet to update
  @return ApiUploadFileWithRequiredFileRequest
 */
-func (a *PetApiService) UploadFileWithRequiredFile(ctx _context.Context, petId int64, accept string) ApiUploadFileWithRequiredFileRequest {
+func (a *PetApiService) UploadFileWithRequiredFile(ctx _context.Context, petId int64, accept ...string) ApiUploadFileWithRequiredFileRequest {
+	_accept := ""
+	if len(accept) > 0 {
+		_accept  = accept[0]
+	}	
 	return ApiUploadFileWithRequiredFileRequest{
 		ApiService: a,
 		ctx: ctx,
 		petId: petId,
-		accept: accept
+		accept: _accept
 	}
 }
 
@@ -1181,7 +1217,7 @@ func (a *PetApiService) UploadFileWithRequiredFileExecute(r ApiUploadFileWithReq
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/json"}
-	if inArray(r.accept, localVarHTTPHeaderAccepts) {
+	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
 		localVarHTTPHeaderAccepts := []string {r.accept}
 	}	
 	// set Accept header
