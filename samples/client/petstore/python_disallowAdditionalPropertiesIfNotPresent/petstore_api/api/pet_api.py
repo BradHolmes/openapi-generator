@@ -555,7 +555,6 @@ class PetApi(object):
     def add_pet(
         self,
         body,
-        accept=None,
         **kwargs
     ):
         """Add a new pet to the store  # noqa: E501
@@ -616,18 +615,20 @@ class PetApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['body'] = \
             body
-        if accept and self.add_pet_endpoint.headers_map:
-            updated_header_maps = self.add_pet_endpoint.headers_map.copy()
-            if accept in updated_header_maps:
-                updated_header_maps['accept'] = [accept]
-                self.add_pet_endpoint.headers_map = updated_header_maps
+        headers = kwargs.get('headers', {})
+        if headers:
+            accept = headers.get('accept') or headers.get('Accept')
+            if accept and accept in self.gene_download_summary_by_accession_endpoint.headers_map:
+                self.gene_download_summary_by_accession_endpoint.headers_map['accept'] = accept
+
+            for key in headers.keys():
+                self.gene_download_summary_by_accession_endpoint.headers_map[key] = headers[key]
 
         return self.add_pet_endpoint.call_with_http_info(**kwargs)
 
     def delete_pet(
         self,
         pet_id,
-        accept=None,
         **kwargs
     ):
         """Deletes a pet  # noqa: E501
@@ -689,18 +690,20 @@ class PetApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['pet_id'] = \
             pet_id
-        if accept and self.delete_pet_endpoint.headers_map:
-            updated_header_maps = self.delete_pet_endpoint.headers_map.copy()
-            if accept in updated_header_maps:
-                updated_header_maps['accept'] = [accept]
-                self.delete_pet_endpoint.headers_map = updated_header_maps
+        headers = kwargs.get('headers', {})
+        if headers:
+            accept = headers.get('accept') or headers.get('Accept')
+            if accept and accept in self.gene_download_summary_by_accession_endpoint.headers_map:
+                self.gene_download_summary_by_accession_endpoint.headers_map['accept'] = accept
+
+            for key in headers.keys():
+                self.gene_download_summary_by_accession_endpoint.headers_map[key] = headers[key]
 
         return self.delete_pet_endpoint.call_with_http_info(**kwargs)
 
     def find_pets_by_status(
         self,
         status,
-        accept=None,
         **kwargs
     ):
         """Finds Pets by status  # noqa: E501
@@ -762,18 +765,20 @@ class PetApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['status'] = \
             status
-        if accept and self.find_pets_by_status_endpoint.headers_map:
-            updated_header_maps = self.find_pets_by_status_endpoint.headers_map.copy()
-            if accept in updated_header_maps:
-                updated_header_maps['accept'] = [accept]
-                self.find_pets_by_status_endpoint.headers_map = updated_header_maps
+        headers = kwargs.get('headers', {})
+        if headers:
+            accept = headers.get('accept') or headers.get('Accept')
+            if accept and accept in self.gene_download_summary_by_accession_endpoint.headers_map:
+                self.gene_download_summary_by_accession_endpoint.headers_map['accept'] = accept
+
+            for key in headers.keys():
+                self.gene_download_summary_by_accession_endpoint.headers_map[key] = headers[key]
 
         return self.find_pets_by_status_endpoint.call_with_http_info(**kwargs)
 
     def find_pets_by_tags(
         self,
         tags,
-        accept=None,
         **kwargs
     ):
         """Finds Pets by tags  # noqa: E501
@@ -835,18 +840,20 @@ class PetApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['tags'] = \
             tags
-        if accept and self.find_pets_by_tags_endpoint.headers_map:
-            updated_header_maps = self.find_pets_by_tags_endpoint.headers_map.copy()
-            if accept in updated_header_maps:
-                updated_header_maps['accept'] = [accept]
-                self.find_pets_by_tags_endpoint.headers_map = updated_header_maps
+        headers = kwargs.get('headers', {})
+        if headers:
+            accept = headers.get('accept') or headers.get('Accept')
+            if accept and accept in self.gene_download_summary_by_accession_endpoint.headers_map:
+                self.gene_download_summary_by_accession_endpoint.headers_map['accept'] = accept
+
+            for key in headers.keys():
+                self.gene_download_summary_by_accession_endpoint.headers_map[key] = headers[key]
 
         return self.find_pets_by_tags_endpoint.call_with_http_info(**kwargs)
 
     def get_pet_by_id(
         self,
         pet_id,
-        accept=None,
         **kwargs
     ):
         """Find pet by ID  # noqa: E501
@@ -908,18 +915,20 @@ class PetApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['pet_id'] = \
             pet_id
-        if accept and self.get_pet_by_id_endpoint.headers_map:
-            updated_header_maps = self.get_pet_by_id_endpoint.headers_map.copy()
-            if accept in updated_header_maps:
-                updated_header_maps['accept'] = [accept]
-                self.get_pet_by_id_endpoint.headers_map = updated_header_maps
+        headers = kwargs.get('headers', {})
+        if headers:
+            accept = headers.get('accept') or headers.get('Accept')
+            if accept and accept in self.gene_download_summary_by_accession_endpoint.headers_map:
+                self.gene_download_summary_by_accession_endpoint.headers_map['accept'] = accept
+
+            for key in headers.keys():
+                self.gene_download_summary_by_accession_endpoint.headers_map[key] = headers[key]
 
         return self.get_pet_by_id_endpoint.call_with_http_info(**kwargs)
 
     def update_pet(
         self,
         body,
-        accept=None,
         **kwargs
     ):
         """Update an existing pet  # noqa: E501
@@ -980,18 +989,20 @@ class PetApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['body'] = \
             body
-        if accept and self.update_pet_endpoint.headers_map:
-            updated_header_maps = self.update_pet_endpoint.headers_map.copy()
-            if accept in updated_header_maps:
-                updated_header_maps['accept'] = [accept]
-                self.update_pet_endpoint.headers_map = updated_header_maps
+        headers = kwargs.get('headers', {})
+        if headers:
+            accept = headers.get('accept') or headers.get('Accept')
+            if accept and accept in self.gene_download_summary_by_accession_endpoint.headers_map:
+                self.gene_download_summary_by_accession_endpoint.headers_map['accept'] = accept
+
+            for key in headers.keys():
+                self.gene_download_summary_by_accession_endpoint.headers_map[key] = headers[key]
 
         return self.update_pet_endpoint.call_with_http_info(**kwargs)
 
     def update_pet_with_form(
         self,
         pet_id,
-        accept=None,
         **kwargs
     ):
         """Updates a pet in the store with form data  # noqa: E501
@@ -1054,18 +1065,20 @@ class PetApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['pet_id'] = \
             pet_id
-        if accept and self.update_pet_with_form_endpoint.headers_map:
-            updated_header_maps = self.update_pet_with_form_endpoint.headers_map.copy()
-            if accept in updated_header_maps:
-                updated_header_maps['accept'] = [accept]
-                self.update_pet_with_form_endpoint.headers_map = updated_header_maps
+        headers = kwargs.get('headers', {})
+        if headers:
+            accept = headers.get('accept') or headers.get('Accept')
+            if accept and accept in self.gene_download_summary_by_accession_endpoint.headers_map:
+                self.gene_download_summary_by_accession_endpoint.headers_map['accept'] = accept
+
+            for key in headers.keys():
+                self.gene_download_summary_by_accession_endpoint.headers_map[key] = headers[key]
 
         return self.update_pet_with_form_endpoint.call_with_http_info(**kwargs)
 
     def upload_file(
         self,
         pet_id,
-        accept=None,
         **kwargs
     ):
         """uploads an image  # noqa: E501
@@ -1129,11 +1142,14 @@ class PetApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['pet_id'] = \
             pet_id
-        if accept and self.upload_file_endpoint.headers_map:
-            updated_header_maps = self.upload_file_endpoint.headers_map.copy()
-            if accept in updated_header_maps:
-                updated_header_maps['accept'] = [accept]
-                self.upload_file_endpoint.headers_map = updated_header_maps
+        headers = kwargs.get('headers', {})
+        if headers:
+            accept = headers.get('accept') or headers.get('Accept')
+            if accept and accept in self.gene_download_summary_by_accession_endpoint.headers_map:
+                self.gene_download_summary_by_accession_endpoint.headers_map['accept'] = accept
+
+            for key in headers.keys():
+                self.gene_download_summary_by_accession_endpoint.headers_map[key] = headers[key]
 
         return self.upload_file_endpoint.call_with_http_info(**kwargs)
 
@@ -1141,7 +1157,6 @@ class PetApi(object):
         self,
         pet_id,
         required_file,
-        accept=None,
         **kwargs
     ):
         """uploads an image (required)  # noqa: E501
@@ -1206,11 +1221,14 @@ class PetApi(object):
             pet_id
         kwargs['required_file'] = \
             required_file
-        if accept and self.upload_file_with_required_file_endpoint.headers_map:
-            updated_header_maps = self.upload_file_with_required_file_endpoint.headers_map.copy()
-            if accept in updated_header_maps:
-                updated_header_maps['accept'] = [accept]
-                self.upload_file_with_required_file_endpoint.headers_map = updated_header_maps
+        headers = kwargs.get('headers', {})
+        if headers:
+            accept = headers.get('accept') or headers.get('Accept')
+            if accept and accept in self.gene_download_summary_by_accession_endpoint.headers_map:
+                self.gene_download_summary_by_accession_endpoint.headers_map['accept'] = accept
+
+            for key in headers.keys():
+                self.gene_download_summary_by_accession_endpoint.headers_map[key] = headers[key]
 
         return self.upload_file_with_required_file_endpoint.call_with_http_info(**kwargs)
 

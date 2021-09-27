@@ -24,14 +24,6 @@ var (
 	_ _context.Context
 )
 
-func inArray(a string, list []string) bool {
-    for _, b := range list {
-        if b == a {
-            return true
-        }
-    }
-    return false
-}
 
 type UserApi interface {
 
@@ -167,7 +159,7 @@ func (a *UserApiService) CreateUser(ctx _context.Context, body *User, headers ma
 		ApiService: a,
 		ctx: ctx,
 		body: body,
-		headers map[string]string
+		headers: headers
 	}
 }
 
@@ -206,14 +198,19 @@ func (a *UserApiService) CreateUserExecute(r ApiCreateUserRequest) (*_nethttp.Re
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{}
-	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
-		localVarHTTPHeaderAccepts := []string {r.accept}
-	}	
+
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	// body params
 	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
@@ -274,7 +271,7 @@ func (a *UserApiService) CreateUsersWithArrayInput(ctx _context.Context, body *[
 		ApiService: a,
 		ctx: ctx,
 		body: body,
-		headers map[string]string
+		headers: headers
 	}
 }
 
@@ -313,14 +310,19 @@ func (a *UserApiService) CreateUsersWithArrayInputExecute(r ApiCreateUsersWithAr
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{}
-	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
-		localVarHTTPHeaderAccepts := []string {r.accept}
-	}	
+
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	// body params
 	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
@@ -381,7 +383,7 @@ func (a *UserApiService) CreateUsersWithListInput(ctx _context.Context, body *[]
 		ApiService: a,
 		ctx: ctx,
 		body: body,
-		headers map[string]string
+		headers: headers
 	}
 }
 
@@ -420,14 +422,19 @@ func (a *UserApiService) CreateUsersWithListInputExecute(r ApiCreateUsersWithLis
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{}
-	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
-		localVarHTTPHeaderAccepts := []string {r.accept}
-	}	
+
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	// body params
 	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
@@ -486,7 +493,7 @@ func (a *UserApiService) DeleteUser(ctx _context.Context, username string, heade
 		ApiService: a,
 		ctx: ctx,
 		username: username,
-		headers map[string]string
+		headers: headers
 	}
 }
 
@@ -523,14 +530,19 @@ func (a *UserApiService) DeleteUserExecute(r ApiDeleteUserRequest) (*_nethttp.Re
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{}
-	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
-		localVarHTTPHeaderAccepts := []string {r.accept}
-	}	
+
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
@@ -585,7 +597,7 @@ func (a *UserApiService) GetUserByName(ctx _context.Context, username string, he
 		ApiService: a,
 		ctx: ctx,
 		username: username,
-		headers map[string]string
+		headers: headers
 	}
 }
 
@@ -624,14 +636,19 @@ func (a *UserApiService) GetUserByNameExecute(r ApiGetUserByNameRequest) (User, 
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/xml", "application/json"}
-	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
-		localVarHTTPHeaderAccepts := []string {r.accept}
-	}	
+
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -705,7 +722,7 @@ func (a *UserApiService) LoginUser(ctx _context.Context, headers map[string]stri
 	return ApiLoginUserRequest{
 		ApiService: a,
 		ctx: ctx,
-		headers map[string]string
+		headers: headers
 	}
 }
 
@@ -751,14 +768,19 @@ func (a *UserApiService) LoginUserExecute(r ApiLoginUserRequest) (string, *_neth
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/xml", "application/json"}
-	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
-		localVarHTTPHeaderAccepts := []string {r.accept}
-	}	
+
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -818,7 +840,7 @@ func (a *UserApiService) LogoutUser(ctx _context.Context, headers map[string]str
 	return ApiLogoutUserRequest{
 		ApiService: a,
 		ctx: ctx,
-		headers map[string]string
+		headers: headers
 	}
 }
 
@@ -854,14 +876,19 @@ func (a *UserApiService) LogoutUserExecute(r ApiLogoutUserRequest) (*_nethttp.Re
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{}
-	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
-		localVarHTTPHeaderAccepts := []string {r.accept}
-	}	
+
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
@@ -926,7 +953,7 @@ func (a *UserApiService) UpdateUser(ctx _context.Context, username string, body 
 		ctx: ctx,
 		username: username,
 		body: body,
-		headers map[string]string
+		headers: headers
 	}
 }
 
@@ -966,14 +993,19 @@ func (a *UserApiService) UpdateUserExecute(r ApiUpdateUserRequest) (*_nethttp.Re
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{}
-	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
-		localVarHTTPHeaderAccepts := []string {r.accept}
-	}	
+
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	// body params
 	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)

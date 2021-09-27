@@ -26,14 +26,6 @@ var (
 	_ _context.Context
 )
 
-func inArray(a string, list []string) bool {
-    for _, b := range list {
-        if b == a {
-            return true
-        }
-    }
-    return false
-}
 
 type FakeApi interface {
 
@@ -254,7 +246,7 @@ func (a *FakeApiService) CreateXmlItem(ctx _context.Context, xmlItem *XmlItem, h
 		ApiService: a,
 		ctx: ctx,
 		xmlItem: xmlItem,
-		headers map[string]string
+		headers: headers
 	}
 }
 
@@ -293,14 +285,19 @@ func (a *FakeApiService) CreateXmlItemExecute(r ApiCreateXmlItemRequest) (*_neth
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{}
-	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
-		localVarHTTPHeaderAccepts := []string {r.accept}
-	}	
+
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	// body params
 	localVarPostBody = r.xmlItem
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
@@ -363,7 +360,7 @@ func (a *FakeApiService) FakeOuterBooleanSerialize(ctx _context.Context, body *b
 		ApiService: a,
 		ctx: ctx,
 		body: body,
-		headers map[string]string
+		headers: headers
 	}
 }
 
@@ -401,14 +398,19 @@ func (a *FakeApiService) FakeOuterBooleanSerializeExecute(r ApiFakeOuterBooleanS
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"*/*"}
-	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
-		localVarHTTPHeaderAccepts := []string {r.accept}
-	}	
+
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	// body params
 	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
@@ -480,7 +482,7 @@ func (a *FakeApiService) FakeOuterCompositeSerialize(ctx _context.Context, body 
 		ApiService: a,
 		ctx: ctx,
 		body: body,
-		headers map[string]string
+		headers: headers
 	}
 }
 
@@ -518,14 +520,19 @@ func (a *FakeApiService) FakeOuterCompositeSerializeExecute(r ApiFakeOuterCompos
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"*/*"}
-	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
-		localVarHTTPHeaderAccepts := []string {r.accept}
-	}	
+
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	// body params
 	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
@@ -597,7 +604,7 @@ func (a *FakeApiService) FakeOuterNumberSerialize(ctx _context.Context, body *fl
 		ApiService: a,
 		ctx: ctx,
 		body: body,
-		headers map[string]string
+		headers: headers
 	}
 }
 
@@ -635,14 +642,19 @@ func (a *FakeApiService) FakeOuterNumberSerializeExecute(r ApiFakeOuterNumberSer
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"*/*"}
-	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
-		localVarHTTPHeaderAccepts := []string {r.accept}
-	}	
+
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	// body params
 	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
@@ -714,7 +726,7 @@ func (a *FakeApiService) FakeOuterStringSerialize(ctx _context.Context, body *st
 		ApiService: a,
 		ctx: ctx,
 		body: body,
-		headers map[string]string
+		headers: headers
 	}
 }
 
@@ -752,14 +764,19 @@ func (a *FakeApiService) FakeOuterStringSerializeExecute(r ApiFakeOuterStringSer
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"*/*"}
-	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
-		localVarHTTPHeaderAccepts := []string {r.accept}
-	}	
+
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	// body params
 	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
@@ -830,7 +847,7 @@ func (a *FakeApiService) TestBodyWithFileSchema(ctx _context.Context, body *File
 		ApiService: a,
 		ctx: ctx,
 		body: body,
-		headers map[string]string
+		headers: headers
 	}
 }
 
@@ -869,14 +886,19 @@ func (a *FakeApiService) TestBodyWithFileSchemaExecute(r ApiTestBodyWithFileSche
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{}
-	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
-		localVarHTTPHeaderAccepts := []string {r.accept}
-	}	
+
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	// body params
 	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
@@ -942,7 +964,7 @@ func (a *FakeApiService) TestBodyWithQueryParams(ctx _context.Context, body *Use
 		ApiService: a,
 		ctx: ctx,
 		body: body,
-		headers map[string]string
+		headers: headers
 	}
 }
 
@@ -985,14 +1007,19 @@ func (a *FakeApiService) TestBodyWithQueryParamsExecute(r ApiTestBodyWithQueryPa
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{}
-	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
-		localVarHTTPHeaderAccepts := []string {r.accept}
-	}	
+
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	// body params
 	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
@@ -1055,7 +1082,7 @@ func (a *FakeApiService) TestClientModel(ctx _context.Context, body *Client, hea
 		ApiService: a,
 		ctx: ctx,
 		body: body,
-		headers map[string]string
+		headers: headers
 	}
 }
 
@@ -1096,14 +1123,19 @@ func (a *FakeApiService) TestClientModelExecute(r ApiTestClientModelRequest) (Cl
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/json"}
-	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
-		localVarHTTPHeaderAccepts := []string {r.accept}
-	}	
+
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	// body params
 	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
@@ -1268,7 +1300,7 @@ func (a *FakeApiService) TestEndpointParameters(ctx _context.Context, headers ma
 	return ApiTestEndpointParametersRequest{
 		ApiService: a,
 		ctx: ctx,
-		headers map[string]string
+		headers: headers
 	}
 }
 
@@ -1328,14 +1360,19 @@ func (a *FakeApiService) TestEndpointParametersExecute(r ApiTestEndpointParamete
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{}
-	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
-		localVarHTTPHeaderAccepts := []string {r.accept}
-	}	
+
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	if r.integer != nil {
 		localVarFormParams.Add("integer", parameterToString(*r.integer, ""))
 	}
@@ -1486,7 +1523,7 @@ func (a *FakeApiService) TestEnumParameters(ctx _context.Context, headers map[st
 	return ApiTestEnumParametersRequest{
 		ApiService: a,
 		ctx: ctx,
-		headers map[string]string
+		headers: headers
 	}
 }
 
@@ -1534,14 +1571,19 @@ func (a *FakeApiService) TestEnumParametersExecute(r ApiTestEnumParametersReques
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{}
-	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
-		localVarHTTPHeaderAccepts := []string {r.accept}
-	}	
+
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	if r.enumHeaderStringArray != nil {
 		localVarHeaderParams["enum_header_string_array"] = parameterToString(*r.enumHeaderStringArray, "csv")
 	}
@@ -1648,7 +1690,7 @@ func (a *FakeApiService) TestGroupParameters(ctx _context.Context, headers map[s
 	return ApiTestGroupParametersRequest{
 		ApiService: a,
 		ctx: ctx,
-		headers map[string]string
+		headers: headers
 	}
 }
 
@@ -1701,14 +1743,19 @@ func (a *FakeApiService) TestGroupParametersExecute(r ApiTestGroupParametersRequ
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{}
-	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
-		localVarHTTPHeaderAccepts := []string {r.accept}
-	}	
+
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	localVarHeaderParams["required_boolean_group"] = parameterToString(*r.requiredBooleanGroup, "")
 	if r.booleanGroup != nil {
 		localVarHeaderParams["boolean_group"] = parameterToString(*r.booleanGroup, "")
@@ -1771,7 +1818,7 @@ func (a *FakeApiService) TestInlineAdditionalProperties(ctx _context.Context, pa
 		ApiService: a,
 		ctx: ctx,
 		param: param,
-		headers map[string]string
+		headers: headers
 	}
 }
 
@@ -1810,14 +1857,19 @@ func (a *FakeApiService) TestInlineAdditionalPropertiesExecute(r ApiTestInlineAd
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{}
-	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
-		localVarHTTPHeaderAccepts := []string {r.accept}
-	}	
+
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	// body params
 	localVarPostBody = r.param
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
@@ -1884,7 +1936,7 @@ func (a *FakeApiService) TestJsonFormData(ctx _context.Context, headers map[stri
 	return ApiTestJsonFormDataRequest{
 		ApiService: a,
 		ctx: ctx,
-		headers map[string]string
+		headers: headers
 	}
 }
 
@@ -1926,14 +1978,19 @@ func (a *FakeApiService) TestJsonFormDataExecute(r ApiTestJsonFormDataRequest) (
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{}
-	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
-		localVarHTTPHeaderAccepts := []string {r.accept}
-	}	
+
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	localVarFormParams.Add("param", parameterToString(*r.param, ""))
 	localVarFormParams.Add("param2", parameterToString(*r.param2, ""))
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
@@ -2018,7 +2075,7 @@ func (a *FakeApiService) TestQueryParameterCollectionFormat(ctx _context.Context
 	return ApiTestQueryParameterCollectionFormatRequest{
 		ApiService: a,
 		ctx: ctx,
-		headers map[string]string
+		headers: headers
 	}
 }
 
@@ -2084,14 +2141,19 @@ func (a *FakeApiService) TestQueryParameterCollectionFormatExecute(r ApiTestQuer
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{}
-	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
-		localVarHTTPHeaderAccepts := []string {r.accept}
-	}	
+
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err

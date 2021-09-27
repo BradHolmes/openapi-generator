@@ -23,14 +23,6 @@ var (
 	_ _context.Context
 )
 
-func inArray(a string, list []string) bool {
-    for _, b := range list {
-        if b == a {
-            return true
-        }
-    }
-    return false
-}
 
 type FakeClassnameTags123Api interface {
 
@@ -81,7 +73,7 @@ func (a *FakeClassnameTags123ApiService) TestClassname(ctx _context.Context, bod
 		ApiService: a,
 		ctx: ctx,
 		body: body,
-		headers map[string]string
+		headers: headers
 	}
 }
 
@@ -122,14 +114,19 @@ func (a *FakeClassnameTags123ApiService) TestClassnameExecute(r ApiTestClassname
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/json"}
-	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
-		localVarHTTPHeaderAccepts := []string {r.accept}
-	}	
+
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	// body params
 	localVarPostBody = r.body
 	if r.ctx != nil {

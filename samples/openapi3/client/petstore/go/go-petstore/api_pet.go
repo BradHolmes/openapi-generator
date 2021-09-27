@@ -25,14 +25,6 @@ var (
 	_ _context.Context
 )
 
-func inArray(a string, list []string) bool {
-    for _, b := range list {
-        if b == a {
-            return true
-        }
-    }
-    return false
-}
 
 type PetApi interface {
 
@@ -185,7 +177,7 @@ func (a *PetApiService) AddPet(ctx _context.Context, pet *Pet, headers map[strin
 		ApiService: a,
 		ctx: ctx,
 		pet: pet,
-		headers map[string]string
+		headers: headers
 	}
 }
 
@@ -224,14 +216,19 @@ func (a *PetApiService) AddPetExecute(r ApiAddPetRequest) (*_nethttp.Response, e
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{}
-	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
-		localVarHTTPHeaderAccepts := []string {r.accept}
-	}	
+
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	// body params
 	localVarPostBody = r.pet
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
@@ -294,7 +291,7 @@ func (a *PetApiService) DeletePet(ctx _context.Context, petId int64, headers map
 		ApiService: a,
 		ctx: ctx,
 		petId: petId,
-		headers map[string]string
+		headers: headers
 	}
 }
 
@@ -331,14 +328,19 @@ func (a *PetApiService) DeletePetExecute(r ApiDeletePetRequest) (*_nethttp.Respo
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{}
-	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
-		localVarHTTPHeaderAccepts := []string {r.accept}
-	}	
+
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	if r.apiKey != nil {
 		localVarHeaderParams["api_key"] = parameterToString(*r.apiKey, "")
 	}
@@ -402,7 +404,7 @@ func (a *PetApiService) FindPetsByStatus(ctx _context.Context, headers map[strin
 	return ApiFindPetsByStatusRequest{
 		ApiService: a,
 		ctx: ctx,
-		headers map[string]string
+		headers: headers
 	}
 }
 
@@ -444,14 +446,19 @@ func (a *PetApiService) FindPetsByStatusExecute(r ApiFindPetsByStatusRequest) ([
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/xml", "application/json"}
-	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
-		localVarHTTPHeaderAccepts := []string {r.accept}
-	}	
+
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -521,7 +528,7 @@ func (a *PetApiService) FindPetsByTags(ctx _context.Context, headers map[string]
 	return ApiFindPetsByTagsRequest{
 		ApiService: a,
 		ctx: ctx,
-		headers map[string]string
+		headers: headers
 	}
 }
 
@@ -564,14 +571,19 @@ func (a *PetApiService) FindPetsByTagsExecute(r ApiFindPetsByTagsRequest) ([]Pet
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/xml", "application/json"}
-	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
-		localVarHTTPHeaderAccepts := []string {r.accept}
-	}	
+
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -637,7 +649,7 @@ func (a *PetApiService) GetPetById(ctx _context.Context, petId int64, headers ma
 		ApiService: a,
 		ctx: ctx,
 		petId: petId,
-		headers map[string]string
+		headers: headers
 	}
 }
 
@@ -676,14 +688,19 @@ func (a *PetApiService) GetPetByIdExecute(r ApiGetPetByIdRequest) (Pet, *_nethtt
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/xml", "application/json"}
-	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
-		localVarHTTPHeaderAccepts := []string {r.accept}
-	}	
+
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -765,7 +782,7 @@ func (a *PetApiService) UpdatePet(ctx _context.Context, pet *Pet, headers map[st
 		ApiService: a,
 		ctx: ctx,
 		pet: pet,
-		headers map[string]string
+		headers: headers
 	}
 }
 
@@ -804,14 +821,19 @@ func (a *PetApiService) UpdatePetExecute(r ApiUpdatePetRequest) (*_nethttp.Respo
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{}
-	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
-		localVarHTTPHeaderAccepts := []string {r.accept}
-	}	
+
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	// body params
 	localVarPostBody = r.pet
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
@@ -882,7 +904,7 @@ func (a *PetApiService) UpdatePetWithForm(ctx _context.Context, petId int64, hea
 		ApiService: a,
 		ctx: ctx,
 		petId: petId,
-		headers map[string]string
+		headers: headers
 	}
 }
 
@@ -919,14 +941,19 @@ func (a *PetApiService) UpdatePetWithFormExecute(r ApiUpdatePetWithFormRequest) 
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{}
-	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
-		localVarHTTPHeaderAccepts := []string {r.accept}
-	}	
+
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	if r.name != nil {
 		localVarFormParams.Add("name", parameterToString(*r.name, ""))
 	}
@@ -1001,7 +1028,7 @@ func (a *PetApiService) UploadFile(ctx _context.Context, petId int64, headers ma
 		ApiService: a,
 		ctx: ctx,
 		petId: petId,
-		headers map[string]string
+		headers: headers
 	}
 }
 
@@ -1040,14 +1067,19 @@ func (a *PetApiService) UploadFileExecute(r ApiUploadFileRequest) (ApiResponse, 
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/json"}
-	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
-		localVarHTTPHeaderAccepts := []string {r.accept}
-	}	
+
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	if r.additionalMetadata != nil {
 		localVarFormParams.Add("additionalMetadata", parameterToString(*r.additionalMetadata, ""))
 	}
@@ -1139,7 +1171,7 @@ func (a *PetApiService) UploadFileWithRequiredFile(ctx _context.Context, petId i
 		ApiService: a,
 		ctx: ctx,
 		petId: petId,
-		headers map[string]string
+		headers: headers
 	}
 }
 
@@ -1181,14 +1213,19 @@ func (a *PetApiService) UploadFileWithRequiredFileExecute(r ApiUploadFileWithReq
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/json"}
-	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
-		localVarHTTPHeaderAccepts := []string {r.accept}
-	}	
+
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	if r.additionalMetadata != nil {
 		localVarFormParams.Add("additionalMetadata", parameterToString(*r.additionalMetadata, ""))
 	}

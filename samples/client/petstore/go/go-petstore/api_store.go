@@ -24,14 +24,6 @@ var (
 	_ _context.Context
 )
 
-func inArray(a string, list []string) bool {
-    for _, b := range list {
-        if b == a {
-            return true
-        }
-    }
-    return false
-}
 
 type StoreApi interface {
 
@@ -119,7 +111,7 @@ func (a *StoreApiService) DeleteOrder(ctx _context.Context, orderId string, head
 		ApiService: a,
 		ctx: ctx,
 		orderId: orderId,
-		headers map[string]string
+		headers: headers
 	}
 }
 
@@ -156,14 +148,19 @@ func (a *StoreApiService) DeleteOrderExecute(r ApiDeleteOrderRequest) (*_nethttp
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{}
-	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
-		localVarHTTPHeaderAccepts := []string {r.accept}
-	}	
+
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
@@ -216,7 +213,7 @@ func (a *StoreApiService) GetInventory(ctx _context.Context, headers map[string]
 	return ApiGetInventoryRequest{
 		ApiService: a,
 		ctx: ctx,
-		headers map[string]string
+		headers: headers
 	}
 }
 
@@ -254,14 +251,19 @@ func (a *StoreApiService) GetInventoryExecute(r ApiGetInventoryRequest) (map[str
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/json"}
-	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
-		localVarHTTPHeaderAccepts := []string {r.accept}
-	}	
+
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -341,7 +343,7 @@ func (a *StoreApiService) GetOrderById(ctx _context.Context, orderId int64, head
 		ApiService: a,
 		ctx: ctx,
 		orderId: orderId,
-		headers map[string]string
+		headers: headers
 	}
 }
 
@@ -386,14 +388,19 @@ func (a *StoreApiService) GetOrderByIdExecute(r ApiGetOrderByIdRequest) (Order, 
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/xml", "application/json"}
-	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
-		localVarHTTPHeaderAccepts := []string {r.accept}
-	}	
+
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -461,7 +468,7 @@ func (a *StoreApiService) PlaceOrder(ctx _context.Context, body *Order, headers 
 		ApiService: a,
 		ctx: ctx,
 		body: body,
-		headers map[string]string
+		headers: headers
 	}
 }
 
@@ -502,14 +509,19 @@ func (a *StoreApiService) PlaceOrderExecute(r ApiPlaceOrderRequest) (Order, *_ne
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/xml", "application/json"}
-	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
-		localVarHTTPHeaderAccepts := []string {r.accept}
-	}	
+
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	// body params
 	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)

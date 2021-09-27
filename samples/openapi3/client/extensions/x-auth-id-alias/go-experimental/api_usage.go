@@ -23,14 +23,6 @@ var (
 	_ _context.Context
 )
 
-func inArray(a string, list []string) bool {
-    for _, b := range list {
-        if b == a {
-            return true
-        }
-    }
-    return false
-}
 
 // UsageApiService UsageApi service
 type UsageApiService service
@@ -56,7 +48,7 @@ func (a *UsageApiService) AnyKey(ctx _context.Context, headers map[string]string
 	return ApiAnyKeyRequest{
 		ApiService: a,
 		ctx: ctx,
-		headers map[string]string
+		headers: headers
 	}
 }
 
@@ -94,14 +86,19 @@ func (a *UsageApiService) AnyKeyExecute(r ApiAnyKeyRequest) (map[string]interfac
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/json"}
-	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
-		localVarHTTPHeaderAccepts := []string {r.accept}
-	}	
+
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -191,7 +188,7 @@ func (a *UsageApiService) BothKeys(ctx _context.Context, headers map[string]stri
 	return ApiBothKeysRequest{
 		ApiService: a,
 		ctx: ctx,
-		headers map[string]string
+		headers: headers
 	}
 }
 
@@ -229,14 +226,19 @@ func (a *UsageApiService) BothKeysExecute(r ApiBothKeysRequest) (map[string]inte
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/json"}
-	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
-		localVarHTTPHeaderAccepts := []string {r.accept}
-	}	
+
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -326,7 +328,7 @@ func (a *UsageApiService) KeyInHeader(ctx _context.Context, headers map[string]s
 	return ApiKeyInHeaderRequest{
 		ApiService: a,
 		ctx: ctx,
-		headers map[string]string
+		headers: headers
 	}
 }
 
@@ -364,14 +366,19 @@ func (a *UsageApiService) KeyInHeaderExecute(r ApiKeyInHeaderRequest) (map[strin
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/json"}
-	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
-		localVarHTTPHeaderAccepts := []string {r.accept}
-	}	
+
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -447,7 +454,7 @@ func (a *UsageApiService) KeyInQuery(ctx _context.Context, headers map[string]st
 	return ApiKeyInQueryRequest{
 		ApiService: a,
 		ctx: ctx,
-		headers map[string]string
+		headers: headers
 	}
 }
 
@@ -485,14 +492,19 @@ func (a *UsageApiService) KeyInQueryExecute(r ApiKeyInQueryRequest) (map[string]
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/json"}
-	if r.accept != "" && inArray(r.accept, localVarHTTPHeaderAccepts) {
-		localVarHTTPHeaderAccepts := []string {r.accept}
-	}	
+
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

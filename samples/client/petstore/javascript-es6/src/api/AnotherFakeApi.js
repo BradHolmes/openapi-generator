@@ -49,7 +49,7 @@ export default class AnotherFakeApi {
      * @param {module:api/AnotherFakeApi~call123testSpecialTagsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/Client}
      */
-    call123testSpecialTags(client, callback, accept='') {
+    call123testSpecialTags(client, callback, headers={}) {
       let postBody = client;
       // verify the required parameter 'client' is set
       if (client === undefined || client === null) {
@@ -68,10 +68,17 @@ export default class AnotherFakeApi {
       let authNames = [];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = Client;
       return this.apiClient.callApi(
         '/another-fake/dummy', 'PATCH',
