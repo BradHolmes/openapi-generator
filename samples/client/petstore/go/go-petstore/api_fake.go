@@ -228,8 +228,8 @@ type FakeApiService service
 type ApiCreateXmlItemRequest struct {
 	ctx _context.Context
 	ApiService FakeApi
-	xmlItem *XmlItem
-	accept *string
+	xmlItem *XmlItem	
+	headers map[string]string
 }
 
 // XmlItem Body
@@ -249,16 +249,12 @@ this route creates an XmlItem
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateXmlItemRequest
 */
-func (a *FakeApiService) CreateXmlItem(ctx _context.Context, xmlItem *XmlItem, accept ...string) ApiCreateXmlItemRequest {
-	_accept := ""
-	if len(accept) > 0 {
-		_accept  = accept[0]
-	}	
+func (a *FakeApiService) CreateXmlItem(ctx _context.Context, xmlItem *XmlItem, headers map[string]string) ApiCreateXmlItemRequest {
 	return ApiCreateXmlItemRequest{
 		ApiService: a,
 		ctx: ctx,
 		xmlItem: xmlItem,
-		accept: _accept
+		headers map[string]string
 	}
 }
 
@@ -341,8 +337,8 @@ func (a *FakeApiService) CreateXmlItemExecute(r ApiCreateXmlItemRequest) (*_neth
 type ApiFakeOuterBooleanSerializeRequest struct {
 	ctx _context.Context
 	ApiService FakeApi
-	body *bool
-	accept *string
+	body *bool	
+	headers map[string]string
 }
 
 // Input boolean as post body
@@ -362,16 +358,12 @@ Test serialization of outer boolean types
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFakeOuterBooleanSerializeRequest
 */
-func (a *FakeApiService) FakeOuterBooleanSerialize(ctx _context.Context, body *bool, accept ...string) ApiFakeOuterBooleanSerializeRequest {
-	_accept := ""
-	if len(accept) > 0 {
-		_accept  = accept[0]
-	}	
+func (a *FakeApiService) FakeOuterBooleanSerialize(ctx _context.Context, body *bool, headers map[string]string) ApiFakeOuterBooleanSerializeRequest {
 	return ApiFakeOuterBooleanSerializeRequest{
 		ApiService: a,
 		ctx: ctx,
 		body: body,
-		accept: _accept
+		headers map[string]string
 	}
 }
 
@@ -462,8 +454,8 @@ func (a *FakeApiService) FakeOuterBooleanSerializeExecute(r ApiFakeOuterBooleanS
 type ApiFakeOuterCompositeSerializeRequest struct {
 	ctx _context.Context
 	ApiService FakeApi
-	body *OuterComposite
-	accept *string
+	body *OuterComposite	
+	headers map[string]string
 }
 
 // Input composite as post body
@@ -483,16 +475,12 @@ Test serialization of object with outer number type
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFakeOuterCompositeSerializeRequest
 */
-func (a *FakeApiService) FakeOuterCompositeSerialize(ctx _context.Context, body *OuterComposite, accept ...string) ApiFakeOuterCompositeSerializeRequest {
-	_accept := ""
-	if len(accept) > 0 {
-		_accept  = accept[0]
-	}	
+func (a *FakeApiService) FakeOuterCompositeSerialize(ctx _context.Context, body *OuterComposite, headers map[string]string) ApiFakeOuterCompositeSerializeRequest {
 	return ApiFakeOuterCompositeSerializeRequest{
 		ApiService: a,
 		ctx: ctx,
 		body: body,
-		accept: _accept
+		headers map[string]string
 	}
 }
 
@@ -583,8 +571,8 @@ func (a *FakeApiService) FakeOuterCompositeSerializeExecute(r ApiFakeOuterCompos
 type ApiFakeOuterNumberSerializeRequest struct {
 	ctx _context.Context
 	ApiService FakeApi
-	body *float32
-	accept *string
+	body *float32	
+	headers map[string]string
 }
 
 // Input number as post body
@@ -604,16 +592,12 @@ Test serialization of outer number types
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFakeOuterNumberSerializeRequest
 */
-func (a *FakeApiService) FakeOuterNumberSerialize(ctx _context.Context, body *float32, accept ...string) ApiFakeOuterNumberSerializeRequest {
-	_accept := ""
-	if len(accept) > 0 {
-		_accept  = accept[0]
-	}	
+func (a *FakeApiService) FakeOuterNumberSerialize(ctx _context.Context, body *float32, headers map[string]string) ApiFakeOuterNumberSerializeRequest {
 	return ApiFakeOuterNumberSerializeRequest{
 		ApiService: a,
 		ctx: ctx,
 		body: body,
-		accept: _accept
+		headers map[string]string
 	}
 }
 
@@ -704,8 +688,8 @@ func (a *FakeApiService) FakeOuterNumberSerializeExecute(r ApiFakeOuterNumberSer
 type ApiFakeOuterStringSerializeRequest struct {
 	ctx _context.Context
 	ApiService FakeApi
-	body *string
-	accept *string
+	body *string	
+	headers map[string]string
 }
 
 // Input string as post body
@@ -725,16 +709,12 @@ Test serialization of outer string types
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFakeOuterStringSerializeRequest
 */
-func (a *FakeApiService) FakeOuterStringSerialize(ctx _context.Context, body *string, accept ...string) ApiFakeOuterStringSerializeRequest {
-	_accept := ""
-	if len(accept) > 0 {
-		_accept  = accept[0]
-	}	
+func (a *FakeApiService) FakeOuterStringSerialize(ctx _context.Context, body *string, headers map[string]string) ApiFakeOuterStringSerializeRequest {
 	return ApiFakeOuterStringSerializeRequest{
 		ApiService: a,
 		ctx: ctx,
 		body: body,
-		accept: _accept
+		headers map[string]string
 	}
 }
 
@@ -825,8 +805,8 @@ func (a *FakeApiService) FakeOuterStringSerializeExecute(r ApiFakeOuterStringSer
 type ApiTestBodyWithFileSchemaRequest struct {
 	ctx _context.Context
 	ApiService FakeApi
-	body *FileSchemaTestClass
-	accept *string
+	body *FileSchemaTestClass	
+	headers map[string]string
 }
 
 func (r *ApiTestBodyWithFileSchemaRequest) Body(body FileSchemaTestClass) *ApiTestBodyWithFileSchemaRequest {
@@ -845,16 +825,12 @@ For this test, the body for this request much reference a schema named `File`.
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTestBodyWithFileSchemaRequest
 */
-func (a *FakeApiService) TestBodyWithFileSchema(ctx _context.Context, body *FileSchemaTestClass, accept ...string) ApiTestBodyWithFileSchemaRequest {
-	_accept := ""
-	if len(accept) > 0 {
-		_accept  = accept[0]
-	}	
+func (a *FakeApiService) TestBodyWithFileSchema(ctx _context.Context, body *FileSchemaTestClass, headers map[string]string) ApiTestBodyWithFileSchemaRequest {
 	return ApiTestBodyWithFileSchemaRequest{
 		ApiService: a,
 		ctx: ctx,
 		body: body,
-		accept: _accept
+		headers map[string]string
 	}
 }
 
@@ -937,10 +913,10 @@ func (a *FakeApiService) TestBodyWithFileSchemaExecute(r ApiTestBodyWithFileSche
 type ApiTestBodyWithQueryParamsRequest struct {
 	ctx _context.Context
 	ApiService FakeApi
-	query *string
-	accept *string
-	body *User
-	accept *string
+	query *string	
+	headers map[string]string
+	body *User	
+	headers map[string]string
 }
 
 func (r *ApiTestBodyWithQueryParamsRequest) Query(query string) *ApiTestBodyWithQueryParamsRequest {
@@ -961,16 +937,12 @@ TestBodyWithQueryParams Method for TestBodyWithQueryParams
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTestBodyWithQueryParamsRequest
 */
-func (a *FakeApiService) TestBodyWithQueryParams(ctx _context.Context, body *User, accept ...string) ApiTestBodyWithQueryParamsRequest {
-	_accept := ""
-	if len(accept) > 0 {
-		_accept  = accept[0]
-	}	
+func (a *FakeApiService) TestBodyWithQueryParams(ctx _context.Context, body *User, headers map[string]string) ApiTestBodyWithQueryParamsRequest {
 	return ApiTestBodyWithQueryParamsRequest{
 		ApiService: a,
 		ctx: ctx,
 		body: body,
-		accept: _accept
+		headers map[string]string
 	}
 }
 
@@ -1057,8 +1029,8 @@ func (a *FakeApiService) TestBodyWithQueryParamsExecute(r ApiTestBodyWithQueryPa
 type ApiTestClientModelRequest struct {
 	ctx _context.Context
 	ApiService FakeApi
-	body *Client
-	accept *string
+	body *Client	
+	headers map[string]string
 }
 
 // client model
@@ -1078,16 +1050,12 @@ To test "client" model
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTestClientModelRequest
 */
-func (a *FakeApiService) TestClientModel(ctx _context.Context, body *Client, accept ...string) ApiTestClientModelRequest {
-	_accept := ""
-	if len(accept) > 0 {
-		_accept  = accept[0]
-	}	
+func (a *FakeApiService) TestClientModel(ctx _context.Context, body *Client, headers map[string]string) ApiTestClientModelRequest {
 	return ApiTestClientModelRequest{
 		ApiService: a,
 		ctx: ctx,
 		body: body,
-		accept: _accept
+		headers map[string]string
 	}
 }
 
@@ -1181,34 +1149,34 @@ func (a *FakeApiService) TestClientModelExecute(r ApiTestClientModelRequest) (Cl
 type ApiTestEndpointParametersRequest struct {
 	ctx _context.Context
 	ApiService FakeApi
-	number *float32
-	accept *string
-	double *float64
-	accept *string
-	patternWithoutDelimiter *string
-	accept *string
-	byte_ *string
-	accept *string
-	integer *int32
-	accept *string
-	int32_ *int32
-	accept *string
-	int64_ *int64
-	accept *string
-	float *float32
-	accept *string
-	string_ *string
-	accept *string
-	binary **os.File
-	accept *string
-	date *string
-	accept *string
-	dateTime *time.Time
-	accept *string
-	password *string
-	accept *string
-	callback *string
-	accept *string
+	number *float32	
+	headers map[string]string
+	double *float64	
+	headers map[string]string
+	patternWithoutDelimiter *string	
+	headers map[string]string
+	byte_ *string	
+	headers map[string]string
+	integer *int32	
+	headers map[string]string
+	int32_ *int32	
+	headers map[string]string
+	int64_ *int64	
+	headers map[string]string
+	float *float32	
+	headers map[string]string
+	string_ *string	
+	headers map[string]string
+	binary **os.File	
+	headers map[string]string
+	date *string	
+	headers map[string]string
+	dateTime *time.Time	
+	headers map[string]string
+	password *string	
+	headers map[string]string
+	callback *string	
+	headers map[string]string
 }
 
 // None
@@ -1296,15 +1264,11 @@ Fake endpoint for testing various parameters
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTestEndpointParametersRequest
 */
-func (a *FakeApiService) TestEndpointParameters(ctx _context.Context, accept ...string) ApiTestEndpointParametersRequest {
-	_accept := ""
-	if len(accept) > 0 {
-		_accept  = accept[0]
-	}	
+func (a *FakeApiService) TestEndpointParameters(ctx _context.Context, headers map[string]string) ApiTestEndpointParametersRequest {
 	return ApiTestEndpointParametersRequest{
 		ApiService: a,
 		ctx: ctx,
-		accept: _accept
+		headers map[string]string
 	}
 }
 
@@ -1448,22 +1412,22 @@ func (a *FakeApiService) TestEndpointParametersExecute(r ApiTestEndpointParamete
 type ApiTestEnumParametersRequest struct {
 	ctx _context.Context
 	ApiService FakeApi
-	enumHeaderStringArray *[]string
-	accept *string
-	enumHeaderString *string
-	accept *string
-	enumQueryStringArray *[]string
-	accept *string
-	enumQueryString *string
-	accept *string
-	enumQueryInteger *int32
-	accept *string
-	enumQueryDouble *float64
-	accept *string
-	enumFormStringArray *[]string
-	accept *string
-	enumFormString *string
-	accept *string
+	enumHeaderStringArray *[]string	
+	headers map[string]string
+	enumHeaderString *string	
+	headers map[string]string
+	enumQueryStringArray *[]string	
+	headers map[string]string
+	enumQueryString *string	
+	headers map[string]string
+	enumQueryInteger *int32	
+	headers map[string]string
+	enumQueryDouble *float64	
+	headers map[string]string
+	enumFormStringArray *[]string	
+	headers map[string]string
+	enumFormString *string	
+	headers map[string]string
 }
 
 // Header parameter enum test (string array)
@@ -1518,15 +1482,11 @@ To test enum parameters
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTestEnumParametersRequest
 */
-func (a *FakeApiService) TestEnumParameters(ctx _context.Context, accept ...string) ApiTestEnumParametersRequest {
-	_accept := ""
-	if len(accept) > 0 {
-		_accept  = accept[0]
-	}	
+func (a *FakeApiService) TestEnumParameters(ctx _context.Context, headers map[string]string) ApiTestEnumParametersRequest {
 	return ApiTestEnumParametersRequest{
 		ApiService: a,
 		ctx: ctx,
-		accept: _accept
+		headers map[string]string
 	}
 }
 
@@ -1628,18 +1588,18 @@ func (a *FakeApiService) TestEnumParametersExecute(r ApiTestEnumParametersReques
 type ApiTestGroupParametersRequest struct {
 	ctx _context.Context
 	ApiService FakeApi
-	requiredStringGroup *int32
-	accept *string
-	requiredBooleanGroup *bool
-	accept *string
-	requiredInt64Group *int64
-	accept *string
-	stringGroup *int32
-	accept *string
-	booleanGroup *bool
-	accept *string
-	int64Group *int64
-	accept *string
+	requiredStringGroup *int32	
+	headers map[string]string
+	requiredBooleanGroup *bool	
+	headers map[string]string
+	requiredInt64Group *int64	
+	headers map[string]string
+	stringGroup *int32	
+	headers map[string]string
+	booleanGroup *bool	
+	headers map[string]string
+	int64Group *int64	
+	headers map[string]string
 }
 
 // Required String in group parameters
@@ -1684,15 +1644,11 @@ Fake endpoint to test group parameters (optional)
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTestGroupParametersRequest
 */
-func (a *FakeApiService) TestGroupParameters(ctx _context.Context, accept ...string) ApiTestGroupParametersRequest {
-	_accept := ""
-	if len(accept) > 0 {
-		_accept  = accept[0]
-	}	
+func (a *FakeApiService) TestGroupParameters(ctx _context.Context, headers map[string]string) ApiTestGroupParametersRequest {
 	return ApiTestGroupParametersRequest{
 		ApiService: a,
 		ctx: ctx,
-		accept: _accept
+		headers map[string]string
 	}
 }
 
@@ -1791,8 +1747,8 @@ func (a *FakeApiService) TestGroupParametersExecute(r ApiTestGroupParametersRequ
 type ApiTestInlineAdditionalPropertiesRequest struct {
 	ctx _context.Context
 	ApiService FakeApi
-	param *map[string]string
-	accept *string
+	param *map[string]string	
+	headers map[string]string
 }
 
 // request body
@@ -1810,16 +1766,12 @@ TestInlineAdditionalProperties test inline additionalProperties
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTestInlineAdditionalPropertiesRequest
 */
-func (a *FakeApiService) TestInlineAdditionalProperties(ctx _context.Context, param *map[string]string, accept ...string) ApiTestInlineAdditionalPropertiesRequest {
-	_accept := ""
-	if len(accept) > 0 {
-		_accept  = accept[0]
-	}	
+func (a *FakeApiService) TestInlineAdditionalProperties(ctx _context.Context, param *map[string]string, headers map[string]string) ApiTestInlineAdditionalPropertiesRequest {
 	return ApiTestInlineAdditionalPropertiesRequest{
 		ApiService: a,
 		ctx: ctx,
 		param: param,
-		accept: _accept
+		headers map[string]string
 	}
 }
 
@@ -1902,10 +1854,10 @@ func (a *FakeApiService) TestInlineAdditionalPropertiesExecute(r ApiTestInlineAd
 type ApiTestJsonFormDataRequest struct {
 	ctx _context.Context
 	ApiService FakeApi
-	param *string
-	accept *string
-	param2 *string
-	accept *string
+	param *string	
+	headers map[string]string
+	param2 *string	
+	headers map[string]string
 }
 
 // field1
@@ -1928,15 +1880,11 @@ TestJsonFormData test json serialization of form data
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTestJsonFormDataRequest
 */
-func (a *FakeApiService) TestJsonFormData(ctx _context.Context, accept ...string) ApiTestJsonFormDataRequest {
-	_accept := ""
-	if len(accept) > 0 {
-		_accept  = accept[0]
-	}	
+func (a *FakeApiService) TestJsonFormData(ctx _context.Context, headers map[string]string) ApiTestJsonFormDataRequest {
 	return ApiTestJsonFormDataRequest{
 		ApiService: a,
 		ctx: ctx,
-		accept: _accept
+		headers map[string]string
 	}
 }
 
@@ -2022,16 +1970,16 @@ func (a *FakeApiService) TestJsonFormDataExecute(r ApiTestJsonFormDataRequest) (
 type ApiTestQueryParameterCollectionFormatRequest struct {
 	ctx _context.Context
 	ApiService FakeApi
-	pipe *[]string
-	accept *string
-	ioutil *[]string
-	accept *string
-	http *[]string
-	accept *string
-	url *[]string
-	accept *string
-	context *[]string
-	accept *string
+	pipe *[]string	
+	headers map[string]string
+	ioutil *[]string	
+	headers map[string]string
+	http *[]string	
+	headers map[string]string
+	url *[]string	
+	headers map[string]string
+	context *[]string	
+	headers map[string]string
 }
 
 func (r *ApiTestQueryParameterCollectionFormatRequest) Pipe(pipe []string) *ApiTestQueryParameterCollectionFormatRequest {
@@ -2066,15 +2014,11 @@ To test the collection format in query parameters
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTestQueryParameterCollectionFormatRequest
 */
-func (a *FakeApiService) TestQueryParameterCollectionFormat(ctx _context.Context, accept ...string) ApiTestQueryParameterCollectionFormatRequest {
-	_accept := ""
-	if len(accept) > 0 {
-		_accept  = accept[0]
-	}	
+func (a *FakeApiService) TestQueryParameterCollectionFormat(ctx _context.Context, headers map[string]string) ApiTestQueryParameterCollectionFormatRequest {
 	return ApiTestQueryParameterCollectionFormatRequest{
 		ApiService: a,
 		ctx: ctx,
-		accept: _accept
+		headers map[string]string
 	}
 }
 

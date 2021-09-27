@@ -55,8 +55,8 @@ type AnotherFakeApiService service
 type ApiCall123TestSpecialTagsRequest struct {
 	ctx _context.Context
 	ApiService AnotherFakeApi
-	client *Client
-	accept *string
+	client *Client	
+	headers map[string]string
 }
 
 // client model
@@ -76,16 +76,12 @@ To test special tags and operation ID starting with number
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCall123TestSpecialTagsRequest
 */
-func (a *AnotherFakeApiService) Call123TestSpecialTags(ctx _context.Context, client *Client, accept ...string) ApiCall123TestSpecialTagsRequest {
-	_accept := ""
-	if len(accept) > 0 {
-		_accept  = accept[0]
-	}	
+func (a *AnotherFakeApiService) Call123TestSpecialTags(ctx _context.Context, client *Client, headers map[string]string) ApiCall123TestSpecialTagsRequest {
 	return ApiCall123TestSpecialTagsRequest{
 		ApiService: a,
 		ctx: ctx,
 		client: client,
-		accept: _accept
+		headers map[string]string
 	}
 }
 

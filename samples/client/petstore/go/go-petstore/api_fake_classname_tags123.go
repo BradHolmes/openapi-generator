@@ -55,8 +55,8 @@ type FakeClassnameTags123ApiService service
 type ApiTestClassnameRequest struct {
 	ctx _context.Context
 	ApiService FakeClassnameTags123Api
-	body *Client
-	accept *string
+	body *Client	
+	headers map[string]string
 }
 
 // client model
@@ -76,16 +76,12 @@ To test class name in snake case
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTestClassnameRequest
 */
-func (a *FakeClassnameTags123ApiService) TestClassname(ctx _context.Context, body *Client, accept ...string) ApiTestClassnameRequest {
-	_accept := ""
-	if len(accept) > 0 {
-		_accept  = accept[0]
-	}	
+func (a *FakeClassnameTags123ApiService) TestClassname(ctx _context.Context, body *Client, headers map[string]string) ApiTestClassnameRequest {
 	return ApiTestClassnameRequest{
 		ApiService: a,
 		ctx: ctx,
 		body: body,
-		accept: _accept
+		headers map[string]string
 	}
 }
 

@@ -97,8 +97,8 @@ type StoreApiService service
 type ApiDeleteOrderRequest struct {
 	ctx _context.Context
 	ApiService StoreApi
-	orderId string
-	accept *string
+	orderId string	
+	headers map[string]string
 }
 
 
@@ -114,16 +114,12 @@ For valid response try integer IDs with value < 1000. Anything above 1000 or non
  @param orderId ID of the order that needs to be deleted
  @return ApiDeleteOrderRequest
 */
-func (a *StoreApiService) DeleteOrder(ctx _context.Context, orderId string, accept ...string) ApiDeleteOrderRequest {
-	_accept := ""
-	if len(accept) > 0 {
-		_accept  = accept[0]
-	}	
+func (a *StoreApiService) DeleteOrder(ctx _context.Context, orderId string, headers map[string]string) ApiDeleteOrderRequest {
 	return ApiDeleteOrderRequest{
 		ApiService: a,
 		ctx: ctx,
 		orderId: orderId,
-		accept: _accept
+		headers map[string]string
 	}
 }
 
@@ -216,15 +212,11 @@ Returns a map of status codes to quantities
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetInventoryRequest
 */
-func (a *StoreApiService) GetInventory(ctx _context.Context, accept ...string) ApiGetInventoryRequest {
-	_accept := ""
-	if len(accept) > 0 {
-		_accept  = accept[0]
-	}	
+func (a *StoreApiService) GetInventory(ctx _context.Context, headers map[string]string) ApiGetInventoryRequest {
 	return ApiGetInventoryRequest{
 		ApiService: a,
 		ctx: ctx,
-		accept: _accept
+		headers map[string]string
 	}
 }
 
@@ -327,8 +319,8 @@ func (a *StoreApiService) GetInventoryExecute(r ApiGetInventoryRequest) (map[str
 type ApiGetOrderByIdRequest struct {
 	ctx _context.Context
 	ApiService StoreApi
-	orderId int64
-	accept *string
+	orderId int64	
+	headers map[string]string
 }
 
 
@@ -344,16 +336,12 @@ For valid response try integer IDs with value <= 5 or > 10. Other values will ge
  @param orderId ID of pet that needs to be fetched
  @return ApiGetOrderByIdRequest
 */
-func (a *StoreApiService) GetOrderById(ctx _context.Context, orderId int64, accept ...string) ApiGetOrderByIdRequest {
-	_accept := ""
-	if len(accept) > 0 {
-		_accept  = accept[0]
-	}	
+func (a *StoreApiService) GetOrderById(ctx _context.Context, orderId int64, headers map[string]string) ApiGetOrderByIdRequest {
 	return ApiGetOrderByIdRequest{
 		ApiService: a,
 		ctx: ctx,
 		orderId: orderId,
-		accept: _accept
+		headers map[string]string
 	}
 }
 
@@ -449,8 +437,8 @@ func (a *StoreApiService) GetOrderByIdExecute(r ApiGetOrderByIdRequest) (Order, 
 type ApiPlaceOrderRequest struct {
 	ctx _context.Context
 	ApiService StoreApi
-	order *Order
-	accept *string
+	order *Order	
+	headers map[string]string
 }
 
 // order placed for purchasing the pet
@@ -468,16 +456,12 @@ PlaceOrder Place an order for a pet
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPlaceOrderRequest
 */
-func (a *StoreApiService) PlaceOrder(ctx _context.Context, order *Order, accept ...string) ApiPlaceOrderRequest {
-	_accept := ""
-	if len(accept) > 0 {
-		_accept  = accept[0]
-	}	
+func (a *StoreApiService) PlaceOrder(ctx _context.Context, order *Order, headers map[string]string) ApiPlaceOrderRequest {
 	return ApiPlaceOrderRequest{
 		ApiService: a,
 		ctx: ctx,
 		order: order,
-		accept: _accept
+		headers map[string]string
 	}
 }
 

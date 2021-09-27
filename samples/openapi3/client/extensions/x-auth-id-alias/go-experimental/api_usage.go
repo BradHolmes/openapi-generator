@@ -52,15 +52,11 @@ Use any API key
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAnyKeyRequest
 */
-func (a *UsageApiService) AnyKey(ctx _context.Context, accept ...string) ApiAnyKeyRequest {
-	_accept := ""
-	if len(accept) > 0 {
-		_accept  = accept[0]
-	}	
+func (a *UsageApiService) AnyKey(ctx _context.Context, headers map[string]string) ApiAnyKeyRequest {
 	return ApiAnyKeyRequest{
 		ApiService: a,
 		ctx: ctx,
-		accept: _accept
+		headers map[string]string
 	}
 }
 
@@ -191,15 +187,11 @@ Use both API keys
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiBothKeysRequest
 */
-func (a *UsageApiService) BothKeys(ctx _context.Context, accept ...string) ApiBothKeysRequest {
-	_accept := ""
-	if len(accept) > 0 {
-		_accept  = accept[0]
-	}	
+func (a *UsageApiService) BothKeys(ctx _context.Context, headers map[string]string) ApiBothKeysRequest {
 	return ApiBothKeysRequest{
 		ApiService: a,
 		ctx: ctx,
-		accept: _accept
+		headers map[string]string
 	}
 }
 
@@ -330,15 +322,11 @@ Use API key in header
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiKeyInHeaderRequest
 */
-func (a *UsageApiService) KeyInHeader(ctx _context.Context, accept ...string) ApiKeyInHeaderRequest {
-	_accept := ""
-	if len(accept) > 0 {
-		_accept  = accept[0]
-	}	
+func (a *UsageApiService) KeyInHeader(ctx _context.Context, headers map[string]string) ApiKeyInHeaderRequest {
 	return ApiKeyInHeaderRequest{
 		ApiService: a,
 		ctx: ctx,
-		accept: _accept
+		headers map[string]string
 	}
 }
 
@@ -455,15 +443,11 @@ Use API key in query
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiKeyInQueryRequest
 */
-func (a *UsageApiService) KeyInQuery(ctx _context.Context, accept ...string) ApiKeyInQueryRequest {
-	_accept := ""
-	if len(accept) > 0 {
-		_accept  = accept[0]
-	}	
+func (a *UsageApiService) KeyInQuery(ctx _context.Context, headers map[string]string) ApiKeyInQueryRequest {
 	return ApiKeyInQueryRequest{
 		ApiService: a,
 		ctx: ctx,
-		accept: _accept
+		headers map[string]string
 	}
 }
 

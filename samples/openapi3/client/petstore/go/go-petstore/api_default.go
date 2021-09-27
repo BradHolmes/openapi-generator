@@ -65,15 +65,11 @@ FooGet Method for FooGet
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFooGetRequest
 */
-func (a *DefaultApiService) FooGet(ctx _context.Context, accept ...string) ApiFooGetRequest {
-	_accept := ""
-	if len(accept) > 0 {
-		_accept  = accept[0]
-	}	
+func (a *DefaultApiService) FooGet(ctx _context.Context, headers map[string]string) ApiFooGetRequest {
 	return ApiFooGetRequest{
 		ApiService: a,
 		ctx: ctx,
-		accept: _accept
+		headers map[string]string
 	}
 }
 

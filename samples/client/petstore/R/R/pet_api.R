@@ -345,7 +345,7 @@ PetApi <- R6::R6Class(
       }
     },
 
-    AddPetWithHttpInfo = function(body, accept=NULL, ...){
+    AddPetWithHttpInfo = function(body, headers=NULL, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- c()
@@ -364,8 +364,11 @@ PetApi <- R6::R6Class(
       # OAuth token
       headerParams['Authorization'] <- paste("Bearer", self$apiClient$accessToken, sep=" ")
 
-      if (!is.null(accept))
-        headerParams['accept'] <- c(accept)
+      # override headerParams with the headers passed into the function
+      if (!is.null(headers)) {
+        for (name in names(headers)){
+          headerParams[name] <- headers[name]
+        }
       }
 
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
@@ -399,7 +402,7 @@ PetApi <- R6::R6Class(
       }
     },
 
-    DeletePetWithHttpInfo = function(pet.id, api.key=NULL, accept=NULL, ...){
+    DeletePetWithHttpInfo = function(pet.id, api.key=NULL, headers=NULL, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- c()
@@ -419,8 +422,11 @@ PetApi <- R6::R6Class(
       # OAuth token
       headerParams['Authorization'] <- paste("Bearer", self$apiClient$accessToken, sep=" ")
 
-      if (!is.null(accept))
-        headerParams['accept'] <- c(accept)
+      # override headerParams with the headers passed into the function
+      if (!is.null(headers)) {
+        for (name in names(headers)){
+          headerParams[name] <- headers[name]
+        }
       }
 
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
@@ -454,7 +460,7 @@ PetApi <- R6::R6Class(
       }
     },
 
-    FindPetsByStatusWithHttpInfo = function(status, accept=NULL, ...){
+    FindPetsByStatusWithHttpInfo = function(status, headers=NULL, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- c()
@@ -470,8 +476,11 @@ PetApi <- R6::R6Class(
       # OAuth token
       headerParams['Authorization'] <- paste("Bearer", self$apiClient$accessToken, sep=" ")
 
-      if (!is.null(accept))
-        headerParams['accept'] <- c(accept)
+      # override headerParams with the headers passed into the function
+      if (!is.null(headers)) {
+        for (name in names(headers)){
+          headerParams[name] <- headers[name]
+        }
       }
 
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
@@ -516,7 +525,7 @@ PetApi <- R6::R6Class(
       }
     },
 
-    FindPetsByTagsWithHttpInfo = function(tags, accept=NULL, ...){
+    FindPetsByTagsWithHttpInfo = function(tags, headers=NULL, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- c()
@@ -532,8 +541,11 @@ PetApi <- R6::R6Class(
       # OAuth token
       headerParams['Authorization'] <- paste("Bearer", self$apiClient$accessToken, sep=" ")
 
-      if (!is.null(accept))
-        headerParams['accept'] <- c(accept)
+      # override headerParams with the headers passed into the function
+      if (!is.null(headers)) {
+        for (name in names(headers)){
+          headerParams[name] <- headers[name]
+        }
       }
 
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
@@ -578,7 +590,7 @@ PetApi <- R6::R6Class(
       }
     },
 
-    GetPetByIdWithHttpInfo = function(pet.id, accept=NULL, ...){
+    GetPetByIdWithHttpInfo = function(pet.id, headers=NULL, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- c()
@@ -598,8 +610,11 @@ PetApi <- R6::R6Class(
         headerParams['api_key'] <- paste(unlist(self$apiClient$apiKeys["api_key"]), collapse='')
       }
 
-      if (!is.null(accept))
-        headerParams['accept'] <- c(accept)
+      # override headerParams with the headers passed into the function
+      if (!is.null(headers)) {
+        for (name in names(headers)){
+          headerParams[name] <- headers[name]
+        }
       }
 
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
@@ -644,7 +659,7 @@ PetApi <- R6::R6Class(
       }
     },
 
-    UpdatePetWithHttpInfo = function(body, accept=NULL, ...){
+    UpdatePetWithHttpInfo = function(body, headers=NULL, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- c()
@@ -663,8 +678,11 @@ PetApi <- R6::R6Class(
       # OAuth token
       headerParams['Authorization'] <- paste("Bearer", self$apiClient$accessToken, sep=" ")
 
-      if (!is.null(accept))
-        headerParams['accept'] <- c(accept)
+      # override headerParams with the headers passed into the function
+      if (!is.null(headers)) {
+        for (name in names(headers)){
+          headerParams[name] <- headers[name]
+        }
       }
 
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
@@ -698,7 +716,7 @@ PetApi <- R6::R6Class(
       }
     },
 
-    UpdatePetWithFormWithHttpInfo = function(pet.id, name=NULL, status=NULL, accept=NULL, ...){
+    UpdatePetWithFormWithHttpInfo = function(pet.id, name=NULL, status=NULL, headers=NULL, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- c()
@@ -720,8 +738,11 @@ PetApi <- R6::R6Class(
       # OAuth token
       headerParams['Authorization'] <- paste("Bearer", self$apiClient$accessToken, sep=" ")
 
-      if (!is.null(accept))
-        headerParams['accept'] <- c(accept)
+      # override headerParams with the headers passed into the function
+      if (!is.null(headers)) {
+        for (name in names(headers)){
+          headerParams[name] <- headers[name]
+        }
       }
 
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
@@ -755,7 +776,7 @@ PetApi <- R6::R6Class(
       }
     },
 
-    UploadFileWithHttpInfo = function(pet.id, additional.metadata=NULL, file=NULL, accept=NULL, ...){
+    UploadFileWithHttpInfo = function(pet.id, additional.metadata=NULL, file=NULL, headers=NULL, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- c()
@@ -777,8 +798,11 @@ PetApi <- R6::R6Class(
       # OAuth token
       headerParams['Authorization'] <- paste("Bearer", self$apiClient$accessToken, sep=" ")
 
-      if (!is.null(accept))
-        headerParams['accept'] <- c(accept)
+      # override headerParams with the headers passed into the function
+      if (!is.null(headers)) {
+        for (name in names(headers)){
+          headerParams[name] <- headers[name]
+        }
       }
 
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),

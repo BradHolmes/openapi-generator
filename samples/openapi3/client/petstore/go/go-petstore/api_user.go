@@ -141,8 +141,8 @@ type UserApiService service
 type ApiCreateUserRequest struct {
 	ctx _context.Context
 	ApiService UserApi
-	user *User
-	accept *string
+	user *User	
+	headers map[string]string
 }
 
 // Created user object
@@ -162,16 +162,12 @@ This can only be done by the logged in user.
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateUserRequest
 */
-func (a *UserApiService) CreateUser(ctx _context.Context, user *User, accept ...string) ApiCreateUserRequest {
-	_accept := ""
-	if len(accept) > 0 {
-		_accept  = accept[0]
-	}	
+func (a *UserApiService) CreateUser(ctx _context.Context, user *User, headers map[string]string) ApiCreateUserRequest {
 	return ApiCreateUserRequest{
 		ApiService: a,
 		ctx: ctx,
 		user: user,
-		accept: _accept
+		headers map[string]string
 	}
 }
 
@@ -254,8 +250,8 @@ func (a *UserApiService) CreateUserExecute(r ApiCreateUserRequest) (*_nethttp.Re
 type ApiCreateUsersWithArrayInputRequest struct {
 	ctx _context.Context
 	ApiService UserApi
-	user *[]User
-	accept *string
+	user *[]User	
+	headers map[string]string
 }
 
 // List of user object
@@ -273,16 +269,12 @@ CreateUsersWithArrayInput Creates list of users with given input array
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateUsersWithArrayInputRequest
 */
-func (a *UserApiService) CreateUsersWithArrayInput(ctx _context.Context, user *[]User, accept ...string) ApiCreateUsersWithArrayInputRequest {
-	_accept := ""
-	if len(accept) > 0 {
-		_accept  = accept[0]
-	}	
+func (a *UserApiService) CreateUsersWithArrayInput(ctx _context.Context, user *[]User, headers map[string]string) ApiCreateUsersWithArrayInputRequest {
 	return ApiCreateUsersWithArrayInputRequest{
 		ApiService: a,
 		ctx: ctx,
 		user: user,
-		accept: _accept
+		headers map[string]string
 	}
 }
 
@@ -365,8 +357,8 @@ func (a *UserApiService) CreateUsersWithArrayInputExecute(r ApiCreateUsersWithAr
 type ApiCreateUsersWithListInputRequest struct {
 	ctx _context.Context
 	ApiService UserApi
-	user *[]User
-	accept *string
+	user *[]User	
+	headers map[string]string
 }
 
 // List of user object
@@ -384,16 +376,12 @@ CreateUsersWithListInput Creates list of users with given input array
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateUsersWithListInputRequest
 */
-func (a *UserApiService) CreateUsersWithListInput(ctx _context.Context, user *[]User, accept ...string) ApiCreateUsersWithListInputRequest {
-	_accept := ""
-	if len(accept) > 0 {
-		_accept  = accept[0]
-	}	
+func (a *UserApiService) CreateUsersWithListInput(ctx _context.Context, user *[]User, headers map[string]string) ApiCreateUsersWithListInputRequest {
 	return ApiCreateUsersWithListInputRequest{
 		ApiService: a,
 		ctx: ctx,
 		user: user,
-		accept: _accept
+		headers map[string]string
 	}
 }
 
@@ -476,8 +464,8 @@ func (a *UserApiService) CreateUsersWithListInputExecute(r ApiCreateUsersWithLis
 type ApiDeleteUserRequest struct {
 	ctx _context.Context
 	ApiService UserApi
-	username string
-	accept *string
+	username string	
+	headers map[string]string
 }
 
 
@@ -493,16 +481,12 @@ This can only be done by the logged in user.
  @param username The name that needs to be deleted
  @return ApiDeleteUserRequest
 */
-func (a *UserApiService) DeleteUser(ctx _context.Context, username string, accept ...string) ApiDeleteUserRequest {
-	_accept := ""
-	if len(accept) > 0 {
-		_accept  = accept[0]
-	}	
+func (a *UserApiService) DeleteUser(ctx _context.Context, username string, headers map[string]string) ApiDeleteUserRequest {
 	return ApiDeleteUserRequest{
 		ApiService: a,
 		ctx: ctx,
 		username: username,
-		accept: _accept
+		headers map[string]string
 	}
 }
 
@@ -581,8 +565,8 @@ func (a *UserApiService) DeleteUserExecute(r ApiDeleteUserRequest) (*_nethttp.Re
 type ApiGetUserByNameRequest struct {
 	ctx _context.Context
 	ApiService UserApi
-	username string
-	accept *string
+	username string	
+	headers map[string]string
 }
 
 
@@ -596,16 +580,12 @@ GetUserByName Get user by user name
  @param username The name that needs to be fetched. Use user1 for testing.
  @return ApiGetUserByNameRequest
 */
-func (a *UserApiService) GetUserByName(ctx _context.Context, username string, accept ...string) ApiGetUserByNameRequest {
-	_accept := ""
-	if len(accept) > 0 {
-		_accept  = accept[0]
-	}	
+func (a *UserApiService) GetUserByName(ctx _context.Context, username string, headers map[string]string) ApiGetUserByNameRequest {
 	return ApiGetUserByNameRequest{
 		ApiService: a,
 		ctx: ctx,
 		username: username,
-		accept: _accept
+		headers map[string]string
 	}
 }
 
@@ -695,10 +675,10 @@ func (a *UserApiService) GetUserByNameExecute(r ApiGetUserByNameRequest) (User, 
 type ApiLoginUserRequest struct {
 	ctx _context.Context
 	ApiService UserApi
-	username *string
-	accept *string
-	password *string
-	accept *string
+	username *string	
+	headers map[string]string
+	password *string	
+	headers map[string]string
 }
 
 // The user name for login
@@ -721,15 +701,11 @@ LoginUser Logs user into the system
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiLoginUserRequest
 */
-func (a *UserApiService) LoginUser(ctx _context.Context, accept ...string) ApiLoginUserRequest {
-	_accept := ""
-	if len(accept) > 0 {
-		_accept  = accept[0]
-	}	
+func (a *UserApiService) LoginUser(ctx _context.Context, headers map[string]string) ApiLoginUserRequest {
 	return ApiLoginUserRequest{
 		ApiService: a,
 		ctx: ctx,
-		accept: _accept
+		headers map[string]string
 	}
 }
 
@@ -838,15 +814,11 @@ LogoutUser Logs out current logged in user session
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiLogoutUserRequest
 */
-func (a *UserApiService) LogoutUser(ctx _context.Context, accept ...string) ApiLogoutUserRequest {
-	_accept := ""
-	if len(accept) > 0 {
-		_accept  = accept[0]
-	}	
+func (a *UserApiService) LogoutUser(ctx _context.Context, headers map[string]string) ApiLogoutUserRequest {
 	return ApiLogoutUserRequest{
 		ApiService: a,
 		ctx: ctx,
-		accept: _accept
+		headers map[string]string
 	}
 }
 
@@ -924,10 +896,10 @@ func (a *UserApiService) LogoutUserExecute(r ApiLogoutUserRequest) (*_nethttp.Re
 type ApiUpdateUserRequest struct {
 	ctx _context.Context
 	ApiService UserApi
-	username string
-	accept *string
-	user *User
-	accept *string
+	username string	
+	headers map[string]string
+	user *User	
+	headers map[string]string
 }
 
 // Updated user object
@@ -948,17 +920,13 @@ This can only be done by the logged in user.
  @param username name that need to be deleted
  @return ApiUpdateUserRequest
 */
-func (a *UserApiService) UpdateUser(ctx _context.Context, username string, user *User, accept ...string) ApiUpdateUserRequest {
-	_accept := ""
-	if len(accept) > 0 {
-		_accept  = accept[0]
-	}	
+func (a *UserApiService) UpdateUser(ctx _context.Context, username string, user *User, headers map[string]string) ApiUpdateUserRequest {
 	return ApiUpdateUserRequest{
 		ApiService: a,
 		ctx: ctx,
 		username: username,
 		user: user,
-		accept: _accept
+		headers map[string]string
 	}
 }
 

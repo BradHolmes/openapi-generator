@@ -161,8 +161,8 @@ type PetApiService service
 type ApiAddPetRequest struct {
 	ctx _context.Context
 	ApiService PetApi
-	pet *Pet
-	accept *string
+	pet *Pet	
+	headers map[string]string
 }
 
 // Pet object that needs to be added to the store
@@ -180,16 +180,12 @@ AddPet Add a new pet to the store
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAddPetRequest
 */
-func (a *PetApiService) AddPet(ctx _context.Context, pet *Pet, accept ...string) ApiAddPetRequest {
-	_accept := ""
-	if len(accept) > 0 {
-		_accept  = accept[0]
-	}	
+func (a *PetApiService) AddPet(ctx _context.Context, pet *Pet, headers map[string]string) ApiAddPetRequest {
 	return ApiAddPetRequest{
 		ApiService: a,
 		ctx: ctx,
 		pet: pet,
-		accept: _accept
+		headers map[string]string
 	}
 }
 
@@ -272,10 +268,10 @@ func (a *PetApiService) AddPetExecute(r ApiAddPetRequest) (*_nethttp.Response, e
 type ApiDeletePetRequest struct {
 	ctx _context.Context
 	ApiService PetApi
-	petId int64
-	accept *string
-	apiKey *string
-	accept *string
+	petId int64	
+	headers map[string]string
+	apiKey *string	
+	headers map[string]string
 }
 
 func (r *ApiDeletePetRequest) ApiKey(apiKey string) *ApiDeletePetRequest {
@@ -293,16 +289,12 @@ DeletePet Deletes a pet
  @param petId Pet id to delete
  @return ApiDeletePetRequest
 */
-func (a *PetApiService) DeletePet(ctx _context.Context, petId int64, accept ...string) ApiDeletePetRequest {
-	_accept := ""
-	if len(accept) > 0 {
-		_accept  = accept[0]
-	}	
+func (a *PetApiService) DeletePet(ctx _context.Context, petId int64, headers map[string]string) ApiDeletePetRequest {
 	return ApiDeletePetRequest{
 		ApiService: a,
 		ctx: ctx,
 		petId: petId,
-		accept: _accept
+		headers map[string]string
 	}
 }
 
@@ -384,8 +376,8 @@ func (a *PetApiService) DeletePetExecute(r ApiDeletePetRequest) (*_nethttp.Respo
 type ApiFindPetsByStatusRequest struct {
 	ctx _context.Context
 	ApiService PetApi
-	status *[]string
-	accept *string
+	status *[]string	
+	headers map[string]string
 }
 
 // Status values that need to be considered for filter
@@ -406,15 +398,11 @@ Multiple status values can be provided with comma separated strings
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFindPetsByStatusRequest
 */
-func (a *PetApiService) FindPetsByStatus(ctx _context.Context, accept ...string) ApiFindPetsByStatusRequest {
-	_accept := ""
-	if len(accept) > 0 {
-		_accept  = accept[0]
-	}	
+func (a *PetApiService) FindPetsByStatus(ctx _context.Context, headers map[string]string) ApiFindPetsByStatusRequest {
 	return ApiFindPetsByStatusRequest{
 		ApiService: a,
 		ctx: ctx,
-		accept: _accept
+		headers map[string]string
 	}
 }
 
@@ -507,8 +495,8 @@ func (a *PetApiService) FindPetsByStatusExecute(r ApiFindPetsByStatusRequest) ([
 type ApiFindPetsByTagsRequest struct {
 	ctx _context.Context
 	ApiService PetApi
-	tags *[]string
-	accept *string
+	tags *[]string	
+	headers map[string]string
 }
 
 // Tags to filter by
@@ -529,15 +517,11 @@ Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3
  @return ApiFindPetsByTagsRequest
 Deprecated
 */
-func (a *PetApiService) FindPetsByTags(ctx _context.Context, accept ...string) ApiFindPetsByTagsRequest {
-	_accept := ""
-	if len(accept) > 0 {
-		_accept  = accept[0]
-	}	
+func (a *PetApiService) FindPetsByTags(ctx _context.Context, headers map[string]string) ApiFindPetsByTagsRequest {
 	return ApiFindPetsByTagsRequest{
 		ApiService: a,
 		ctx: ctx,
-		accept: _accept
+		headers map[string]string
 	}
 }
 
@@ -631,8 +615,8 @@ func (a *PetApiService) FindPetsByTagsExecute(r ApiFindPetsByTagsRequest) ([]Pet
 type ApiGetPetByIdRequest struct {
 	ctx _context.Context
 	ApiService PetApi
-	petId int64
-	accept *string
+	petId int64	
+	headers map[string]string
 }
 
 
@@ -648,16 +632,12 @@ Returns a single pet
  @param petId ID of pet to return
  @return ApiGetPetByIdRequest
 */
-func (a *PetApiService) GetPetById(ctx _context.Context, petId int64, accept ...string) ApiGetPetByIdRequest {
-	_accept := ""
-	if len(accept) > 0 {
-		_accept  = accept[0]
-	}	
+func (a *PetApiService) GetPetById(ctx _context.Context, petId int64, headers map[string]string) ApiGetPetByIdRequest {
 	return ApiGetPetByIdRequest{
 		ApiService: a,
 		ctx: ctx,
 		petId: petId,
-		accept: _accept
+		headers map[string]string
 	}
 }
 
@@ -761,8 +741,8 @@ func (a *PetApiService) GetPetByIdExecute(r ApiGetPetByIdRequest) (Pet, *_nethtt
 type ApiUpdatePetRequest struct {
 	ctx _context.Context
 	ApiService PetApi
-	pet *Pet
-	accept *string
+	pet *Pet	
+	headers map[string]string
 }
 
 // Pet object that needs to be added to the store
@@ -780,16 +760,12 @@ UpdatePet Update an existing pet
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiUpdatePetRequest
 */
-func (a *PetApiService) UpdatePet(ctx _context.Context, pet *Pet, accept ...string) ApiUpdatePetRequest {
-	_accept := ""
-	if len(accept) > 0 {
-		_accept  = accept[0]
-	}	
+func (a *PetApiService) UpdatePet(ctx _context.Context, pet *Pet, headers map[string]string) ApiUpdatePetRequest {
 	return ApiUpdatePetRequest{
 		ApiService: a,
 		ctx: ctx,
 		pet: pet,
-		accept: _accept
+		headers map[string]string
 	}
 }
 
@@ -872,12 +848,12 @@ func (a *PetApiService) UpdatePetExecute(r ApiUpdatePetRequest) (*_nethttp.Respo
 type ApiUpdatePetWithFormRequest struct {
 	ctx _context.Context
 	ApiService PetApi
-	petId int64
-	accept *string
-	name *string
-	accept *string
-	status *string
-	accept *string
+	petId int64	
+	headers map[string]string
+	name *string	
+	headers map[string]string
+	status *string	
+	headers map[string]string
 }
 
 // Updated name of the pet
@@ -901,16 +877,12 @@ UpdatePetWithForm Updates a pet in the store with form data
  @param petId ID of pet that needs to be updated
  @return ApiUpdatePetWithFormRequest
 */
-func (a *PetApiService) UpdatePetWithForm(ctx _context.Context, petId int64, accept ...string) ApiUpdatePetWithFormRequest {
-	_accept := ""
-	if len(accept) > 0 {
-		_accept  = accept[0]
-	}	
+func (a *PetApiService) UpdatePetWithForm(ctx _context.Context, petId int64, headers map[string]string) ApiUpdatePetWithFormRequest {
 	return ApiUpdatePetWithFormRequest{
 		ApiService: a,
 		ctx: ctx,
 		petId: petId,
-		accept: _accept
+		headers map[string]string
 	}
 }
 
@@ -995,12 +967,12 @@ func (a *PetApiService) UpdatePetWithFormExecute(r ApiUpdatePetWithFormRequest) 
 type ApiUploadFileRequest struct {
 	ctx _context.Context
 	ApiService PetApi
-	petId int64
-	accept *string
-	additionalMetadata *string
-	accept *string
-	file **os.File
-	accept *string
+	petId int64	
+	headers map[string]string
+	additionalMetadata *string	
+	headers map[string]string
+	file **os.File	
+	headers map[string]string
 }
 
 // Additional data to pass to server
@@ -1024,16 +996,12 @@ UploadFile uploads an image
  @param petId ID of pet to update
  @return ApiUploadFileRequest
 */
-func (a *PetApiService) UploadFile(ctx _context.Context, petId int64, accept ...string) ApiUploadFileRequest {
-	_accept := ""
-	if len(accept) > 0 {
-		_accept  = accept[0]
-	}	
+func (a *PetApiService) UploadFile(ctx _context.Context, petId int64, headers map[string]string) ApiUploadFileRequest {
 	return ApiUploadFileRequest{
 		ApiService: a,
 		ctx: ctx,
 		petId: petId,
-		accept: _accept
+		headers map[string]string
 	}
 }
 
@@ -1137,12 +1105,12 @@ func (a *PetApiService) UploadFileExecute(r ApiUploadFileRequest) (ApiResponse, 
 type ApiUploadFileWithRequiredFileRequest struct {
 	ctx _context.Context
 	ApiService PetApi
-	petId int64
-	accept *string
-	requiredFile **os.File
-	accept *string
-	additionalMetadata *string
-	accept *string
+	petId int64	
+	headers map[string]string
+	requiredFile **os.File	
+	headers map[string]string
+	additionalMetadata *string	
+	headers map[string]string
 }
 
 // file to upload
@@ -1166,16 +1134,12 @@ UploadFileWithRequiredFile uploads an image (required)
  @param petId ID of pet to update
  @return ApiUploadFileWithRequiredFileRequest
 */
-func (a *PetApiService) UploadFileWithRequiredFile(ctx _context.Context, petId int64, accept ...string) ApiUploadFileWithRequiredFileRequest {
-	_accept := ""
-	if len(accept) > 0 {
-		_accept  = accept[0]
-	}	
+func (a *PetApiService) UploadFileWithRequiredFile(ctx _context.Context, petId int64, headers map[string]string) ApiUploadFileWithRequiredFileRequest {
 	return ApiUploadFileWithRequiredFileRequest{
 		ApiService: a,
 		ctx: ctx,
 		petId: petId,
-		accept: _accept
+		headers map[string]string
 	}
 }
 
