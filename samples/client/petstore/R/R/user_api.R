@@ -322,10 +322,10 @@ UserApi <- R6::R6Class(
 
       urlPath <- "/user"
 
-      if (!is.null(accept) && names(headerParams) == "accept")
-        headerParams = c(accept)
+      if (!is.null(accept))
+        headerParams['accept'] <- c(accept)
       }
-      
+
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
                                  method = "POST",
                                  queryParams = queryParams,
@@ -375,10 +375,10 @@ UserApi <- R6::R6Class(
 
       urlPath <- "/user/createWithArray"
 
-      if (!is.null(accept) && names(headerParams) == "accept")
-        headerParams = c(accept)
+      if (!is.null(accept))
+        headerParams['accept'] <- c(accept)
       }
-      
+
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
                                  method = "POST",
                                  queryParams = queryParams,
@@ -428,10 +428,10 @@ UserApi <- R6::R6Class(
 
       urlPath <- "/user/createWithList"
 
-      if (!is.null(accept) && names(headerParams) == "accept")
-        headerParams = c(accept)
+      if (!is.null(accept))
+        headerParams['accept'] <- c(accept)
       }
-      
+
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
                                  method = "POST",
                                  queryParams = queryParams,
@@ -479,10 +479,10 @@ UserApi <- R6::R6Class(
       }
 
 
-      if (!is.null(accept) && names(headerParams) == "accept")
-        headerParams = c(accept)
+      if (!is.null(accept))
+        headerParams['accept'] <- c(accept)
       }
-      
+
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
                                  method = "DELETE",
                                  queryParams = queryParams,
@@ -530,10 +530,10 @@ UserApi <- R6::R6Class(
       }
 
 
-      if (!is.null(accept) && names(headerParams) == "accept")
-        headerParams = c(accept)
+      if (!is.null(accept))
+        headerParams['accept'] <- c(accept)
       }
-      
+
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
                                  method = "GET",
                                  queryParams = queryParams,
@@ -596,10 +596,10 @@ UserApi <- R6::R6Class(
       body <- NULL
       urlPath <- "/user/login"
 
-      if (!is.null(accept) && names(headerParams) == "accept")
-        headerParams = c(accept)
+      if (!is.null(accept))
+        headerParams['accept'] <- c(accept)
       }
-      
+
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
                                  method = "GET",
                                  queryParams = queryParams,
@@ -650,10 +650,10 @@ UserApi <- R6::R6Class(
       body <- NULL
       urlPath <- "/user/logout"
 
-      if (!is.null(accept) && names(headerParams) == "accept")
-        headerParams = c(accept)
+      if (!is.null(accept))
+        headerParams['accept'] <- c(accept)
       }
-      
+
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
                                  method = "GET",
                                  queryParams = queryParams,
@@ -710,10 +710,10 @@ UserApi <- R6::R6Class(
       }
 
 
-      if (!is.null(accept) && names(headerParams) == "accept")
-        headerParams = c(accept)
+      if (!is.null(accept))
+        headerParams['accept'] <- c(accept)
       }
-      
+
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
                                  method = "PUT",
                                  queryParams = queryParams,

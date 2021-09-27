@@ -204,10 +204,10 @@ StoreApi <- R6::R6Class(
       }
 
 
-      if (!is.null(accept) && names(headerParams) == "accept")
-        headerParams = c(accept)
+      if (!is.null(accept))
+        headerParams['accept'] <- c(accept)
       }
-      
+
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
                                  method = "DELETE",
                                  queryParams = queryParams,
@@ -251,10 +251,10 @@ StoreApi <- R6::R6Class(
         headerParams['api_key'] <- paste(unlist(self$apiClient$apiKeys["api_key"]), collapse='')
       }
 
-      if (!is.null(accept) && names(headerParams) == "accept")
-        headerParams = c(accept)
+      if (!is.null(accept))
+        headerParams['accept'] <- c(accept)
       }
-      
+
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
                                  method = "GET",
                                  queryParams = queryParams,
@@ -313,10 +313,10 @@ StoreApi <- R6::R6Class(
       }
 
 
-      if (!is.null(accept) && names(headerParams) == "accept")
-        headerParams = c(accept)
+      if (!is.null(accept))
+        headerParams['accept'] <- c(accept)
       }
-      
+
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
                                  method = "GET",
                                  queryParams = queryParams,
@@ -376,10 +376,10 @@ StoreApi <- R6::R6Class(
 
       urlPath <- "/store/order"
 
-      if (!is.null(accept) && names(headerParams) == "accept")
-        headerParams = c(accept)
+      if (!is.null(accept))
+        headerParams['accept'] <- c(accept)
       }
-      
+
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
                                  method = "POST",
                                  queryParams = queryParams,

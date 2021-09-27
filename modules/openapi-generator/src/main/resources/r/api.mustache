@@ -266,10 +266,10 @@
       {{/isOAuth}}
       {{/authMethods}}
 
-      if (!is.null(accept) && names(headerParams) == "accept")
-        headerParams = c(accept)
+      if (!is.null(accept))
+        headerParams['accept'] <- c(accept)
       }
-      
+
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
                                  method = "{{httpMethod}}",
                                  queryParams = queryParams,
