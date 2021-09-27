@@ -25,7 +25,6 @@ var (
 	_ _context.Context
 )
 
-
 type PetApi interface {
 
 	/*

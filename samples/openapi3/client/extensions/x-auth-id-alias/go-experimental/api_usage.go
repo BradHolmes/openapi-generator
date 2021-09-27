@@ -23,7 +23,6 @@ var (
 	_ _context.Context
 )
 
-
 // UsageApiService UsageApi service
 type UsageApiService service
 

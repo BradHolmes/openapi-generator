@@ -23,7 +23,6 @@ var (
 	_ _context.Context
 )
 
-
 type AnotherFakeApi interface {
 
 	/*

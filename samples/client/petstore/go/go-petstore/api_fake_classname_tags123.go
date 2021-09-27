@@ -23,7 +23,6 @@ var (
 	_ _context.Context
 )
 
-
 type FakeClassnameTags123Api interface {
 
 	/*

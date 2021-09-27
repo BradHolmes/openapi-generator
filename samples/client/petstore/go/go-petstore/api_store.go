@@ -24,7 +24,6 @@ var (
 	_ _context.Context
 )
 
-
 type StoreApi interface {
 
 	/*
