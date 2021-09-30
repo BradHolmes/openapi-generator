@@ -41,7 +41,7 @@ export default class AnotherFakeApi {
      * @param {module:model/Client} client client model
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Client} and HTTP response
      */
-    call123testSpecialTagsWithHttpInfo(client, accept='') {
+    call123testSpecialTagsWithHttpInfo(client, headers={}) {
       let postBody = client;
       // verify the required parameter 'client' is set
       if (client === undefined || client === null) {
@@ -60,10 +60,17 @@ export default class AnotherFakeApi {
       let authNames = [];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = Client;
       return this.apiClient.callApi(
         '/another-fake/dummy', 'PATCH',

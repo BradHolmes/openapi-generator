@@ -41,7 +41,7 @@ export default class UserApi {
      * @param {module:model/User} user Created user object
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    createUserWithHttpInfo(user, accept='') {
+    createUserWithHttpInfo(user, headers={}) {
       let postBody = user;
       // verify the required parameter 'user' is set
       if (user === undefined || user === null) {
@@ -60,10 +60,17 @@ export default class UserApi {
       let authNames = [];
       let contentTypes = ['application/json'];
       let accepts = [];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = null;
       return this.apiClient.callApi(
         '/user', 'POST',
@@ -91,7 +98,7 @@ export default class UserApi {
      * @param {Array.<module:model/User>} user List of user object
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    createUsersWithArrayInputWithHttpInfo(user, accept='') {
+    createUsersWithArrayInputWithHttpInfo(user, headers={}) {
       let postBody = user;
       // verify the required parameter 'user' is set
       if (user === undefined || user === null) {
@@ -110,10 +117,17 @@ export default class UserApi {
       let authNames = [];
       let contentTypes = ['application/json'];
       let accepts = [];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = null;
       return this.apiClient.callApi(
         '/user/createWithArray', 'POST',
@@ -140,7 +154,7 @@ export default class UserApi {
      * @param {Array.<module:model/User>} user List of user object
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    createUsersWithListInputWithHttpInfo(user, accept='') {
+    createUsersWithListInputWithHttpInfo(user, headers={}) {
       let postBody = user;
       // verify the required parameter 'user' is set
       if (user === undefined || user === null) {
@@ -159,10 +173,17 @@ export default class UserApi {
       let authNames = [];
       let contentTypes = ['application/json'];
       let accepts = [];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = null;
       return this.apiClient.callApi(
         '/user/createWithList', 'POST',
@@ -190,7 +211,7 @@ export default class UserApi {
      * @param {String} username The name that needs to be deleted
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    deleteUserWithHttpInfo(username, accept='') {
+    deleteUserWithHttpInfo(username, headers={}) {
       let postBody = null;
       // verify the required parameter 'username' is set
       if (username === undefined || username === null) {
@@ -210,10 +231,17 @@ export default class UserApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = [];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = null;
       return this.apiClient.callApi(
         '/user/{username}', 'DELETE',
@@ -241,7 +269,7 @@ export default class UserApi {
      * @param {String} username The name that needs to be fetched. Use user1 for testing.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/User} and HTTP response
      */
-    getUserByNameWithHttpInfo(username, accept='') {
+    getUserByNameWithHttpInfo(username, headers={}) {
       let postBody = null;
       // verify the required parameter 'username' is set
       if (username === undefined || username === null) {
@@ -261,10 +289,17 @@ export default class UserApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = ['application/xml', 'application/json'];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = User;
       return this.apiClient.callApi(
         '/user/{username}', 'GET',
@@ -292,7 +327,7 @@ export default class UserApi {
      * @param {String} password The password for login in clear text
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link String} and HTTP response
      */
-    loginUserWithHttpInfo(username, password, accept='') {
+    loginUserWithHttpInfo(username, password, headers={}) {
       let postBody = null;
       // verify the required parameter 'username' is set
       if (username === undefined || username === null) {
@@ -317,10 +352,17 @@ export default class UserApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = ['application/xml', 'application/json'];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = 'String';
       return this.apiClient.callApi(
         '/user/login', 'GET',
@@ -347,7 +389,7 @@ export default class UserApi {
      * Logs out current logged in user session
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    logoutUserWithHttpInfo(, accept='') {
+    logoutUserWithHttpInfo(, headers={}) {
       let postBody = null;
 
       let pathParams = {
@@ -362,10 +404,17 @@ export default class UserApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = [];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = null;
       return this.apiClient.callApi(
         '/user/logout', 'GET',
@@ -393,7 +442,7 @@ export default class UserApi {
      * @param {module:model/User} user Updated user object
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    updateUserWithHttpInfo(username, user, accept='') {
+    updateUserWithHttpInfo(username, user, headers={}) {
       let postBody = user;
       // verify the required parameter 'username' is set
       if (username === undefined || username === null) {
@@ -417,10 +466,17 @@ export default class UserApi {
       let authNames = [];
       let contentTypes = ['application/json'];
       let accepts = [];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = null;
       return this.apiClient.callApi(
         '/user/{username}', 'PUT',

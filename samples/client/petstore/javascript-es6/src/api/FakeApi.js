@@ -53,7 +53,7 @@ export default class FakeApi {
      * @param {module:api/FakeApi~fakeHealthGetCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/HealthCheckResult}
      */
-    fakeHealthGet(callback, accept='') {
+    fakeHealthGet(callback, headers={}) {
       let postBody = null;
 
       let pathParams = {
@@ -68,10 +68,17 @@ export default class FakeApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = ['application/json'];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = HealthCheckResult;
       return this.apiClient.callApi(
         '/fake/health', 'GET',
@@ -96,7 +103,7 @@ export default class FakeApi {
      * @param {String} opts.header1 header parameter
      * @param {module:api/FakeApi~fakeHttpSignatureTestCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    fakeHttpSignatureTest(pet, opts, callback, accept='') {
+    fakeHttpSignatureTest(pet, opts, callback, headers={}) {
       opts = opts || {};
       let postBody = pet;
       // verify the required parameter 'pet' is set
@@ -118,10 +125,17 @@ export default class FakeApi {
       let authNames = ['http_signature_test'];
       let contentTypes = ['application/json', 'application/xml'];
       let accepts = [];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = null;
       return this.apiClient.callApi(
         '/fake/http-signature-test', 'GET',
@@ -145,7 +159,7 @@ export default class FakeApi {
      * @param {module:api/FakeApi~fakeOuterBooleanSerializeCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Boolean}
      */
-    fakeOuterBooleanSerialize(opts, callback, accept='') {
+    fakeOuterBooleanSerialize(opts, callback, headers={}) {
       opts = opts || {};
       let postBody = opts['body'];
 
@@ -161,10 +175,17 @@ export default class FakeApi {
       let authNames = [];
       let contentTypes = ['application/json'];
       let accepts = ['*/*'];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = 'Boolean';
       return this.apiClient.callApi(
         '/fake/outer/boolean', 'POST',
@@ -188,7 +209,7 @@ export default class FakeApi {
      * @param {module:api/FakeApi~fakeOuterCompositeSerializeCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/OuterComposite}
      */
-    fakeOuterCompositeSerialize(opts, callback, accept='') {
+    fakeOuterCompositeSerialize(opts, callback, headers={}) {
       opts = opts || {};
       let postBody = opts['outerComposite'];
 
@@ -204,10 +225,17 @@ export default class FakeApi {
       let authNames = [];
       let contentTypes = ['application/json'];
       let accepts = ['*/*'];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = OuterComposite;
       return this.apiClient.callApi(
         '/fake/outer/composite', 'POST',
@@ -231,7 +259,7 @@ export default class FakeApi {
      * @param {module:api/FakeApi~fakeOuterNumberSerializeCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Number}
      */
-    fakeOuterNumberSerialize(opts, callback, accept='') {
+    fakeOuterNumberSerialize(opts, callback, headers={}) {
       opts = opts || {};
       let postBody = opts['body'];
 
@@ -247,10 +275,17 @@ export default class FakeApi {
       let authNames = [];
       let contentTypes = ['application/json'];
       let accepts = ['*/*'];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = 'Number';
       return this.apiClient.callApi(
         '/fake/outer/number', 'POST',
@@ -274,7 +309,7 @@ export default class FakeApi {
      * @param {module:api/FakeApi~fakeOuterStringSerializeCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link String}
      */
-    fakeOuterStringSerialize(opts, callback, accept='') {
+    fakeOuterStringSerialize(opts, callback, headers={}) {
       opts = opts || {};
       let postBody = opts['body'];
 
@@ -290,10 +325,17 @@ export default class FakeApi {
       let authNames = [];
       let contentTypes = ['application/json'];
       let accepts = ['*/*'];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = 'String';
       return this.apiClient.callApi(
         '/fake/outer/string', 'POST',
@@ -316,7 +358,7 @@ export default class FakeApi {
      * @param {module:api/FakeApi~fakePropertyEnumIntegerSerializeCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/OuterObjectWithEnumProperty}
      */
-    fakePropertyEnumIntegerSerialize(outerObjectWithEnumProperty, callback, accept='') {
+    fakePropertyEnumIntegerSerialize(outerObjectWithEnumProperty, callback, headers={}) {
       let postBody = outerObjectWithEnumProperty;
       // verify the required parameter 'outerObjectWithEnumProperty' is set
       if (outerObjectWithEnumProperty === undefined || outerObjectWithEnumProperty === null) {
@@ -335,10 +377,17 @@ export default class FakeApi {
       let authNames = [];
       let contentTypes = ['application/json'];
       let accepts = ['*/*'];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = OuterObjectWithEnumProperty;
       return this.apiClient.callApi(
         '/fake/property/enum-int', 'POST',
@@ -360,7 +409,7 @@ export default class FakeApi {
      * @param {File} body image to upload
      * @param {module:api/FakeApi~testBodyWithBinaryCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    testBodyWithBinary(body, callback, accept='') {
+    testBodyWithBinary(body, callback, headers={}) {
       let postBody = body;
       // verify the required parameter 'body' is set
       if (body === undefined || body === null) {
@@ -379,10 +428,17 @@ export default class FakeApi {
       let authNames = [];
       let contentTypes = ['image/png'];
       let accepts = [];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = null;
       return this.apiClient.callApi(
         '/fake/body-with-binary', 'PUT',
@@ -404,7 +460,7 @@ export default class FakeApi {
      * @param {module:model/FileSchemaTestClass} fileSchemaTestClass 
      * @param {module:api/FakeApi~testBodyWithFileSchemaCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    testBodyWithFileSchema(fileSchemaTestClass, callback, accept='') {
+    testBodyWithFileSchema(fileSchemaTestClass, callback, headers={}) {
       let postBody = fileSchemaTestClass;
       // verify the required parameter 'fileSchemaTestClass' is set
       if (fileSchemaTestClass === undefined || fileSchemaTestClass === null) {
@@ -423,10 +479,17 @@ export default class FakeApi {
       let authNames = [];
       let contentTypes = ['application/json'];
       let accepts = [];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = null;
       return this.apiClient.callApi(
         '/fake/body-with-file-schema', 'PUT',
@@ -448,7 +511,7 @@ export default class FakeApi {
      * @param {module:model/User} user 
      * @param {module:api/FakeApi~testBodyWithQueryParamsCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    testBodyWithQueryParams(query, user, callback, accept='') {
+    testBodyWithQueryParams(query, user, callback, headers={}) {
       let postBody = user;
       // verify the required parameter 'query' is set
       if (query === undefined || query === null) {
@@ -472,10 +535,17 @@ export default class FakeApi {
       let authNames = [];
       let contentTypes = ['application/json'];
       let accepts = [];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = null;
       return this.apiClient.callApi(
         '/fake/body-with-query-params', 'PUT',
@@ -499,7 +569,7 @@ export default class FakeApi {
      * @param {module:api/FakeApi~testClientModelCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/Client}
      */
-    testClientModel(client, callback, accept='') {
+    testClientModel(client, callback, headers={}) {
       let postBody = client;
       // verify the required parameter 'client' is set
       if (client === undefined || client === null) {
@@ -518,10 +588,17 @@ export default class FakeApi {
       let authNames = [];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = Client;
       return this.apiClient.callApi(
         '/fake', 'PATCH',
@@ -558,7 +635,7 @@ export default class FakeApi {
      * @param {String} opts.callback None
      * @param {module:api/FakeApi~testEndpointParametersCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    testEndpointParameters(number, _double, patternWithoutDelimiter, _byte, opts, callback, accept='') {
+    testEndpointParameters(number, _double, patternWithoutDelimiter, _byte, opts, callback, headers={}) {
       opts = opts || {};
       let postBody = null;
       // verify the required parameter 'number' is set
@@ -604,10 +681,17 @@ export default class FakeApi {
       let authNames = ['http_basic_test'];
       let contentTypes = ['application/x-www-form-urlencoded'];
       let accepts = [];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = null;
       return this.apiClient.callApi(
         '/fake', 'POST',
@@ -638,7 +722,7 @@ export default class FakeApi {
      * @param {module:model/String} opts.enumFormString Form parameter enum test (string) (default to '-efg')
      * @param {module:api/FakeApi~testEnumParametersCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    testEnumParameters(opts, callback, accept='') {
+    testEnumParameters(opts, callback, headers={}) {
       opts = opts || {};
       let postBody = null;
 
@@ -662,10 +746,17 @@ export default class FakeApi {
       let authNames = [];
       let contentTypes = ['application/x-www-form-urlencoded'];
       let accepts = [];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = null;
       return this.apiClient.callApi(
         '/fake', 'GET',
@@ -694,7 +785,7 @@ export default class FakeApi {
      * @param {Number} opts.int64Group Integer in group parameters
      * @param {module:api/FakeApi~testGroupParametersCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    testGroupParameters(requiredStringGroup, requiredBooleanGroup, requiredInt64Group, opts, callback, accept='') {
+    testGroupParameters(requiredStringGroup, requiredBooleanGroup, requiredInt64Group, opts, callback, headers={}) {
       opts = opts || {};
       let postBody = null;
       // verify the required parameter 'requiredStringGroup' is set
@@ -728,10 +819,17 @@ export default class FakeApi {
       let authNames = ['bearer_test'];
       let contentTypes = [];
       let accepts = [];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = null;
       return this.apiClient.callApi(
         '/fake', 'DELETE',
@@ -753,7 +851,7 @@ export default class FakeApi {
      * @param {Object.<String, {String: String}>} requestBody request body
      * @param {module:api/FakeApi~testInlineAdditionalPropertiesCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    testInlineAdditionalProperties(requestBody, callback, accept='') {
+    testInlineAdditionalProperties(requestBody, callback, headers={}) {
       let postBody = requestBody;
       // verify the required parameter 'requestBody' is set
       if (requestBody === undefined || requestBody === null) {
@@ -772,10 +870,17 @@ export default class FakeApi {
       let authNames = [];
       let contentTypes = ['application/json'];
       let accepts = [];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = null;
       return this.apiClient.callApi(
         '/fake/inline-additionalProperties', 'POST',
@@ -798,7 +903,7 @@ export default class FakeApi {
      * @param {String} param2 field2
      * @param {module:api/FakeApi~testJsonFormDataCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    testJsonFormData(param, param2, callback, accept='') {
+    testJsonFormData(param, param2, callback, headers={}) {
       let postBody = null;
       // verify the required parameter 'param' is set
       if (param === undefined || param === null) {
@@ -823,10 +928,17 @@ export default class FakeApi {
       let authNames = [];
       let contentTypes = ['application/x-www-form-urlencoded'];
       let accepts = [];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = null;
       return this.apiClient.callApi(
         '/fake/jsonFormData', 'GET',
@@ -855,7 +967,7 @@ export default class FakeApi {
      * @param {Object.<String, {String: String}>} opts.language 
      * @param {module:api/FakeApi~testQueryParameterCollectionFormatCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    testQueryParameterCollectionFormat(pipe, ioutil, http, url, context, allowEmpty, opts, callback, accept='') {
+    testQueryParameterCollectionFormat(pipe, ioutil, http, url, context, allowEmpty, opts, callback, headers={}) {
       opts = opts || {};
       let postBody = null;
       // verify the required parameter 'pipe' is set
@@ -902,10 +1014,17 @@ export default class FakeApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = [];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = null;
       return this.apiClient.callApi(
         '/fake/test-query-parameters', 'PUT',

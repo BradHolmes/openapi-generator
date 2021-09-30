@@ -46,7 +46,8 @@ type FakeClassnameTags123ApiService service
 type ApiTestClassnameRequest struct {
 	ctx _context.Context
 	ApiService FakeClassnameTags123Api
-	client *Client
+	client *Client	
+	headers map[string]string
 }
 
 // client model
@@ -66,11 +67,12 @@ To test class name in snake case
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTestClassnameRequest
 */
-func (a *FakeClassnameTags123ApiService) TestClassname(ctx _context.Context, client *Client) ApiTestClassnameRequest {
+func (a *FakeClassnameTags123ApiService) TestClassname(ctx _context.Context, client *Client, headers map[string]string) ApiTestClassnameRequest {
 	return ApiTestClassnameRequest{
 		ApiService: a,
 		ctx: ctx,
 		client: client,
+		headers: headers
 	}
 }
 
@@ -117,6 +119,13 @@ func (a *FakeClassnameTags123ApiService) TestClassnameExecute(r ApiTestClassname
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	// body params
 	localVarPostBody = r.client
 	if r.ctx != nil {

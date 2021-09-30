@@ -56,7 +56,8 @@ type {{#structPrefix}}{{&classname}}{{/structPrefix}}Api{{operationId}}Request s
 	ctx _context.Context
 	ApiService {{#generateInterfaces}}{{classname}}{{/generateInterfaces}}{{^generateInterfaces}}*{{classname}}Service{{/generateInterfaces}}
 {{#allParams}}
-	{{paramName}} {{^isPathParam}}*{{/isPathParam}}{{{dataType}}}
+	{{paramName}} {{^isPathParam}}*{{/isPathParam}}{{{dataType}}}	
+	headers map[string]string
 {{/allParams}}
 }
 {{#allParams}}{{^isPathParam}}
@@ -88,7 +89,7 @@ func (r {{#structPrefix}}{{&classname}}{{/structPrefix}}Api{{operationId}}Reques
 Deprecated
 {{/isDeprecated}}
 */
-func (a *{{{classname}}}Service) {{{nickname}}}(ctx _context.Context{{#pathParams}}, {{paramName}} {{{dataType}}}{{/pathParams}}{{#bodyParams}}, {{paramName}} *{{{dataType}}}{{/bodyParams}}) {{#structPrefix}}{{&classname}}{{/structPrefix}}Api{{operationId}}Request {
+func (a *{{{classname}}}Service) {{{nickname}}}(ctx _context.Context{{#pathParams}}, {{paramName}} {{{dataType}}}{{/pathParams}}{{#bodyParams}}, {{paramName}} *{{{dataType}}}{{/bodyParams}}, headers map[string]string) {{#structPrefix}}{{&classname}}{{/structPrefix}}Api{{operationId}}Request {
 	return {{#structPrefix}}{{&classname}}{{/structPrefix}}Api{{operationId}}Request{
 		ApiService: a,
 		ctx: ctx,
@@ -98,6 +99,7 @@ func (a *{{{classname}}}Service) {{{nickname}}}(ctx _context.Context{{#pathParam
 		{{#bodyParams}}
 		{{paramName}}: {{paramName}},
 		{{/bodyParams}}
+		headers: headers
 	}
 }
 
@@ -240,6 +242,13 @@ func (a *{{{classname}}}Service) {{nickname}}Execute(r {{#structPrefix}}{{&class
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 {{#headerParams}}
 	{{#required}}
 	localVarHeaderParams["{{baseName}}"] = parameterToString(*r.{{paramName}}, "{{collectionFormat}}")

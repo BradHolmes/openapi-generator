@@ -132,7 +132,8 @@ type UserApiService service
 type ApiCreateUserRequest struct {
 	ctx _context.Context
 	ApiService UserApi
-	body *User
+	body *User	
+	headers map[string]string
 }
 
 // Created user object
@@ -152,11 +153,12 @@ This can only be done by the logged in user.
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateUserRequest
 */
-func (a *UserApiService) CreateUser(ctx _context.Context, body *User) ApiCreateUserRequest {
+func (a *UserApiService) CreateUser(ctx _context.Context, body *User, headers map[string]string) ApiCreateUserRequest {
 	return ApiCreateUserRequest{
 		ApiService: a,
 		ctx: ctx,
 		body: body,
+		headers: headers
 	}
 }
 
@@ -201,6 +203,13 @@ func (a *UserApiService) CreateUserExecute(r ApiCreateUserRequest) (*_nethttp.Re
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	// body params
 	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
@@ -237,7 +246,8 @@ func (a *UserApiService) CreateUserExecute(r ApiCreateUserRequest) (*_nethttp.Re
 type ApiCreateUsersWithArrayInputRequest struct {
 	ctx _context.Context
 	ApiService UserApi
-	body *[]User
+	body *[]User	
+	headers map[string]string
 }
 
 // List of user object
@@ -255,11 +265,12 @@ CreateUsersWithArrayInput Creates list of users with given input array
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateUsersWithArrayInputRequest
 */
-func (a *UserApiService) CreateUsersWithArrayInput(ctx _context.Context, body *[]User) ApiCreateUsersWithArrayInputRequest {
+func (a *UserApiService) CreateUsersWithArrayInput(ctx _context.Context, body *[]User, headers map[string]string) ApiCreateUsersWithArrayInputRequest {
 	return ApiCreateUsersWithArrayInputRequest{
 		ApiService: a,
 		ctx: ctx,
 		body: body,
+		headers: headers
 	}
 }
 
@@ -304,6 +315,13 @@ func (a *UserApiService) CreateUsersWithArrayInputExecute(r ApiCreateUsersWithAr
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	// body params
 	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
@@ -340,7 +358,8 @@ func (a *UserApiService) CreateUsersWithArrayInputExecute(r ApiCreateUsersWithAr
 type ApiCreateUsersWithListInputRequest struct {
 	ctx _context.Context
 	ApiService UserApi
-	body *[]User
+	body *[]User	
+	headers map[string]string
 }
 
 // List of user object
@@ -358,11 +377,12 @@ CreateUsersWithListInput Creates list of users with given input array
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateUsersWithListInputRequest
 */
-func (a *UserApiService) CreateUsersWithListInput(ctx _context.Context, body *[]User) ApiCreateUsersWithListInputRequest {
+func (a *UserApiService) CreateUsersWithListInput(ctx _context.Context, body *[]User, headers map[string]string) ApiCreateUsersWithListInputRequest {
 	return ApiCreateUsersWithListInputRequest{
 		ApiService: a,
 		ctx: ctx,
 		body: body,
+		headers: headers
 	}
 }
 
@@ -407,6 +427,13 @@ func (a *UserApiService) CreateUsersWithListInputExecute(r ApiCreateUsersWithLis
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	// body params
 	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
@@ -443,7 +470,8 @@ func (a *UserApiService) CreateUsersWithListInputExecute(r ApiCreateUsersWithLis
 type ApiDeleteUserRequest struct {
 	ctx _context.Context
 	ApiService UserApi
-	username string
+	username string	
+	headers map[string]string
 }
 
 
@@ -459,11 +487,12 @@ This can only be done by the logged in user.
  @param username The name that needs to be deleted
  @return ApiDeleteUserRequest
 */
-func (a *UserApiService) DeleteUser(ctx _context.Context, username string) ApiDeleteUserRequest {
+func (a *UserApiService) DeleteUser(ctx _context.Context, username string, headers map[string]string) ApiDeleteUserRequest {
 	return ApiDeleteUserRequest{
 		ApiService: a,
 		ctx: ctx,
 		username: username,
+		headers: headers
 	}
 }
 
@@ -506,6 +535,13 @@ func (a *UserApiService) DeleteUserExecute(r ApiDeleteUserRequest) (*_nethttp.Re
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
@@ -540,7 +576,8 @@ func (a *UserApiService) DeleteUserExecute(r ApiDeleteUserRequest) (*_nethttp.Re
 type ApiGetUserByNameRequest struct {
 	ctx _context.Context
 	ApiService UserApi
-	username string
+	username string	
+	headers map[string]string
 }
 
 
@@ -554,11 +591,12 @@ GetUserByName Get user by user name
  @param username The name that needs to be fetched. Use user1 for testing.
  @return ApiGetUserByNameRequest
 */
-func (a *UserApiService) GetUserByName(ctx _context.Context, username string) ApiGetUserByNameRequest {
+func (a *UserApiService) GetUserByName(ctx _context.Context, username string, headers map[string]string) ApiGetUserByNameRequest {
 	return ApiGetUserByNameRequest{
 		ApiService: a,
 		ctx: ctx,
 		username: username,
+		headers: headers
 	}
 }
 
@@ -603,6 +641,13 @@ func (a *UserApiService) GetUserByNameExecute(r ApiGetUserByNameRequest) (User, 
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -646,8 +691,10 @@ func (a *UserApiService) GetUserByNameExecute(r ApiGetUserByNameRequest) (User, 
 type ApiLoginUserRequest struct {
 	ctx _context.Context
 	ApiService UserApi
-	username *string
-	password *string
+	username *string	
+	headers map[string]string
+	password *string	
+	headers map[string]string
 }
 
 // The user name for login
@@ -670,10 +717,11 @@ LoginUser Logs user into the system
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiLoginUserRequest
 */
-func (a *UserApiService) LoginUser(ctx _context.Context) ApiLoginUserRequest {
+func (a *UserApiService) LoginUser(ctx _context.Context, headers map[string]string) ApiLoginUserRequest {
 	return ApiLoginUserRequest{
 		ApiService: a,
 		ctx: ctx,
+		headers: headers
 	}
 }
 
@@ -725,6 +773,13 @@ func (a *UserApiService) LoginUserExecute(r ApiLoginUserRequest) (string, *_neth
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -780,10 +835,11 @@ LogoutUser Logs out current logged in user session
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiLogoutUserRequest
 */
-func (a *UserApiService) LogoutUser(ctx _context.Context) ApiLogoutUserRequest {
+func (a *UserApiService) LogoutUser(ctx _context.Context, headers map[string]string) ApiLogoutUserRequest {
 	return ApiLogoutUserRequest{
 		ApiService: a,
 		ctx: ctx,
+		headers: headers
 	}
 }
 
@@ -825,6 +881,13 @@ func (a *UserApiService) LogoutUserExecute(r ApiLogoutUserRequest) (*_nethttp.Re
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
@@ -859,8 +922,10 @@ func (a *UserApiService) LogoutUserExecute(r ApiLogoutUserRequest) (*_nethttp.Re
 type ApiUpdateUserRequest struct {
 	ctx _context.Context
 	ApiService UserApi
-	username string
-	body *User
+	username string	
+	headers map[string]string
+	body *User	
+	headers map[string]string
 }
 
 // Updated user object
@@ -881,12 +946,13 @@ This can only be done by the logged in user.
  @param username name that need to be deleted
  @return ApiUpdateUserRequest
 */
-func (a *UserApiService) UpdateUser(ctx _context.Context, username string, body *User) ApiUpdateUserRequest {
+func (a *UserApiService) UpdateUser(ctx _context.Context, username string, body *User, headers map[string]string) ApiUpdateUserRequest {
 	return ApiUpdateUserRequest{
 		ApiService: a,
 		ctx: ctx,
 		username: username,
 		body: body,
+		headers: headers
 	}
 }
 
@@ -932,6 +998,13 @@ func (a *UserApiService) UpdateUserExecute(r ApiUpdateUserRequest) (*_nethttp.Re
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	# override localVarHeaderParams with the headers passed into the function
+	if len(r.headers) > 0 {
+		for k, v := range r.headers { 
+			localVarHeaderParams[k] = v
+		}
+	}
+
 	// body params
 	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)

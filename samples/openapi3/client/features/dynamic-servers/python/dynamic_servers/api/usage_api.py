@@ -170,7 +170,6 @@ class UsageApi(object):
 
     def custom_server(
         self,
-        accept=None,
         **kwargs
     ):
         """Use custom server  # noqa: E501
@@ -228,17 +227,19 @@ class UsageApi(object):
             '_check_return_type', True
         )
         kwargs['_host_index'] = kwargs.get('_host_index')
-        if accept and self.custom_server_endpoint.headers_map:
-            updated_header_maps = self.custom_server_endpoint.headers_map.copy()
-            if accept in updated_header_maps:
-                updated_header_maps['accept'] = [accept]
-                self.custom_server_endpoint.headers_map = updated_header_maps
+        headers = kwargs.get('headers', {})
+        if headers:
+            accept = headers.get('accept') or headers.get('Accept')
+            if accept and accept in self.gene_download_summary_by_accession_endpoint.headers_map:
+                self.gene_download_summary_by_accession_endpoint.headers_map['accept'] = accept
+
+            for key in headers.keys():
+                self.gene_download_summary_by_accession_endpoint.headers_map[key] = headers[key]
 
         return self.custom_server_endpoint.call_with_http_info(**kwargs)
 
     def default_server(
         self,
-        accept=None,
         **kwargs
     ):
         """Use default server  # noqa: E501
@@ -296,11 +297,14 @@ class UsageApi(object):
             '_check_return_type', True
         )
         kwargs['_host_index'] = kwargs.get('_host_index')
-        if accept and self.default_server_endpoint.headers_map:
-            updated_header_maps = self.default_server_endpoint.headers_map.copy()
-            if accept in updated_header_maps:
-                updated_header_maps['accept'] = [accept]
-                self.default_server_endpoint.headers_map = updated_header_maps
+        headers = kwargs.get('headers', {})
+        if headers:
+            accept = headers.get('accept') or headers.get('Accept')
+            if accept and accept in self.gene_download_summary_by_accession_endpoint.headers_map:
+                self.gene_download_summary_by_accession_endpoint.headers_map['accept'] = accept
+
+            for key in headers.keys():
+                self.gene_download_summary_by_accession_endpoint.headers_map[key] = headers[key]
 
         return self.default_server_endpoint.call_with_http_info(**kwargs)
 

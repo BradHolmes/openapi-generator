@@ -305,7 +305,7 @@ UserApi <- R6::R6Class(
       }
     },
 
-    CreateUserWithHttpInfo = function(body, ...){
+    CreateUserWithHttpInfo = function(body, headers=NULL, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- c()
@@ -321,6 +321,13 @@ UserApi <- R6::R6Class(
       }
 
       urlPath <- "/user"
+
+      # override headerParams with the headers passed into the function
+      if (!is.null(headers)) {
+        for (name in names(headers)){
+          headerParams[name] <- headers[name]
+        }
+      }
 
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
                                  method = "POST",
@@ -353,7 +360,7 @@ UserApi <- R6::R6Class(
       }
     },
 
-    CreateUsersWithArrayInputWithHttpInfo = function(body, ...){
+    CreateUsersWithArrayInputWithHttpInfo = function(body, headers=NULL, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- c()
@@ -370,6 +377,13 @@ UserApi <- R6::R6Class(
       }
 
       urlPath <- "/user/createWithArray"
+
+      # override headerParams with the headers passed into the function
+      if (!is.null(headers)) {
+        for (name in names(headers)){
+          headerParams[name] <- headers[name]
+        }
+      }
 
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
                                  method = "POST",
@@ -402,7 +416,7 @@ UserApi <- R6::R6Class(
       }
     },
 
-    CreateUsersWithListInputWithHttpInfo = function(body, ...){
+    CreateUsersWithListInputWithHttpInfo = function(body, headers=NULL, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- c()
@@ -419,6 +433,13 @@ UserApi <- R6::R6Class(
       }
 
       urlPath <- "/user/createWithList"
+
+      # override headerParams with the headers passed into the function
+      if (!is.null(headers)) {
+        for (name in names(headers)){
+          headerParams[name] <- headers[name]
+        }
+      }
 
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
                                  method = "POST",
@@ -451,7 +472,7 @@ UserApi <- R6::R6Class(
       }
     },
 
-    DeleteUserWithHttpInfo = function(username, ...){
+    DeleteUserWithHttpInfo = function(username, headers=NULL, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- c()
@@ -466,6 +487,13 @@ UserApi <- R6::R6Class(
         urlPath <- gsub(paste0("\\{", "username", "\\}"), URLencode(as.character(`username`), reserved = TRUE), urlPath)
       }
 
+
+      # override headerParams with the headers passed into the function
+      if (!is.null(headers)) {
+        for (name in names(headers)){
+          headerParams[name] <- headers[name]
+        }
+      }
 
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
                                  method = "DELETE",
@@ -498,7 +526,7 @@ UserApi <- R6::R6Class(
       }
     },
 
-    GetUserByNameWithHttpInfo = function(username, ...){
+    GetUserByNameWithHttpInfo = function(username, headers=NULL, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- c()
@@ -513,6 +541,13 @@ UserApi <- R6::R6Class(
         urlPath <- gsub(paste0("\\{", "username", "\\}"), URLencode(as.character(`username`), reserved = TRUE), urlPath)
       }
 
+
+      # override headerParams with the headers passed into the function
+      if (!is.null(headers)) {
+        for (name in names(headers)){
+          headerParams[name] <- headers[name]
+        }
+      }
 
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
                                  method = "GET",
@@ -556,7 +591,7 @@ UserApi <- R6::R6Class(
       }
     },
 
-    LoginUserWithHttpInfo = function(username, password, ...){
+    LoginUserWithHttpInfo = function(username, password, headers=NULL, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- c()
@@ -575,6 +610,13 @@ UserApi <- R6::R6Class(
 
       body <- NULL
       urlPath <- "/user/login"
+
+      # override headerParams with the headers passed into the function
+      if (!is.null(headers)) {
+        for (name in names(headers)){
+          headerParams[name] <- headers[name]
+        }
+      }
 
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
                                  method = "GET",
@@ -618,13 +660,20 @@ UserApi <- R6::R6Class(
       }
     },
 
-    LogoutUserWithHttpInfo = function(...){
+    LogoutUserWithHttpInfo = function(headers=NULL, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- c()
 
       body <- NULL
       urlPath <- "/user/logout"
+
+      # override headerParams with the headers passed into the function
+      if (!is.null(headers)) {
+        for (name in names(headers)){
+          headerParams[name] <- headers[name]
+        }
+      }
 
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
                                  method = "GET",
@@ -657,7 +706,7 @@ UserApi <- R6::R6Class(
       }
     },
 
-    UpdateUserWithHttpInfo = function(username, body, ...){
+    UpdateUserWithHttpInfo = function(username, body, headers=NULL, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- c()
@@ -681,6 +730,13 @@ UserApi <- R6::R6Class(
         urlPath <- gsub(paste0("\\{", "username", "\\}"), URLencode(as.character(`username`), reserved = TRUE), urlPath)
       }
 
+
+      # override headerParams with the headers passed into the function
+      if (!is.null(headers)) {
+        for (name in names(headers)){
+          headerParams[name] <- headers[name]
+        }
+      }
 
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
                                  method = "PUT",

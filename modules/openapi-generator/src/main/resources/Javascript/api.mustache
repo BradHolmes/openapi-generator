@@ -52,7 +52,7 @@
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}</returnType></usePromises><#usePromises>
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}<#returnType>, with an object containing data of type {@link <&vendorExtensions.x-jsdoc-type>} and HTTP response</returnType><^returnType>, with an object containing HTTP response</returnType></usePromises>
      */
-</emitJSDoc>    this.<operationId><#usePromises>WithHttpInfo</usePromises> = function(<vendorExtensions.x-codegen-arg-list>, accept='') {<#hasOptionalParams>
+</emitJSDoc>    this.<operationId><#usePromises>WithHttpInfo</usePromises> = function(<vendorExtensions.x-codegen-arg-list>, headers={}) {<#hasOptionalParams>
       opts = opts || {};</hasOptionalParams>
       var postBody = <#bodyParam><#required><paramName></required><^required>opts['<paramName>']</required></bodyParam><^bodyParam>null</bodyParam>;
 <#allParams>
@@ -86,10 +86,16 @@
       var authNames = [<#authMethods>'<name>'<^-last>, </-last></authMethods>];
       var contentTypes = [<#consumes>'<& mediaType>'<^-last>, </-last></consumes>];
       var accepts = [<#produces>'<& mediaType>'<^-last>, </-last></produces>];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      }      
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }    
       var returnType = <#vendorExtensions.x-return-type><&vendorExtensions.x-return-type></vendorExtensions.x-return-type><^vendorExtensions.x-return-type>null</vendorExtensions.x-return-type>;
       <#servers.0>
       let basePaths = [<#servers>'<url>'<^-last>, </-last></servers>];

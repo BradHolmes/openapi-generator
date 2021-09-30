@@ -188,7 +188,7 @@ StoreApi <- R6::R6Class(
       }
     },
 
-    DeleteOrderWithHttpInfo = function(order.id, ...){
+    DeleteOrderWithHttpInfo = function(order.id, headers=NULL, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- c()
@@ -203,6 +203,13 @@ StoreApi <- R6::R6Class(
         urlPath <- gsub(paste0("\\{", "orderId", "\\}"), URLencode(as.character(`order.id`), reserved = TRUE), urlPath)
       }
 
+
+      # override headerParams with the headers passed into the function
+      if (!is.null(headers)) {
+        for (name in names(headers)){
+          headerParams[name] <- headers[name]
+        }
+      }
 
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
                                  method = "DELETE",
@@ -235,7 +242,7 @@ StoreApi <- R6::R6Class(
       }
     },
 
-    GetInventoryWithHttpInfo = function(...){
+    GetInventoryWithHttpInfo = function(headers=NULL, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- c()
@@ -245,6 +252,13 @@ StoreApi <- R6::R6Class(
       # API key authentication
       if ("api_key" %in% names(self$apiClient$apiKeys) && nchar(self$apiClient$apiKeys["api_key"]) > 0) {
         headerParams['api_key'] <- paste(unlist(self$apiClient$apiKeys["api_key"]), collapse='')
+      }
+
+      # override headerParams with the headers passed into the function
+      if (!is.null(headers)) {
+        for (name in names(headers)){
+          headerParams[name] <- headers[name]
+        }
       }
 
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
@@ -289,7 +303,7 @@ StoreApi <- R6::R6Class(
       }
     },
 
-    GetOrderByIdWithHttpInfo = function(order.id, ...){
+    GetOrderByIdWithHttpInfo = function(order.id, headers=NULL, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- c()
@@ -304,6 +318,13 @@ StoreApi <- R6::R6Class(
         urlPath <- gsub(paste0("\\{", "orderId", "\\}"), URLencode(as.character(`order.id`), reserved = TRUE), urlPath)
       }
 
+
+      # override headerParams with the headers passed into the function
+      if (!is.null(headers)) {
+        for (name in names(headers)){
+          headerParams[name] <- headers[name]
+        }
+      }
 
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
                                  method = "GET",
@@ -347,7 +368,7 @@ StoreApi <- R6::R6Class(
       }
     },
 
-    PlaceOrderWithHttpInfo = function(body, ...){
+    PlaceOrderWithHttpInfo = function(body, headers=NULL, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- c()
@@ -363,6 +384,13 @@ StoreApi <- R6::R6Class(
       }
 
       urlPath <- "/store/order"
+
+      # override headerParams with the headers passed into the function
+      if (!is.null(headers)) {
+        for (name in names(headers)){
+          headerParams[name] <- headers[name]
+        }
+      }
 
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
                                  method = "POST",

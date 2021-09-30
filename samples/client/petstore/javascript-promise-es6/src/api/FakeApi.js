@@ -45,7 +45,7 @@ export default class FakeApi {
      * Health check endpoint
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/HealthCheckResult} and HTTP response
      */
-    fakeHealthGetWithHttpInfo(, accept='') {
+    fakeHealthGetWithHttpInfo(, headers={}) {
       let postBody = null;
 
       let pathParams = {
@@ -60,10 +60,17 @@ export default class FakeApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = ['application/json'];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = HealthCheckResult;
       return this.apiClient.callApi(
         '/fake/health', 'GET',
@@ -92,7 +99,7 @@ export default class FakeApi {
      * @param {String} opts.header1 header parameter
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    fakeHttpSignatureTestWithHttpInfo(pet, opts, accept='') {
+    fakeHttpSignatureTestWithHttpInfo(pet, opts, headers={}) {
       opts = opts || {};
       let postBody = pet;
       // verify the required parameter 'pet' is set
@@ -114,10 +121,17 @@ export default class FakeApi {
       let authNames = ['http_signature_test'];
       let contentTypes = ['application/json', 'application/xml'];
       let accepts = [];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = null;
       return this.apiClient.callApi(
         '/fake/http-signature-test', 'GET',
@@ -148,7 +162,7 @@ export default class FakeApi {
      * @param {Boolean} opts.body Input boolean as post body
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Boolean} and HTTP response
      */
-    fakeOuterBooleanSerializeWithHttpInfo(opts, accept='') {
+    fakeOuterBooleanSerializeWithHttpInfo(opts, headers={}) {
       opts = opts || {};
       let postBody = opts['body'];
 
@@ -164,10 +178,17 @@ export default class FakeApi {
       let authNames = [];
       let contentTypes = ['application/json'];
       let accepts = ['*/*'];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = 'Boolean';
       return this.apiClient.callApi(
         '/fake/outer/boolean', 'POST',
@@ -196,7 +217,7 @@ export default class FakeApi {
      * @param {module:model/OuterComposite} opts.outerComposite Input composite as post body
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/OuterComposite} and HTTP response
      */
-    fakeOuterCompositeSerializeWithHttpInfo(opts, accept='') {
+    fakeOuterCompositeSerializeWithHttpInfo(opts, headers={}) {
       opts = opts || {};
       let postBody = opts['outerComposite'];
 
@@ -212,10 +233,17 @@ export default class FakeApi {
       let authNames = [];
       let contentTypes = ['application/json'];
       let accepts = ['*/*'];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = OuterComposite;
       return this.apiClient.callApi(
         '/fake/outer/composite', 'POST',
@@ -244,7 +272,7 @@ export default class FakeApi {
      * @param {Number} opts.body Input number as post body
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Number} and HTTP response
      */
-    fakeOuterNumberSerializeWithHttpInfo(opts, accept='') {
+    fakeOuterNumberSerializeWithHttpInfo(opts, headers={}) {
       opts = opts || {};
       let postBody = opts['body'];
 
@@ -260,10 +288,17 @@ export default class FakeApi {
       let authNames = [];
       let contentTypes = ['application/json'];
       let accepts = ['*/*'];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = 'Number';
       return this.apiClient.callApi(
         '/fake/outer/number', 'POST',
@@ -292,7 +327,7 @@ export default class FakeApi {
      * @param {String} opts.body Input string as post body
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link String} and HTTP response
      */
-    fakeOuterStringSerializeWithHttpInfo(opts, accept='') {
+    fakeOuterStringSerializeWithHttpInfo(opts, headers={}) {
       opts = opts || {};
       let postBody = opts['body'];
 
@@ -308,10 +343,17 @@ export default class FakeApi {
       let authNames = [];
       let contentTypes = ['application/json'];
       let accepts = ['*/*'];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = 'String';
       return this.apiClient.callApi(
         '/fake/outer/string', 'POST',
@@ -339,7 +381,7 @@ export default class FakeApi {
      * @param {module:model/OuterObjectWithEnumProperty} outerObjectWithEnumProperty Input enum (int) as post body
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/OuterObjectWithEnumProperty} and HTTP response
      */
-    fakePropertyEnumIntegerSerializeWithHttpInfo(outerObjectWithEnumProperty, accept='') {
+    fakePropertyEnumIntegerSerializeWithHttpInfo(outerObjectWithEnumProperty, headers={}) {
       let postBody = outerObjectWithEnumProperty;
       // verify the required parameter 'outerObjectWithEnumProperty' is set
       if (outerObjectWithEnumProperty === undefined || outerObjectWithEnumProperty === null) {
@@ -358,10 +400,17 @@ export default class FakeApi {
       let authNames = [];
       let contentTypes = ['application/json'];
       let accepts = ['*/*'];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = OuterObjectWithEnumProperty;
       return this.apiClient.callApi(
         '/fake/property/enum-int', 'POST',
@@ -388,7 +437,7 @@ export default class FakeApi {
      * @param {File} body image to upload
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    testBodyWithBinaryWithHttpInfo(body, accept='') {
+    testBodyWithBinaryWithHttpInfo(body, headers={}) {
       let postBody = body;
       // verify the required parameter 'body' is set
       if (body === undefined || body === null) {
@@ -407,10 +456,17 @@ export default class FakeApi {
       let authNames = [];
       let contentTypes = ['image/png'];
       let accepts = [];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = null;
       return this.apiClient.callApi(
         '/fake/body-with-binary', 'PUT',
@@ -437,7 +493,7 @@ export default class FakeApi {
      * @param {module:model/FileSchemaTestClass} fileSchemaTestClass 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    testBodyWithFileSchemaWithHttpInfo(fileSchemaTestClass, accept='') {
+    testBodyWithFileSchemaWithHttpInfo(fileSchemaTestClass, headers={}) {
       let postBody = fileSchemaTestClass;
       // verify the required parameter 'fileSchemaTestClass' is set
       if (fileSchemaTestClass === undefined || fileSchemaTestClass === null) {
@@ -456,10 +512,17 @@ export default class FakeApi {
       let authNames = [];
       let contentTypes = ['application/json'];
       let accepts = [];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = null;
       return this.apiClient.callApi(
         '/fake/body-with-file-schema', 'PUT',
@@ -486,7 +549,7 @@ export default class FakeApi {
      * @param {module:model/User} user 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    testBodyWithQueryParamsWithHttpInfo(query, user, accept='') {
+    testBodyWithQueryParamsWithHttpInfo(query, user, headers={}) {
       let postBody = user;
       // verify the required parameter 'query' is set
       if (query === undefined || query === null) {
@@ -510,10 +573,17 @@ export default class FakeApi {
       let authNames = [];
       let contentTypes = ['application/json'];
       let accepts = [];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = null;
       return this.apiClient.callApi(
         '/fake/body-with-query-params', 'PUT',
@@ -541,7 +611,7 @@ export default class FakeApi {
      * @param {module:model/Client} client client model
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Client} and HTTP response
      */
-    testClientModelWithHttpInfo(client, accept='') {
+    testClientModelWithHttpInfo(client, headers={}) {
       let postBody = client;
       // verify the required parameter 'client' is set
       if (client === undefined || client === null) {
@@ -560,10 +630,17 @@ export default class FakeApi {
       let authNames = [];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = Client;
       return this.apiClient.callApi(
         '/fake', 'PATCH',
@@ -606,7 +683,7 @@ export default class FakeApi {
      * @param {String} opts.callback None
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    testEndpointParametersWithHttpInfo(number, _double, patternWithoutDelimiter, _byte, opts, accept='') {
+    testEndpointParametersWithHttpInfo(number, _double, patternWithoutDelimiter, _byte, opts, headers={}) {
       opts = opts || {};
       let postBody = null;
       // verify the required parameter 'number' is set
@@ -652,10 +729,17 @@ export default class FakeApi {
       let authNames = ['http_basic_test'];
       let contentTypes = ['application/x-www-form-urlencoded'];
       let accepts = [];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = null;
       return this.apiClient.callApi(
         '/fake', 'POST',
@@ -706,7 +790,7 @@ export default class FakeApi {
      * @param {module:model/String} opts.enumFormString Form parameter enum test (string) (default to '-efg')
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    testEnumParametersWithHttpInfo(opts, accept='') {
+    testEnumParametersWithHttpInfo(opts, headers={}) {
       opts = opts || {};
       let postBody = null;
 
@@ -730,10 +814,17 @@ export default class FakeApi {
       let authNames = [];
       let contentTypes = ['application/x-www-form-urlencoded'];
       let accepts = [];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = null;
       return this.apiClient.callApi(
         '/fake', 'GET',
@@ -776,7 +867,7 @@ export default class FakeApi {
      * @param {Number} opts.int64Group Integer in group parameters
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    testGroupParametersWithHttpInfo(requiredStringGroup, requiredBooleanGroup, requiredInt64Group, opts, accept='') {
+    testGroupParametersWithHttpInfo(requiredStringGroup, requiredBooleanGroup, requiredInt64Group, opts, headers={}) {
       opts = opts || {};
       let postBody = null;
       // verify the required parameter 'requiredStringGroup' is set
@@ -810,10 +901,17 @@ export default class FakeApi {
       let authNames = ['bearer_test'];
       let contentTypes = [];
       let accepts = [];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = null;
       return this.apiClient.callApi(
         '/fake', 'DELETE',
@@ -847,7 +945,7 @@ export default class FakeApi {
      * @param {Object.<String, {String: String}>} requestBody request body
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    testInlineAdditionalPropertiesWithHttpInfo(requestBody, accept='') {
+    testInlineAdditionalPropertiesWithHttpInfo(requestBody, headers={}) {
       let postBody = requestBody;
       // verify the required parameter 'requestBody' is set
       if (requestBody === undefined || requestBody === null) {
@@ -866,10 +964,17 @@ export default class FakeApi {
       let authNames = [];
       let contentTypes = ['application/json'];
       let accepts = [];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = null;
       return this.apiClient.callApi(
         '/fake/inline-additionalProperties', 'POST',
@@ -897,7 +1002,7 @@ export default class FakeApi {
      * @param {String} param2 field2
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    testJsonFormDataWithHttpInfo(param, param2, accept='') {
+    testJsonFormDataWithHttpInfo(param, param2, headers={}) {
       let postBody = null;
       // verify the required parameter 'param' is set
       if (param === undefined || param === null) {
@@ -922,10 +1027,17 @@ export default class FakeApi {
       let authNames = [];
       let contentTypes = ['application/x-www-form-urlencoded'];
       let accepts = [];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = null;
       return this.apiClient.callApi(
         '/fake/jsonFormData', 'GET',
@@ -960,7 +1072,7 @@ export default class FakeApi {
      * @param {Object.<String, {String: String}>} opts.language 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    testQueryParameterCollectionFormatWithHttpInfo(pipe, ioutil, http, url, context, allowEmpty, opts, accept='') {
+    testQueryParameterCollectionFormatWithHttpInfo(pipe, ioutil, http, url, context, allowEmpty, opts, headers={}) {
       opts = opts || {};
       let postBody = null;
       // verify the required parameter 'pipe' is set
@@ -1007,10 +1119,17 @@ export default class FakeApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = [];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = null;
       return this.apiClient.callApi(
         '/fake/test-query-parameters', 'PUT',

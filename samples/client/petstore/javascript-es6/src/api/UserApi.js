@@ -48,7 +48,7 @@ export default class UserApi {
      * @param {module:model/User} user Created user object
      * @param {module:api/UserApi~createUserCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    createUser(user, callback, accept='') {
+    createUser(user, callback, headers={}) {
       let postBody = user;
       // verify the required parameter 'user' is set
       if (user === undefined || user === null) {
@@ -67,10 +67,17 @@ export default class UserApi {
       let authNames = [];
       let contentTypes = ['application/json'];
       let accepts = [];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = null;
       return this.apiClient.callApi(
         '/user', 'POST',
@@ -92,7 +99,7 @@ export default class UserApi {
      * @param {Array.<module:model/User>} user List of user object
      * @param {module:api/UserApi~createUsersWithArrayInputCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    createUsersWithArrayInput(user, callback, accept='') {
+    createUsersWithArrayInput(user, callback, headers={}) {
       let postBody = user;
       // verify the required parameter 'user' is set
       if (user === undefined || user === null) {
@@ -111,10 +118,17 @@ export default class UserApi {
       let authNames = [];
       let contentTypes = ['application/json'];
       let accepts = [];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = null;
       return this.apiClient.callApi(
         '/user/createWithArray', 'POST',
@@ -136,7 +150,7 @@ export default class UserApi {
      * @param {Array.<module:model/User>} user List of user object
      * @param {module:api/UserApi~createUsersWithListInputCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    createUsersWithListInput(user, callback, accept='') {
+    createUsersWithListInput(user, callback, headers={}) {
       let postBody = user;
       // verify the required parameter 'user' is set
       if (user === undefined || user === null) {
@@ -155,10 +169,17 @@ export default class UserApi {
       let authNames = [];
       let contentTypes = ['application/json'];
       let accepts = [];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = null;
       return this.apiClient.callApi(
         '/user/createWithList', 'POST',
@@ -181,7 +202,7 @@ export default class UserApi {
      * @param {String} username The name that needs to be deleted
      * @param {module:api/UserApi~deleteUserCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    deleteUser(username, callback, accept='') {
+    deleteUser(username, callback, headers={}) {
       let postBody = null;
       // verify the required parameter 'username' is set
       if (username === undefined || username === null) {
@@ -201,10 +222,17 @@ export default class UserApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = [];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = null;
       return this.apiClient.callApi(
         '/user/{username}', 'DELETE',
@@ -227,7 +255,7 @@ export default class UserApi {
      * @param {module:api/UserApi~getUserByNameCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/User}
      */
-    getUserByName(username, callback, accept='') {
+    getUserByName(username, callback, headers={}) {
       let postBody = null;
       // verify the required parameter 'username' is set
       if (username === undefined || username === null) {
@@ -247,10 +275,17 @@ export default class UserApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = ['application/xml', 'application/json'];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = User;
       return this.apiClient.callApi(
         '/user/{username}', 'GET',
@@ -274,7 +309,7 @@ export default class UserApi {
      * @param {module:api/UserApi~loginUserCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link String}
      */
-    loginUser(username, password, callback, accept='') {
+    loginUser(username, password, callback, headers={}) {
       let postBody = null;
       // verify the required parameter 'username' is set
       if (username === undefined || username === null) {
@@ -299,10 +334,17 @@ export default class UserApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = ['application/xml', 'application/json'];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = 'String';
       return this.apiClient.callApi(
         '/user/login', 'GET',
@@ -323,7 +365,7 @@ export default class UserApi {
      * Logs out current logged in user session
      * @param {module:api/UserApi~logoutUserCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    logoutUser(callback, accept='') {
+    logoutUser(callback, headers={}) {
       let postBody = null;
 
       let pathParams = {
@@ -338,10 +380,17 @@ export default class UserApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = [];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = null;
       return this.apiClient.callApi(
         '/user/logout', 'GET',
@@ -365,7 +414,7 @@ export default class UserApi {
      * @param {module:model/User} user Updated user object
      * @param {module:api/UserApi~updateUserCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    updateUser(username, user, callback, accept='') {
+    updateUser(username, user, callback, headers={}) {
       let postBody = user;
       // verify the required parameter 'username' is set
       if (username === undefined || username === null) {
@@ -389,10 +438,17 @@ export default class UserApi {
       let authNames = [];
       let contentTypes = ['application/json'];
       let accepts = [];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = null;
       return this.apiClient.callApi(
         '/user/{username}', 'PUT',

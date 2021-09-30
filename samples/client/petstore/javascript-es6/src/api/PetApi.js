@@ -48,7 +48,7 @@ export default class PetApi {
      * @param {module:model/Pet} pet Pet object that needs to be added to the store
      * @param {module:api/PetApi~addPetCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    addPet(pet, opts, callback, accept='') {
+    addPet(pet, opts, callback, headers={}) {
       opts = opts || {};
       let postBody = pet;
       // verify the required parameter 'pet' is set
@@ -68,10 +68,17 @@ export default class PetApi {
       let authNames = ['petstore_auth'];
       let contentTypes = ['application/json', 'application/xml'];
       let accepts = [];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = null;
       let basePaths = ['http://petstore.swagger.io/v2', 'http://path-server-test.petstore.local/v2'];
       let basePath = basePaths[0]; // by default use the first one in "servers" defined in OpenAPI
@@ -104,7 +111,7 @@ export default class PetApi {
      * @param {String} opts.apiKey 
      * @param {module:api/PetApi~deletePetCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    deletePet(petId, opts, callback, accept='') {
+    deletePet(petId, opts, callback, headers={}) {
       opts = opts || {};
       let postBody = null;
       // verify the required parameter 'petId' is set
@@ -126,10 +133,17 @@ export default class PetApi {
       let authNames = ['petstore_auth'];
       let contentTypes = [];
       let accepts = [];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = null;
       return this.apiClient.callApi(
         '/pet/{petId}', 'DELETE',
@@ -153,7 +167,7 @@ export default class PetApi {
      * @param {module:api/PetApi~findPetsByStatusCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Array.<module:model/Pet>}
      */
-    findPetsByStatus(status, callback, accept='') {
+    findPetsByStatus(status, callback, headers={}) {
       let postBody = null;
       // verify the required parameter 'status' is set
       if (status === undefined || status === null) {
@@ -173,10 +187,17 @@ export default class PetApi {
       let authNames = ['petstore_auth'];
       let contentTypes = [];
       let accepts = ['application/xml', 'application/json'];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = [Pet];
       return this.apiClient.callApi(
         '/pet/findByStatus', 'GET',
@@ -200,7 +221,7 @@ export default class PetApi {
      * @param {module:api/PetApi~findPetsByTagsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Array.<module:model/Pet>}
      */
-    findPetsByTags(tags, callback, accept='') {
+    findPetsByTags(tags, callback, headers={}) {
       let postBody = null;
       // verify the required parameter 'tags' is set
       if (tags === undefined || tags === null) {
@@ -220,10 +241,17 @@ export default class PetApi {
       let authNames = ['petstore_auth'];
       let contentTypes = [];
       let accepts = ['application/xml', 'application/json'];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = [Pet];
       return this.apiClient.callApi(
         '/pet/findByTags', 'GET',
@@ -247,7 +275,7 @@ export default class PetApi {
      * @param {module:api/PetApi~getPetByIdCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/Pet}
      */
-    getPetById(petId, callback, accept='') {
+    getPetById(petId, callback, headers={}) {
       let postBody = null;
       // verify the required parameter 'petId' is set
       if (petId === undefined || petId === null) {
@@ -267,10 +295,17 @@ export default class PetApi {
       let authNames = ['api_key'];
       let contentTypes = [];
       let accepts = ['application/xml', 'application/json'];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = Pet;
       return this.apiClient.callApi(
         '/pet/{petId}', 'GET',
@@ -292,7 +327,7 @@ export default class PetApi {
      * @param {module:model/Pet} pet Pet object that needs to be added to the store
      * @param {module:api/PetApi~updatePetCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    updatePet(pet, opts, callback, accept='') {
+    updatePet(pet, opts, callback, headers={}) {
       opts = opts || {};
       let postBody = pet;
       // verify the required parameter 'pet' is set
@@ -312,10 +347,17 @@ export default class PetApi {
       let authNames = ['petstore_auth'];
       let contentTypes = ['application/json', 'application/xml'];
       let accepts = [];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = null;
       let basePaths = ['http://petstore.swagger.io/v2', 'http://path-server-test.petstore.local/v2'];
       let basePath = basePaths[0]; // by default use the first one in "servers" defined in OpenAPI
@@ -349,7 +391,7 @@ export default class PetApi {
      * @param {String} opts.status Updated status of the pet
      * @param {module:api/PetApi~updatePetWithFormCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    updatePetWithForm(petId, opts, callback, accept='') {
+    updatePetWithForm(petId, opts, callback, headers={}) {
       opts = opts || {};
       let postBody = null;
       // verify the required parameter 'petId' is set
@@ -372,10 +414,17 @@ export default class PetApi {
       let authNames = ['petstore_auth'];
       let contentTypes = ['application/x-www-form-urlencoded'];
       let accepts = [];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = null;
       return this.apiClient.callApi(
         '/pet/{petId}', 'POST',
@@ -401,7 +450,7 @@ export default class PetApi {
      * @param {module:api/PetApi~uploadFileCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiResponse}
      */
-    uploadFile(petId, opts, callback, accept='') {
+    uploadFile(petId, opts, callback, headers={}) {
       opts = opts || {};
       let postBody = null;
       // verify the required parameter 'petId' is set
@@ -424,10 +473,17 @@ export default class PetApi {
       let authNames = ['petstore_auth'];
       let contentTypes = ['multipart/form-data'];
       let accepts = ['application/json'];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = ApiResponse;
       return this.apiClient.callApi(
         '/pet/{petId}/uploadImage', 'POST',
@@ -453,7 +509,7 @@ export default class PetApi {
      * @param {module:api/PetApi~uploadFileWithRequiredFileCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/ApiResponse}
      */
-    uploadFileWithRequiredFile(petId, requiredFile, opts, callback, accept='') {
+    uploadFileWithRequiredFile(petId, requiredFile, opts, callback, headers={}) {
       opts = opts || {};
       let postBody = null;
       // verify the required parameter 'petId' is set
@@ -480,10 +536,17 @@ export default class PetApi {
       let authNames = ['petstore_auth'];
       let contentTypes = ['multipart/form-data'];
       let accepts = ['application/json'];
-      if (accept !== '') {
-        const index = accepts.indexOf(accept);
-        accepts = index > -1 ? [accepts[index]] : accepts;
-      } 
+
+      if (Object.keys(headers).length > 0) {
+        // check if `accept` is in the array `accepts` (generate from the specs) above
+        const accept = headers['accept'] || headers['Accept'] || undefined;
+        if (accept !== undefined && accept in accepts) {
+          accepts = [accept]
+        }        
+        for (const prop in headers) {
+          headerParams[prop] = headers[prop];
+        }
+      }
       let returnType = ApiResponse;
       return this.apiClient.callApi(
         '/fake/{petId}/uploadImageWithRequiredFile', 'POST',

@@ -89,7 +89,6 @@ class AnotherFakeApi(object):
     def call_123_test_special_tags(
         self,
         body,
-        accept=None,
         **kwargs
     ):
         """To test special tags  # noqa: E501
@@ -151,11 +150,14 @@ class AnotherFakeApi(object):
         kwargs['_host_index'] = kwargs.get('_host_index')
         kwargs['body'] = \
             body
-        if accept and self.call_123_test_special_tags_endpoint.headers_map:
-            updated_header_maps = self.call_123_test_special_tags_endpoint.headers_map.copy()
-            if accept in updated_header_maps:
-                updated_header_maps['accept'] = [accept]
-                self.call_123_test_special_tags_endpoint.headers_map = updated_header_maps
+        headers = kwargs.get('headers', {})
+        if headers:
+            accept = headers.get('accept') or headers.get('Accept')
+            if accept and accept in self.gene_download_summary_by_accession_endpoint.headers_map:
+                self.gene_download_summary_by_accession_endpoint.headers_map['accept'] = accept
+
+            for key in headers.keys():
+                self.gene_download_summary_by_accession_endpoint.headers_map[key] = headers[key]
 
         return self.call_123_test_special_tags_endpoint.call_with_http_info(**kwargs)
 
