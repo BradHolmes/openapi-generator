@@ -153,7 +153,7 @@ type ApiAddPetRequest struct {
 	ctx _context.Context
 	ApiService PetApi
 	body *Pet	
-	headers map[string]string
+    Headers map[string]string
 }
 
 // Pet object that needs to be added to the store
@@ -171,12 +171,11 @@ AddPet Add a new pet to the store
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAddPetRequest
 */
-func (a *PetApiService) AddPet(ctx _context.Context, body *Pet, headers map[string]string) ApiAddPetRequest {
+func (a *PetApiService) AddPet(ctx _context.Context, body *Pet) ApiAddPetRequest {
 	return ApiAddPetRequest{
 		ApiService: a,
 		ctx: ctx,
 		body: body,
-		headers: headers
 	}
 }
 
@@ -221,9 +220,9 @@ func (a *PetApiService) AddPetExecute(r ApiAddPetRequest) (*_nethttp.Response, e
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	# override localVarHeaderParams with the headers passed into the function
-	if len(r.headers) > 0 {
-		for k, v := range r.headers { 
+	// override localVarHeaderParams with the headers passed into the function
+	if len(r.Headers) > 0 {
+		for k, v := range r.Headers { 
 			localVarHeaderParams[k] = v
 		}
 	}
@@ -265,9 +264,8 @@ type ApiDeletePetRequest struct {
 	ctx _context.Context
 	ApiService PetApi
 	petId int64	
-	headers map[string]string
 	apiKey *string	
-	headers map[string]string
+    Headers map[string]string
 }
 
 func (r *ApiDeletePetRequest) ApiKey(apiKey string) *ApiDeletePetRequest {
@@ -285,12 +283,11 @@ DeletePet Deletes a pet
  @param petId Pet id to delete
  @return ApiDeletePetRequest
 */
-func (a *PetApiService) DeletePet(ctx _context.Context, petId int64, headers map[string]string) ApiDeletePetRequest {
+func (a *PetApiService) DeletePet(ctx _context.Context, petId int64) ApiDeletePetRequest {
 	return ApiDeletePetRequest{
 		ApiService: a,
 		ctx: ctx,
 		petId: petId,
-		headers: headers
 	}
 }
 
@@ -333,9 +330,9 @@ func (a *PetApiService) DeletePetExecute(r ApiDeletePetRequest) (*_nethttp.Respo
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	# override localVarHeaderParams with the headers passed into the function
-	if len(r.headers) > 0 {
-		for k, v := range r.headers { 
+	// override localVarHeaderParams with the headers passed into the function
+	if len(r.Headers) > 0 {
+		for k, v := range r.Headers { 
 			localVarHeaderParams[k] = v
 		}
 	}
@@ -378,7 +375,7 @@ type ApiFindPetsByStatusRequest struct {
 	ctx _context.Context
 	ApiService PetApi
 	status *[]string	
-	headers map[string]string
+    Headers map[string]string
 }
 
 // Status values that need to be considered for filter
@@ -398,11 +395,10 @@ Multiple status values can be provided with comma separated strings
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFindPetsByStatusRequest
 */
-func (a *PetApiService) FindPetsByStatus(ctx _context.Context, headers map[string]string) ApiFindPetsByStatusRequest {
+func (a *PetApiService) FindPetsByStatus(ctx _context.Context) ApiFindPetsByStatusRequest {
 	return ApiFindPetsByStatusRequest{
 		ApiService: a,
 		ctx: ctx,
-		headers: headers
 	}
 }
 
@@ -450,9 +446,9 @@ func (a *PetApiService) FindPetsByStatusExecute(r ApiFindPetsByStatusRequest) ([
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	# override localVarHeaderParams with the headers passed into the function
-	if len(r.headers) > 0 {
-		for k, v := range r.headers { 
+	// override localVarHeaderParams with the headers passed into the function
+	if len(r.Headers) > 0 {
+		for k, v := range r.Headers { 
 			localVarHeaderParams[k] = v
 		}
 	}
@@ -501,7 +497,7 @@ type ApiFindPetsByTagsRequest struct {
 	ctx _context.Context
 	ApiService PetApi
 	tags *[]string	
-	headers map[string]string
+    Headers map[string]string
 }
 
 // Tags to filter by
@@ -522,11 +518,10 @@ Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3
  @return ApiFindPetsByTagsRequest
 Deprecated
 */
-func (a *PetApiService) FindPetsByTags(ctx _context.Context, headers map[string]string) ApiFindPetsByTagsRequest {
+func (a *PetApiService) FindPetsByTags(ctx _context.Context) ApiFindPetsByTagsRequest {
 	return ApiFindPetsByTagsRequest{
 		ApiService: a,
 		ctx: ctx,
-		headers: headers
 	}
 }
 
@@ -575,9 +570,9 @@ func (a *PetApiService) FindPetsByTagsExecute(r ApiFindPetsByTagsRequest) ([]Pet
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	# override localVarHeaderParams with the headers passed into the function
-	if len(r.headers) > 0 {
-		for k, v := range r.headers { 
+	// override localVarHeaderParams with the headers passed into the function
+	if len(r.Headers) > 0 {
+		for k, v := range r.Headers { 
 			localVarHeaderParams[k] = v
 		}
 	}
@@ -626,7 +621,7 @@ type ApiGetPetByIdRequest struct {
 	ctx _context.Context
 	ApiService PetApi
 	petId int64	
-	headers map[string]string
+    Headers map[string]string
 }
 
 
@@ -642,12 +637,11 @@ Returns a single pet
  @param petId ID of pet to return
  @return ApiGetPetByIdRequest
 */
-func (a *PetApiService) GetPetById(ctx _context.Context, petId int64, headers map[string]string) ApiGetPetByIdRequest {
+func (a *PetApiService) GetPetById(ctx _context.Context, petId int64) ApiGetPetByIdRequest {
 	return ApiGetPetByIdRequest{
 		ApiService: a,
 		ctx: ctx,
 		petId: petId,
-		headers: headers
 	}
 }
 
@@ -692,9 +686,9 @@ func (a *PetApiService) GetPetByIdExecute(r ApiGetPetByIdRequest) (Pet, *_nethtt
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	# override localVarHeaderParams with the headers passed into the function
-	if len(r.headers) > 0 {
-		for k, v := range r.headers { 
+	// override localVarHeaderParams with the headers passed into the function
+	if len(r.Headers) > 0 {
+		for k, v := range r.Headers { 
 			localVarHeaderParams[k] = v
 		}
 	}
@@ -757,7 +751,7 @@ type ApiUpdatePetRequest struct {
 	ctx _context.Context
 	ApiService PetApi
 	body *Pet	
-	headers map[string]string
+    Headers map[string]string
 }
 
 // Pet object that needs to be added to the store
@@ -775,12 +769,11 @@ UpdatePet Update an existing pet
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiUpdatePetRequest
 */
-func (a *PetApiService) UpdatePet(ctx _context.Context, body *Pet, headers map[string]string) ApiUpdatePetRequest {
+func (a *PetApiService) UpdatePet(ctx _context.Context, body *Pet) ApiUpdatePetRequest {
 	return ApiUpdatePetRequest{
 		ApiService: a,
 		ctx: ctx,
 		body: body,
-		headers: headers
 	}
 }
 
@@ -825,9 +818,9 @@ func (a *PetApiService) UpdatePetExecute(r ApiUpdatePetRequest) (*_nethttp.Respo
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	# override localVarHeaderParams with the headers passed into the function
-	if len(r.headers) > 0 {
-		for k, v := range r.headers { 
+	// override localVarHeaderParams with the headers passed into the function
+	if len(r.Headers) > 0 {
+		for k, v := range r.Headers { 
 			localVarHeaderParams[k] = v
 		}
 	}
@@ -869,11 +862,9 @@ type ApiUpdatePetWithFormRequest struct {
 	ctx _context.Context
 	ApiService PetApi
 	petId int64	
-	headers map[string]string
 	name *string	
-	headers map[string]string
 	status *string	
-	headers map[string]string
+    Headers map[string]string
 }
 
 // Updated name of the pet
@@ -897,12 +888,11 @@ UpdatePetWithForm Updates a pet in the store with form data
  @param petId ID of pet that needs to be updated
  @return ApiUpdatePetWithFormRequest
 */
-func (a *PetApiService) UpdatePetWithForm(ctx _context.Context, petId int64, headers map[string]string) ApiUpdatePetWithFormRequest {
+func (a *PetApiService) UpdatePetWithForm(ctx _context.Context, petId int64) ApiUpdatePetWithFormRequest {
 	return ApiUpdatePetWithFormRequest{
 		ApiService: a,
 		ctx: ctx,
 		petId: petId,
-		headers: headers
 	}
 }
 
@@ -945,9 +935,9 @@ func (a *PetApiService) UpdatePetWithFormExecute(r ApiUpdatePetWithFormRequest) 
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	# override localVarHeaderParams with the headers passed into the function
-	if len(r.headers) > 0 {
-		for k, v := range r.headers { 
+	// override localVarHeaderParams with the headers passed into the function
+	if len(r.Headers) > 0 {
+		for k, v := range r.Headers { 
 			localVarHeaderParams[k] = v
 		}
 	}
@@ -993,11 +983,9 @@ type ApiUploadFileRequest struct {
 	ctx _context.Context
 	ApiService PetApi
 	petId int64	
-	headers map[string]string
 	additionalMetadata *string	
-	headers map[string]string
 	file **os.File	
-	headers map[string]string
+    Headers map[string]string
 }
 
 // Additional data to pass to server
@@ -1021,12 +1009,11 @@ UploadFile uploads an image
  @param petId ID of pet to update
  @return ApiUploadFileRequest
 */
-func (a *PetApiService) UploadFile(ctx _context.Context, petId int64, headers map[string]string) ApiUploadFileRequest {
+func (a *PetApiService) UploadFile(ctx _context.Context, petId int64) ApiUploadFileRequest {
 	return ApiUploadFileRequest{
 		ApiService: a,
 		ctx: ctx,
 		petId: petId,
-		headers: headers
 	}
 }
 
@@ -1071,9 +1058,9 @@ func (a *PetApiService) UploadFileExecute(r ApiUploadFileRequest) (ApiResponse, 
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	# override localVarHeaderParams with the headers passed into the function
-	if len(r.headers) > 0 {
-		for k, v := range r.headers { 
+	// override localVarHeaderParams with the headers passed into the function
+	if len(r.Headers) > 0 {
+		for k, v := range r.Headers { 
 			localVarHeaderParams[k] = v
 		}
 	}
@@ -1136,11 +1123,9 @@ type ApiUploadFileWithRequiredFileRequest struct {
 	ctx _context.Context
 	ApiService PetApi
 	petId int64	
-	headers map[string]string
 	requiredFile **os.File	
-	headers map[string]string
 	additionalMetadata *string	
-	headers map[string]string
+    Headers map[string]string
 }
 
 // file to upload
@@ -1164,12 +1149,11 @@ UploadFileWithRequiredFile uploads an image (required)
  @param petId ID of pet to update
  @return ApiUploadFileWithRequiredFileRequest
 */
-func (a *PetApiService) UploadFileWithRequiredFile(ctx _context.Context, petId int64, headers map[string]string) ApiUploadFileWithRequiredFileRequest {
+func (a *PetApiService) UploadFileWithRequiredFile(ctx _context.Context, petId int64) ApiUploadFileWithRequiredFileRequest {
 	return ApiUploadFileWithRequiredFileRequest{
 		ApiService: a,
 		ctx: ctx,
 		petId: petId,
-		headers: headers
 	}
 }
 
@@ -1217,9 +1201,9 @@ func (a *PetApiService) UploadFileWithRequiredFileExecute(r ApiUploadFileWithReq
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	# override localVarHeaderParams with the headers passed into the function
-	if len(r.headers) > 0 {
-		for k, v := range r.headers { 
+	// override localVarHeaderParams with the headers passed into the function
+	if len(r.Headers) > 0 {
+		for k, v := range r.Headers { 
 			localVarHeaderParams[k] = v
 		}
 	}

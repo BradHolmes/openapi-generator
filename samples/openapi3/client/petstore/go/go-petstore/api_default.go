@@ -44,6 +44,7 @@ type DefaultApiService service
 type ApiFooGetRequest struct {
 	ctx _context.Context
 	ApiService DefaultApi
+    Headers map[string]string
 }
 
 
@@ -56,11 +57,10 @@ FooGet Method for FooGet
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFooGetRequest
 */
-func (a *DefaultApiService) FooGet(ctx _context.Context, headers map[string]string) ApiFooGetRequest {
+func (a *DefaultApiService) FooGet(ctx _context.Context) ApiFooGetRequest {
 	return ApiFooGetRequest{
 		ApiService: a,
 		ctx: ctx,
-		headers: headers
 	}
 }
 
@@ -104,9 +104,9 @@ func (a *DefaultApiService) FooGetExecute(r ApiFooGetRequest) (InlineResponseDef
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	# override localVarHeaderParams with the headers passed into the function
-	if len(r.headers) > 0 {
-		for k, v := range r.headers { 
+	// override localVarHeaderParams with the headers passed into the function
+	if len(r.Headers) > 0 {
+		for k, v := range r.Headers { 
 			localVarHeaderParams[k] = v
 		}
 	}

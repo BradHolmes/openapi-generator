@@ -89,7 +89,7 @@ type ApiDeleteOrderRequest struct {
 	ctx _context.Context
 	ApiService StoreApi
 	orderId string	
-	headers map[string]string
+    Headers map[string]string
 }
 
 
@@ -105,12 +105,11 @@ For valid response try integer IDs with value < 1000. Anything above 1000 or non
  @param orderId ID of the order that needs to be deleted
  @return ApiDeleteOrderRequest
 */
-func (a *StoreApiService) DeleteOrder(ctx _context.Context, orderId string, headers map[string]string) ApiDeleteOrderRequest {
+func (a *StoreApiService) DeleteOrder(ctx _context.Context, orderId string) ApiDeleteOrderRequest {
 	return ApiDeleteOrderRequest{
 		ApiService: a,
 		ctx: ctx,
 		orderId: orderId,
-		headers: headers
 	}
 }
 
@@ -153,9 +152,9 @@ func (a *StoreApiService) DeleteOrderExecute(r ApiDeleteOrderRequest) (*_nethttp
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	# override localVarHeaderParams with the headers passed into the function
-	if len(r.headers) > 0 {
-		for k, v := range r.headers { 
+	// override localVarHeaderParams with the headers passed into the function
+	if len(r.Headers) > 0 {
+		for k, v := range r.Headers { 
 			localVarHeaderParams[k] = v
 		}
 	}
@@ -194,6 +193,7 @@ func (a *StoreApiService) DeleteOrderExecute(r ApiDeleteOrderRequest) (*_nethttp
 type ApiGetInventoryRequest struct {
 	ctx _context.Context
 	ApiService StoreApi
+    Headers map[string]string
 }
 
 
@@ -208,11 +208,10 @@ Returns a map of status codes to quantities
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGetInventoryRequest
 */
-func (a *StoreApiService) GetInventory(ctx _context.Context, headers map[string]string) ApiGetInventoryRequest {
+func (a *StoreApiService) GetInventory(ctx _context.Context) ApiGetInventoryRequest {
 	return ApiGetInventoryRequest{
 		ApiService: a,
 		ctx: ctx,
-		headers: headers
 	}
 }
 
@@ -256,9 +255,9 @@ func (a *StoreApiService) GetInventoryExecute(r ApiGetInventoryRequest) (map[str
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	# override localVarHeaderParams with the headers passed into the function
-	if len(r.headers) > 0 {
-		for k, v := range r.headers { 
+	// override localVarHeaderParams with the headers passed into the function
+	if len(r.Headers) > 0 {
+		for k, v := range r.Headers { 
 			localVarHeaderParams[k] = v
 		}
 	}
@@ -321,7 +320,7 @@ type ApiGetOrderByIdRequest struct {
 	ctx _context.Context
 	ApiService StoreApi
 	orderId int64	
-	headers map[string]string
+    Headers map[string]string
 }
 
 
@@ -337,12 +336,11 @@ For valid response try integer IDs with value <= 5 or > 10. Other values will ge
  @param orderId ID of pet that needs to be fetched
  @return ApiGetOrderByIdRequest
 */
-func (a *StoreApiService) GetOrderById(ctx _context.Context, orderId int64, headers map[string]string) ApiGetOrderByIdRequest {
+func (a *StoreApiService) GetOrderById(ctx _context.Context, orderId int64) ApiGetOrderByIdRequest {
 	return ApiGetOrderByIdRequest{
 		ApiService: a,
 		ctx: ctx,
 		orderId: orderId,
-		headers: headers
 	}
 }
 
@@ -393,9 +391,9 @@ func (a *StoreApiService) GetOrderByIdExecute(r ApiGetOrderByIdRequest) (Order, 
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	# override localVarHeaderParams with the headers passed into the function
-	if len(r.headers) > 0 {
-		for k, v := range r.headers { 
+	// override localVarHeaderParams with the headers passed into the function
+	if len(r.Headers) > 0 {
+		for k, v := range r.Headers { 
 			localVarHeaderParams[k] = v
 		}
 	}
@@ -444,7 +442,7 @@ type ApiPlaceOrderRequest struct {
 	ctx _context.Context
 	ApiService StoreApi
 	body *Order	
-	headers map[string]string
+    Headers map[string]string
 }
 
 // order placed for purchasing the pet
@@ -462,12 +460,11 @@ PlaceOrder Place an order for a pet
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPlaceOrderRequest
 */
-func (a *StoreApiService) PlaceOrder(ctx _context.Context, body *Order, headers map[string]string) ApiPlaceOrderRequest {
+func (a *StoreApiService) PlaceOrder(ctx _context.Context, body *Order) ApiPlaceOrderRequest {
 	return ApiPlaceOrderRequest{
 		ApiService: a,
 		ctx: ctx,
 		body: body,
-		headers: headers
 	}
 }
 
@@ -514,9 +511,9 @@ func (a *StoreApiService) PlaceOrderExecute(r ApiPlaceOrderRequest) (Order, *_ne
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	# override localVarHeaderParams with the headers passed into the function
-	if len(r.headers) > 0 {
-		for k, v := range r.headers { 
+	// override localVarHeaderParams with the headers passed into the function
+	if len(r.Headers) > 0 {
+		for k, v := range r.Headers { 
 			localVarHeaderParams[k] = v
 		}
 	}

@@ -47,7 +47,7 @@ type ApiCall123TestSpecialTagsRequest struct {
 	ctx _context.Context
 	ApiService AnotherFakeApi
 	body *Client	
-	headers map[string]string
+    Headers map[string]string
 }
 
 // client model
@@ -67,12 +67,11 @@ To test special tags and operation ID starting with number
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCall123TestSpecialTagsRequest
 */
-func (a *AnotherFakeApiService) Call123TestSpecialTags(ctx _context.Context, body *Client, headers map[string]string) ApiCall123TestSpecialTagsRequest {
+func (a *AnotherFakeApiService) Call123TestSpecialTags(ctx _context.Context, body *Client) ApiCall123TestSpecialTagsRequest {
 	return ApiCall123TestSpecialTagsRequest{
 		ApiService: a,
 		ctx: ctx,
 		body: body,
-		headers: headers
 	}
 }
 
@@ -119,9 +118,9 @@ func (a *AnotherFakeApiService) Call123TestSpecialTagsExecute(r ApiCall123TestSp
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	# override localVarHeaderParams with the headers passed into the function
-	if len(r.headers) > 0 {
-		for k, v := range r.headers { 
+	// override localVarHeaderParams with the headers passed into the function
+	if len(r.Headers) > 0 {
+		for k, v := range r.Headers { 
 			localVarHeaderParams[k] = v
 		}
 	}

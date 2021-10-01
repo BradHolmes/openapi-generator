@@ -233,6 +233,7 @@ type FakeApiService service
 type ApiFakeHealthGetRequest struct {
 	ctx _context.Context
 	ApiService FakeApi
+    Headers map[string]string
 }
 
 
@@ -245,11 +246,10 @@ FakeHealthGet Health check endpoint
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFakeHealthGetRequest
 */
-func (a *FakeApiService) FakeHealthGet(ctx _context.Context, headers map[string]string) ApiFakeHealthGetRequest {
+func (a *FakeApiService) FakeHealthGet(ctx _context.Context) ApiFakeHealthGetRequest {
 	return ApiFakeHealthGetRequest{
 		ApiService: a,
 		ctx: ctx,
-		headers: headers
 	}
 }
 
@@ -293,9 +293,9 @@ func (a *FakeApiService) FakeHealthGetExecute(r ApiFakeHealthGetRequest) (Health
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	# override localVarHeaderParams with the headers passed into the function
-	if len(r.headers) > 0 {
-		for k, v := range r.headers { 
+	// override localVarHeaderParams with the headers passed into the function
+	if len(r.Headers) > 0 {
+		for k, v := range r.Headers { 
 			localVarHeaderParams[k] = v
 		}
 	}
@@ -344,7 +344,7 @@ type ApiFakeOuterBooleanSerializeRequest struct {
 	ctx _context.Context
 	ApiService FakeApi
 	body *bool	
-	headers map[string]string
+    Headers map[string]string
 }
 
 // Input boolean as post body
@@ -364,12 +364,11 @@ Test serialization of outer boolean types
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFakeOuterBooleanSerializeRequest
 */
-func (a *FakeApiService) FakeOuterBooleanSerialize(ctx _context.Context, body *bool, headers map[string]string) ApiFakeOuterBooleanSerializeRequest {
+func (a *FakeApiService) FakeOuterBooleanSerialize(ctx _context.Context, body *bool) ApiFakeOuterBooleanSerializeRequest {
 	return ApiFakeOuterBooleanSerializeRequest{
 		ApiService: a,
 		ctx: ctx,
 		body: body,
-		headers: headers
 	}
 }
 
@@ -413,9 +412,9 @@ func (a *FakeApiService) FakeOuterBooleanSerializeExecute(r ApiFakeOuterBooleanS
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	# override localVarHeaderParams with the headers passed into the function
-	if len(r.headers) > 0 {
-		for k, v := range r.headers { 
+	// override localVarHeaderParams with the headers passed into the function
+	if len(r.Headers) > 0 {
+		for k, v := range r.Headers { 
 			localVarHeaderParams[k] = v
 		}
 	}
@@ -466,7 +465,7 @@ type ApiFakeOuterCompositeSerializeRequest struct {
 	ctx _context.Context
 	ApiService FakeApi
 	outerComposite *OuterComposite	
-	headers map[string]string
+    Headers map[string]string
 }
 
 // Input composite as post body
@@ -486,12 +485,11 @@ Test serialization of object with outer number type
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFakeOuterCompositeSerializeRequest
 */
-func (a *FakeApiService) FakeOuterCompositeSerialize(ctx _context.Context, outerComposite *OuterComposite, headers map[string]string) ApiFakeOuterCompositeSerializeRequest {
+func (a *FakeApiService) FakeOuterCompositeSerialize(ctx _context.Context, outerComposite *OuterComposite) ApiFakeOuterCompositeSerializeRequest {
 	return ApiFakeOuterCompositeSerializeRequest{
 		ApiService: a,
 		ctx: ctx,
 		outerComposite: outerComposite,
-		headers: headers
 	}
 }
 
@@ -535,9 +533,9 @@ func (a *FakeApiService) FakeOuterCompositeSerializeExecute(r ApiFakeOuterCompos
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	# override localVarHeaderParams with the headers passed into the function
-	if len(r.headers) > 0 {
-		for k, v := range r.headers { 
+	// override localVarHeaderParams with the headers passed into the function
+	if len(r.Headers) > 0 {
+		for k, v := range r.Headers { 
 			localVarHeaderParams[k] = v
 		}
 	}
@@ -588,7 +586,7 @@ type ApiFakeOuterNumberSerializeRequest struct {
 	ctx _context.Context
 	ApiService FakeApi
 	body *float32	
-	headers map[string]string
+    Headers map[string]string
 }
 
 // Input number as post body
@@ -608,12 +606,11 @@ Test serialization of outer number types
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFakeOuterNumberSerializeRequest
 */
-func (a *FakeApiService) FakeOuterNumberSerialize(ctx _context.Context, body *float32, headers map[string]string) ApiFakeOuterNumberSerializeRequest {
+func (a *FakeApiService) FakeOuterNumberSerialize(ctx _context.Context, body *float32) ApiFakeOuterNumberSerializeRequest {
 	return ApiFakeOuterNumberSerializeRequest{
 		ApiService: a,
 		ctx: ctx,
 		body: body,
-		headers: headers
 	}
 }
 
@@ -657,9 +654,9 @@ func (a *FakeApiService) FakeOuterNumberSerializeExecute(r ApiFakeOuterNumberSer
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	# override localVarHeaderParams with the headers passed into the function
-	if len(r.headers) > 0 {
-		for k, v := range r.headers { 
+	// override localVarHeaderParams with the headers passed into the function
+	if len(r.Headers) > 0 {
+		for k, v := range r.Headers { 
 			localVarHeaderParams[k] = v
 		}
 	}
@@ -710,7 +707,7 @@ type ApiFakeOuterStringSerializeRequest struct {
 	ctx _context.Context
 	ApiService FakeApi
 	body *string	
-	headers map[string]string
+    Headers map[string]string
 }
 
 // Input string as post body
@@ -730,12 +727,11 @@ Test serialization of outer string types
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiFakeOuterStringSerializeRequest
 */
-func (a *FakeApiService) FakeOuterStringSerialize(ctx _context.Context, body *string, headers map[string]string) ApiFakeOuterStringSerializeRequest {
+func (a *FakeApiService) FakeOuterStringSerialize(ctx _context.Context, body *string) ApiFakeOuterStringSerializeRequest {
 	return ApiFakeOuterStringSerializeRequest{
 		ApiService: a,
 		ctx: ctx,
 		body: body,
-		headers: headers
 	}
 }
 
@@ -779,9 +775,9 @@ func (a *FakeApiService) FakeOuterStringSerializeExecute(r ApiFakeOuterStringSer
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	# override localVarHeaderParams with the headers passed into the function
-	if len(r.headers) > 0 {
-		for k, v := range r.headers { 
+	// override localVarHeaderParams with the headers passed into the function
+	if len(r.Headers) > 0 {
+		for k, v := range r.Headers { 
 			localVarHeaderParams[k] = v
 		}
 	}
@@ -832,7 +828,7 @@ type ApiTestBodyWithFileSchemaRequest struct {
 	ctx _context.Context
 	ApiService FakeApi
 	fileSchemaTestClass *FileSchemaTestClass	
-	headers map[string]string
+    Headers map[string]string
 }
 
 func (r *ApiTestBodyWithFileSchemaRequest) FileSchemaTestClass(fileSchemaTestClass FileSchemaTestClass) *ApiTestBodyWithFileSchemaRequest {
@@ -851,12 +847,11 @@ For this test, the body for this request much reference a schema named `File`.
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTestBodyWithFileSchemaRequest
 */
-func (a *FakeApiService) TestBodyWithFileSchema(ctx _context.Context, fileSchemaTestClass *FileSchemaTestClass, headers map[string]string) ApiTestBodyWithFileSchemaRequest {
+func (a *FakeApiService) TestBodyWithFileSchema(ctx _context.Context, fileSchemaTestClass *FileSchemaTestClass) ApiTestBodyWithFileSchemaRequest {
 	return ApiTestBodyWithFileSchemaRequest{
 		ApiService: a,
 		ctx: ctx,
 		fileSchemaTestClass: fileSchemaTestClass,
-		headers: headers
 	}
 }
 
@@ -901,9 +896,9 @@ func (a *FakeApiService) TestBodyWithFileSchemaExecute(r ApiTestBodyWithFileSche
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	# override localVarHeaderParams with the headers passed into the function
-	if len(r.headers) > 0 {
-		for k, v := range r.headers { 
+	// override localVarHeaderParams with the headers passed into the function
+	if len(r.Headers) > 0 {
+		for k, v := range r.Headers { 
 			localVarHeaderParams[k] = v
 		}
 	}
@@ -945,9 +940,8 @@ type ApiTestBodyWithQueryParamsRequest struct {
 	ctx _context.Context
 	ApiService FakeApi
 	query *string	
-	headers map[string]string
 	user *User	
-	headers map[string]string
+    Headers map[string]string
 }
 
 func (r *ApiTestBodyWithQueryParamsRequest) Query(query string) *ApiTestBodyWithQueryParamsRequest {
@@ -968,12 +962,11 @@ TestBodyWithQueryParams Method for TestBodyWithQueryParams
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTestBodyWithQueryParamsRequest
 */
-func (a *FakeApiService) TestBodyWithQueryParams(ctx _context.Context, user *User, headers map[string]string) ApiTestBodyWithQueryParamsRequest {
+func (a *FakeApiService) TestBodyWithQueryParams(ctx _context.Context, user *User) ApiTestBodyWithQueryParamsRequest {
 	return ApiTestBodyWithQueryParamsRequest{
 		ApiService: a,
 		ctx: ctx,
 		user: user,
-		headers: headers
 	}
 }
 
@@ -1022,9 +1015,9 @@ func (a *FakeApiService) TestBodyWithQueryParamsExecute(r ApiTestBodyWithQueryPa
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	# override localVarHeaderParams with the headers passed into the function
-	if len(r.headers) > 0 {
-		for k, v := range r.headers { 
+	// override localVarHeaderParams with the headers passed into the function
+	if len(r.Headers) > 0 {
+		for k, v := range r.Headers { 
 			localVarHeaderParams[k] = v
 		}
 	}
@@ -1066,7 +1059,7 @@ type ApiTestClientModelRequest struct {
 	ctx _context.Context
 	ApiService FakeApi
 	client *Client	
-	headers map[string]string
+    Headers map[string]string
 }
 
 // client model
@@ -1086,12 +1079,11 @@ To test "client" model
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTestClientModelRequest
 */
-func (a *FakeApiService) TestClientModel(ctx _context.Context, client *Client, headers map[string]string) ApiTestClientModelRequest {
+func (a *FakeApiService) TestClientModel(ctx _context.Context, client *Client) ApiTestClientModelRequest {
 	return ApiTestClientModelRequest{
 		ApiService: a,
 		ctx: ctx,
 		client: client,
-		headers: headers
 	}
 }
 
@@ -1138,9 +1130,9 @@ func (a *FakeApiService) TestClientModelExecute(r ApiTestClientModelRequest) (Cl
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	# override localVarHeaderParams with the headers passed into the function
-	if len(r.headers) > 0 {
-		for k, v := range r.headers { 
+	// override localVarHeaderParams with the headers passed into the function
+	if len(r.Headers) > 0 {
+		for k, v := range r.Headers { 
 			localVarHeaderParams[k] = v
 		}
 	}
@@ -1191,33 +1183,20 @@ type ApiTestEndpointParametersRequest struct {
 	ctx _context.Context
 	ApiService FakeApi
 	number *float32	
-	headers map[string]string
 	double *float64	
-	headers map[string]string
 	patternWithoutDelimiter *string	
-	headers map[string]string
 	byte_ *string	
-	headers map[string]string
 	integer *int32	
-	headers map[string]string
 	int32_ *int32	
-	headers map[string]string
 	int64_ *int64	
-	headers map[string]string
 	float *float32	
-	headers map[string]string
 	string_ *string	
-	headers map[string]string
 	binary **os.File	
-	headers map[string]string
 	date *string	
-	headers map[string]string
 	dateTime *time.Time	
-	headers map[string]string
 	password *string	
-	headers map[string]string
 	callback *string	
-	headers map[string]string
+    Headers map[string]string
 }
 
 // None
@@ -1306,11 +1285,10 @@ Fake endpoint for testing various parameters
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTestEndpointParametersRequest
 */
-func (a *FakeApiService) TestEndpointParameters(ctx _context.Context, headers map[string]string) ApiTestEndpointParametersRequest {
+func (a *FakeApiService) TestEndpointParameters(ctx _context.Context) ApiTestEndpointParametersRequest {
 	return ApiTestEndpointParametersRequest{
 		ApiService: a,
 		ctx: ctx,
-		headers: headers
 	}
 }
 
@@ -1376,9 +1354,9 @@ func (a *FakeApiService) TestEndpointParametersExecute(r ApiTestEndpointParamete
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	# override localVarHeaderParams with the headers passed into the function
-	if len(r.headers) > 0 {
-		for k, v := range r.headers { 
+	// override localVarHeaderParams with the headers passed into the function
+	if len(r.Headers) > 0 {
+		for k, v := range r.Headers { 
 			localVarHeaderParams[k] = v
 		}
 	}
@@ -1460,21 +1438,14 @@ type ApiTestEnumParametersRequest struct {
 	ctx _context.Context
 	ApiService FakeApi
 	enumHeaderStringArray *[]string	
-	headers map[string]string
 	enumHeaderString *string	
-	headers map[string]string
 	enumQueryStringArray *[]string	
-	headers map[string]string
 	enumQueryString *string	
-	headers map[string]string
 	enumQueryInteger *int32	
-	headers map[string]string
 	enumQueryDouble *float64	
-	headers map[string]string
 	enumFormStringArray *[]string	
-	headers map[string]string
 	enumFormString *string	
-	headers map[string]string
+    Headers map[string]string
 }
 
 // Header parameter enum test (string array)
@@ -1529,11 +1500,10 @@ To test enum parameters
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTestEnumParametersRequest
 */
-func (a *FakeApiService) TestEnumParameters(ctx _context.Context, headers map[string]string) ApiTestEnumParametersRequest {
+func (a *FakeApiService) TestEnumParameters(ctx _context.Context) ApiTestEnumParametersRequest {
 	return ApiTestEnumParametersRequest{
 		ApiService: a,
 		ctx: ctx,
-		headers: headers
 	}
 }
 
@@ -1595,9 +1565,9 @@ func (a *FakeApiService) TestEnumParametersExecute(r ApiTestEnumParametersReques
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	# override localVarHeaderParams with the headers passed into the function
-	if len(r.headers) > 0 {
-		for k, v := range r.headers { 
+	// override localVarHeaderParams with the headers passed into the function
+	if len(r.Headers) > 0 {
+		for k, v := range r.Headers { 
 			localVarHeaderParams[k] = v
 		}
 	}
@@ -1649,17 +1619,12 @@ type ApiTestGroupParametersRequest struct {
 	ctx _context.Context
 	ApiService FakeApi
 	requiredStringGroup *int32	
-	headers map[string]string
 	requiredBooleanGroup *bool	
-	headers map[string]string
 	requiredInt64Group *int64	
-	headers map[string]string
 	stringGroup *int32	
-	headers map[string]string
 	booleanGroup *bool	
-	headers map[string]string
 	int64Group *int64	
-	headers map[string]string
+    Headers map[string]string
 }
 
 // Required String in group parameters
@@ -1704,11 +1669,10 @@ Fake endpoint to test group parameters (optional)
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTestGroupParametersRequest
 */
-func (a *FakeApiService) TestGroupParameters(ctx _context.Context, headers map[string]string) ApiTestGroupParametersRequest {
+func (a *FakeApiService) TestGroupParameters(ctx _context.Context) ApiTestGroupParametersRequest {
 	return ApiTestGroupParametersRequest{
 		ApiService: a,
 		ctx: ctx,
-		headers: headers
 	}
 }
 
@@ -1767,9 +1731,9 @@ func (a *FakeApiService) TestGroupParametersExecute(r ApiTestGroupParametersRequ
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	# override localVarHeaderParams with the headers passed into the function
-	if len(r.headers) > 0 {
-		for k, v := range r.headers { 
+	// override localVarHeaderParams with the headers passed into the function
+	if len(r.Headers) > 0 {
+		for k, v := range r.Headers { 
 			localVarHeaderParams[k] = v
 		}
 	}
@@ -1813,7 +1777,7 @@ type ApiTestInlineAdditionalPropertiesRequest struct {
 	ctx _context.Context
 	ApiService FakeApi
 	requestBody *map[string]string	
-	headers map[string]string
+    Headers map[string]string
 }
 
 // request body
@@ -1831,12 +1795,11 @@ TestInlineAdditionalProperties test inline additionalProperties
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTestInlineAdditionalPropertiesRequest
 */
-func (a *FakeApiService) TestInlineAdditionalProperties(ctx _context.Context, requestBody *map[string]string, headers map[string]string) ApiTestInlineAdditionalPropertiesRequest {
+func (a *FakeApiService) TestInlineAdditionalProperties(ctx _context.Context, requestBody *map[string]string) ApiTestInlineAdditionalPropertiesRequest {
 	return ApiTestInlineAdditionalPropertiesRequest{
 		ApiService: a,
 		ctx: ctx,
 		requestBody: requestBody,
-		headers: headers
 	}
 }
 
@@ -1881,9 +1844,9 @@ func (a *FakeApiService) TestInlineAdditionalPropertiesExecute(r ApiTestInlineAd
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	# override localVarHeaderParams with the headers passed into the function
-	if len(r.headers) > 0 {
-		for k, v := range r.headers { 
+	// override localVarHeaderParams with the headers passed into the function
+	if len(r.Headers) > 0 {
+		for k, v := range r.Headers { 
 			localVarHeaderParams[k] = v
 		}
 	}
@@ -1925,9 +1888,8 @@ type ApiTestJsonFormDataRequest struct {
 	ctx _context.Context
 	ApiService FakeApi
 	param *string	
-	headers map[string]string
 	param2 *string	
-	headers map[string]string
+    Headers map[string]string
 }
 
 // field1
@@ -1950,11 +1912,10 @@ TestJsonFormData test json serialization of form data
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTestJsonFormDataRequest
 */
-func (a *FakeApiService) TestJsonFormData(ctx _context.Context, headers map[string]string) ApiTestJsonFormDataRequest {
+func (a *FakeApiService) TestJsonFormData(ctx _context.Context) ApiTestJsonFormDataRequest {
 	return ApiTestJsonFormDataRequest{
 		ApiService: a,
 		ctx: ctx,
-		headers: headers
 	}
 }
 
@@ -2002,9 +1963,9 @@ func (a *FakeApiService) TestJsonFormDataExecute(r ApiTestJsonFormDataRequest) (
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	# override localVarHeaderParams with the headers passed into the function
-	if len(r.headers) > 0 {
-		for k, v := range r.headers { 
+	// override localVarHeaderParams with the headers passed into the function
+	if len(r.Headers) > 0 {
+		for k, v := range r.Headers { 
 			localVarHeaderParams[k] = v
 		}
 	}
@@ -2046,15 +2007,11 @@ type ApiTestQueryParameterCollectionFormatRequest struct {
 	ctx _context.Context
 	ApiService FakeApi
 	pipe *[]string	
-	headers map[string]string
 	ioutil *[]string	
-	headers map[string]string
 	http *[]string	
-	headers map[string]string
 	url *[]string	
-	headers map[string]string
 	context *[]string	
-	headers map[string]string
+    Headers map[string]string
 }
 
 func (r *ApiTestQueryParameterCollectionFormatRequest) Pipe(pipe []string) *ApiTestQueryParameterCollectionFormatRequest {
@@ -2089,11 +2046,10 @@ To test the collection format in query parameters
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTestQueryParameterCollectionFormatRequest
 */
-func (a *FakeApiService) TestQueryParameterCollectionFormat(ctx _context.Context, headers map[string]string) ApiTestQueryParameterCollectionFormatRequest {
+func (a *FakeApiService) TestQueryParameterCollectionFormat(ctx _context.Context) ApiTestQueryParameterCollectionFormatRequest {
 	return ApiTestQueryParameterCollectionFormatRequest{
 		ApiService: a,
 		ctx: ctx,
-		headers: headers
 	}
 }
 
@@ -2175,9 +2131,9 @@ func (a *FakeApiService) TestQueryParameterCollectionFormatExecute(r ApiTestQuer
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	# override localVarHeaderParams with the headers passed into the function
-	if len(r.headers) > 0 {
-		for k, v := range r.headers { 
+	// override localVarHeaderParams with the headers passed into the function
+	if len(r.Headers) > 0 {
+		for k, v := range r.Headers { 
 			localVarHeaderParams[k] = v
 		}
 	}
@@ -2217,9 +2173,8 @@ type ApiTestUniqueItemsHeaderAndQueryParameterCollectionFormatRequest struct {
 	ctx _context.Context
 	ApiService FakeApi
 	queryUnique *[]string	
-	headers map[string]string
 	headerUnique *[]string	
-	headers map[string]string
+    Headers map[string]string
 }
 
 func (r *ApiTestUniqueItemsHeaderAndQueryParameterCollectionFormatRequest) QueryUnique(queryUnique []string) *ApiTestUniqueItemsHeaderAndQueryParameterCollectionFormatRequest {
@@ -2242,11 +2197,10 @@ To test unique items in header and query parameters
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiTestUniqueItemsHeaderAndQueryParameterCollectionFormatRequest
 */
-func (a *FakeApiService) TestUniqueItemsHeaderAndQueryParameterCollectionFormat(ctx _context.Context, headers map[string]string) ApiTestUniqueItemsHeaderAndQueryParameterCollectionFormatRequest {
+func (a *FakeApiService) TestUniqueItemsHeaderAndQueryParameterCollectionFormat(ctx _context.Context) ApiTestUniqueItemsHeaderAndQueryParameterCollectionFormatRequest {
 	return ApiTestUniqueItemsHeaderAndQueryParameterCollectionFormatRequest{
 		ApiService: a,
 		ctx: ctx,
-		headers: headers
 	}
 }
 
@@ -2307,9 +2261,9 @@ func (a *FakeApiService) TestUniqueItemsHeaderAndQueryParameterCollectionFormatE
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	# override localVarHeaderParams with the headers passed into the function
-	if len(r.headers) > 0 {
-		for k, v := range r.headers { 
+	// override localVarHeaderParams with the headers passed into the function
+	if len(r.Headers) > 0 {
+		for k, v := range r.Headers { 
 			localVarHeaderParams[k] = v
 		}
 	}

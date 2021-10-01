@@ -133,7 +133,7 @@ type ApiCreateUserRequest struct {
 	ctx _context.Context
 	ApiService UserApi
 	user *User	
-	headers map[string]string
+    Headers map[string]string
 }
 
 // Created user object
@@ -153,12 +153,11 @@ This can only be done by the logged in user.
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateUserRequest
 */
-func (a *UserApiService) CreateUser(ctx _context.Context, user *User, headers map[string]string) ApiCreateUserRequest {
+func (a *UserApiService) CreateUser(ctx _context.Context, user *User) ApiCreateUserRequest {
 	return ApiCreateUserRequest{
 		ApiService: a,
 		ctx: ctx,
 		user: user,
-		headers: headers
 	}
 }
 
@@ -203,9 +202,9 @@ func (a *UserApiService) CreateUserExecute(r ApiCreateUserRequest) (*_nethttp.Re
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	# override localVarHeaderParams with the headers passed into the function
-	if len(r.headers) > 0 {
-		for k, v := range r.headers { 
+	// override localVarHeaderParams with the headers passed into the function
+	if len(r.Headers) > 0 {
+		for k, v := range r.Headers { 
 			localVarHeaderParams[k] = v
 		}
 	}
@@ -247,7 +246,7 @@ type ApiCreateUsersWithArrayInputRequest struct {
 	ctx _context.Context
 	ApiService UserApi
 	user *[]User	
-	headers map[string]string
+    Headers map[string]string
 }
 
 // List of user object
@@ -265,12 +264,11 @@ CreateUsersWithArrayInput Creates list of users with given input array
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateUsersWithArrayInputRequest
 */
-func (a *UserApiService) CreateUsersWithArrayInput(ctx _context.Context, user *[]User, headers map[string]string) ApiCreateUsersWithArrayInputRequest {
+func (a *UserApiService) CreateUsersWithArrayInput(ctx _context.Context, user *[]User) ApiCreateUsersWithArrayInputRequest {
 	return ApiCreateUsersWithArrayInputRequest{
 		ApiService: a,
 		ctx: ctx,
 		user: user,
-		headers: headers
 	}
 }
 
@@ -315,9 +313,9 @@ func (a *UserApiService) CreateUsersWithArrayInputExecute(r ApiCreateUsersWithAr
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	# override localVarHeaderParams with the headers passed into the function
-	if len(r.headers) > 0 {
-		for k, v := range r.headers { 
+	// override localVarHeaderParams with the headers passed into the function
+	if len(r.Headers) > 0 {
+		for k, v := range r.Headers { 
 			localVarHeaderParams[k] = v
 		}
 	}
@@ -359,7 +357,7 @@ type ApiCreateUsersWithListInputRequest struct {
 	ctx _context.Context
 	ApiService UserApi
 	user *[]User	
-	headers map[string]string
+    Headers map[string]string
 }
 
 // List of user object
@@ -377,12 +375,11 @@ CreateUsersWithListInput Creates list of users with given input array
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCreateUsersWithListInputRequest
 */
-func (a *UserApiService) CreateUsersWithListInput(ctx _context.Context, user *[]User, headers map[string]string) ApiCreateUsersWithListInputRequest {
+func (a *UserApiService) CreateUsersWithListInput(ctx _context.Context, user *[]User) ApiCreateUsersWithListInputRequest {
 	return ApiCreateUsersWithListInputRequest{
 		ApiService: a,
 		ctx: ctx,
 		user: user,
-		headers: headers
 	}
 }
 
@@ -427,9 +424,9 @@ func (a *UserApiService) CreateUsersWithListInputExecute(r ApiCreateUsersWithLis
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	# override localVarHeaderParams with the headers passed into the function
-	if len(r.headers) > 0 {
-		for k, v := range r.headers { 
+	// override localVarHeaderParams with the headers passed into the function
+	if len(r.Headers) > 0 {
+		for k, v := range r.Headers { 
 			localVarHeaderParams[k] = v
 		}
 	}
@@ -471,7 +468,7 @@ type ApiDeleteUserRequest struct {
 	ctx _context.Context
 	ApiService UserApi
 	username string	
-	headers map[string]string
+    Headers map[string]string
 }
 
 
@@ -487,12 +484,11 @@ This can only be done by the logged in user.
  @param username The name that needs to be deleted
  @return ApiDeleteUserRequest
 */
-func (a *UserApiService) DeleteUser(ctx _context.Context, username string, headers map[string]string) ApiDeleteUserRequest {
+func (a *UserApiService) DeleteUser(ctx _context.Context, username string) ApiDeleteUserRequest {
 	return ApiDeleteUserRequest{
 		ApiService: a,
 		ctx: ctx,
 		username: username,
-		headers: headers
 	}
 }
 
@@ -535,9 +531,9 @@ func (a *UserApiService) DeleteUserExecute(r ApiDeleteUserRequest) (*_nethttp.Re
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	# override localVarHeaderParams with the headers passed into the function
-	if len(r.headers) > 0 {
-		for k, v := range r.headers { 
+	// override localVarHeaderParams with the headers passed into the function
+	if len(r.Headers) > 0 {
+		for k, v := range r.Headers { 
 			localVarHeaderParams[k] = v
 		}
 	}
@@ -577,7 +573,7 @@ type ApiGetUserByNameRequest struct {
 	ctx _context.Context
 	ApiService UserApi
 	username string	
-	headers map[string]string
+    Headers map[string]string
 }
 
 
@@ -591,12 +587,11 @@ GetUserByName Get user by user name
  @param username The name that needs to be fetched. Use user1 for testing.
  @return ApiGetUserByNameRequest
 */
-func (a *UserApiService) GetUserByName(ctx _context.Context, username string, headers map[string]string) ApiGetUserByNameRequest {
+func (a *UserApiService) GetUserByName(ctx _context.Context, username string) ApiGetUserByNameRequest {
 	return ApiGetUserByNameRequest{
 		ApiService: a,
 		ctx: ctx,
 		username: username,
-		headers: headers
 	}
 }
 
@@ -641,9 +636,9 @@ func (a *UserApiService) GetUserByNameExecute(r ApiGetUserByNameRequest) (User, 
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	# override localVarHeaderParams with the headers passed into the function
-	if len(r.headers) > 0 {
-		for k, v := range r.headers { 
+	// override localVarHeaderParams with the headers passed into the function
+	if len(r.Headers) > 0 {
+		for k, v := range r.Headers { 
 			localVarHeaderParams[k] = v
 		}
 	}
@@ -692,9 +687,8 @@ type ApiLoginUserRequest struct {
 	ctx _context.Context
 	ApiService UserApi
 	username *string	
-	headers map[string]string
 	password *string	
-	headers map[string]string
+    Headers map[string]string
 }
 
 // The user name for login
@@ -717,11 +711,10 @@ LoginUser Logs user into the system
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiLoginUserRequest
 */
-func (a *UserApiService) LoginUser(ctx _context.Context, headers map[string]string) ApiLoginUserRequest {
+func (a *UserApiService) LoginUser(ctx _context.Context) ApiLoginUserRequest {
 	return ApiLoginUserRequest{
 		ApiService: a,
 		ctx: ctx,
-		headers: headers
 	}
 }
 
@@ -773,9 +766,9 @@ func (a *UserApiService) LoginUserExecute(r ApiLoginUserRequest) (string, *_neth
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	# override localVarHeaderParams with the headers passed into the function
-	if len(r.headers) > 0 {
-		for k, v := range r.headers { 
+	// override localVarHeaderParams with the headers passed into the function
+	if len(r.Headers) > 0 {
+		for k, v := range r.Headers { 
 			localVarHeaderParams[k] = v
 		}
 	}
@@ -823,6 +816,7 @@ func (a *UserApiService) LoginUserExecute(r ApiLoginUserRequest) (string, *_neth
 type ApiLogoutUserRequest struct {
 	ctx _context.Context
 	ApiService UserApi
+    Headers map[string]string
 }
 
 
@@ -835,11 +829,10 @@ LogoutUser Logs out current logged in user session
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiLogoutUserRequest
 */
-func (a *UserApiService) LogoutUser(ctx _context.Context, headers map[string]string) ApiLogoutUserRequest {
+func (a *UserApiService) LogoutUser(ctx _context.Context) ApiLogoutUserRequest {
 	return ApiLogoutUserRequest{
 		ApiService: a,
 		ctx: ctx,
-		headers: headers
 	}
 }
 
@@ -881,9 +874,9 @@ func (a *UserApiService) LogoutUserExecute(r ApiLogoutUserRequest) (*_nethttp.Re
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	# override localVarHeaderParams with the headers passed into the function
-	if len(r.headers) > 0 {
-		for k, v := range r.headers { 
+	// override localVarHeaderParams with the headers passed into the function
+	if len(r.Headers) > 0 {
+		for k, v := range r.Headers { 
 			localVarHeaderParams[k] = v
 		}
 	}
@@ -923,9 +916,8 @@ type ApiUpdateUserRequest struct {
 	ctx _context.Context
 	ApiService UserApi
 	username string	
-	headers map[string]string
 	user *User	
-	headers map[string]string
+    Headers map[string]string
 }
 
 // Updated user object
@@ -946,13 +938,12 @@ This can only be done by the logged in user.
  @param username name that need to be deleted
  @return ApiUpdateUserRequest
 */
-func (a *UserApiService) UpdateUser(ctx _context.Context, username string, user *User, headers map[string]string) ApiUpdateUserRequest {
+func (a *UserApiService) UpdateUser(ctx _context.Context, username string, user *User) ApiUpdateUserRequest {
 	return ApiUpdateUserRequest{
 		ApiService: a,
 		ctx: ctx,
 		username: username,
 		user: user,
-		headers: headers
 	}
 }
 
@@ -998,9 +989,9 @@ func (a *UserApiService) UpdateUserExecute(r ApiUpdateUserRequest) (*_nethttp.Re
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	# override localVarHeaderParams with the headers passed into the function
-	if len(r.headers) > 0 {
-		for k, v := range r.headers { 
+	// override localVarHeaderParams with the headers passed into the function
+	if len(r.Headers) > 0 {
+		for k, v := range r.Headers { 
 			localVarHeaderParams[k] = v
 		}
 	}
