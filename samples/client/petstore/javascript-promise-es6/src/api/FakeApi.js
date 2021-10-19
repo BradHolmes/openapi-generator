@@ -64,7 +64,7 @@ export default class FakeApi {
       if (Object.keys(headers).length > 0) {
         // check if `accept` is in the array `accepts` (generate from the specs) above
         const accept = headers['accept'] || headers['Accept'] || undefined;
-        if (accept !== undefined && accept in accepts) {
+        if (accept !== undefined && accepts.includes(accept) > -1) {
           accepts = [accept]
         }        
         for (const prop in headers) {
@@ -125,7 +125,7 @@ export default class FakeApi {
       if (Object.keys(headers).length > 0) {
         // check if `accept` is in the array `accepts` (generate from the specs) above
         const accept = headers['accept'] || headers['Accept'] || undefined;
-        if (accept !== undefined && accept in accepts) {
+        if (accept !== undefined && accepts.includes(accept) > -1) {
           accepts = [accept]
         }        
         for (const prop in headers) {
@@ -182,7 +182,7 @@ export default class FakeApi {
       if (Object.keys(headers).length > 0) {
         // check if `accept` is in the array `accepts` (generate from the specs) above
         const accept = headers['accept'] || headers['Accept'] || undefined;
-        if (accept !== undefined && accept in accepts) {
+        if (accept !== undefined && accepts.includes(accept) > -1) {
           accepts = [accept]
         }        
         for (const prop in headers) {
@@ -237,7 +237,7 @@ export default class FakeApi {
       if (Object.keys(headers).length > 0) {
         // check if `accept` is in the array `accepts` (generate from the specs) above
         const accept = headers['accept'] || headers['Accept'] || undefined;
-        if (accept !== undefined && accept in accepts) {
+        if (accept !== undefined && accepts.includes(accept) > -1) {
           accepts = [accept]
         }        
         for (const prop in headers) {
@@ -292,7 +292,7 @@ export default class FakeApi {
       if (Object.keys(headers).length > 0) {
         // check if `accept` is in the array `accepts` (generate from the specs) above
         const accept = headers['accept'] || headers['Accept'] || undefined;
-        if (accept !== undefined && accept in accepts) {
+        if (accept !== undefined && accepts.includes(accept) > -1) {
           accepts = [accept]
         }        
         for (const prop in headers) {
@@ -347,7 +347,7 @@ export default class FakeApi {
       if (Object.keys(headers).length > 0) {
         // check if `accept` is in the array `accepts` (generate from the specs) above
         const accept = headers['accept'] || headers['Accept'] || undefined;
-        if (accept !== undefined && accept in accepts) {
+        if (accept !== undefined && accepts.includes(accept) > -1) {
           accepts = [accept]
         }        
         for (const prop in headers) {
@@ -404,7 +404,7 @@ export default class FakeApi {
       if (Object.keys(headers).length > 0) {
         // check if `accept` is in the array `accepts` (generate from the specs) above
         const accept = headers['accept'] || headers['Accept'] || undefined;
-        if (accept !== undefined && accept in accepts) {
+        if (accept !== undefined && accepts.includes(accept) > -1) {
           accepts = [accept]
         }        
         for (const prop in headers) {
@@ -460,7 +460,7 @@ export default class FakeApi {
       if (Object.keys(headers).length > 0) {
         // check if `accept` is in the array `accepts` (generate from the specs) above
         const accept = headers['accept'] || headers['Accept'] || undefined;
-        if (accept !== undefined && accept in accepts) {
+        if (accept !== undefined && accepts.includes(accept) > -1) {
           accepts = [accept]
         }        
         for (const prop in headers) {
@@ -516,7 +516,7 @@ export default class FakeApi {
       if (Object.keys(headers).length > 0) {
         // check if `accept` is in the array `accepts` (generate from the specs) above
         const accept = headers['accept'] || headers['Accept'] || undefined;
-        if (accept !== undefined && accept in accepts) {
+        if (accept !== undefined && accepts.includes(accept) > -1) {
           accepts = [accept]
         }        
         for (const prop in headers) {
@@ -577,7 +577,7 @@ export default class FakeApi {
       if (Object.keys(headers).length > 0) {
         // check if `accept` is in the array `accepts` (generate from the specs) above
         const accept = headers['accept'] || headers['Accept'] || undefined;
-        if (accept !== undefined && accept in accepts) {
+        if (accept !== undefined && accepts.includes(accept) > -1) {
           accepts = [accept]
         }        
         for (const prop in headers) {
@@ -634,7 +634,7 @@ export default class FakeApi {
       if (Object.keys(headers).length > 0) {
         // check if `accept` is in the array `accepts` (generate from the specs) above
         const accept = headers['accept'] || headers['Accept'] || undefined;
-        if (accept !== undefined && accept in accepts) {
+        if (accept !== undefined && accepts.includes(accept) > -1) {
           accepts = [accept]
         }        
         for (const prop in headers) {
@@ -733,7 +733,7 @@ export default class FakeApi {
       if (Object.keys(headers).length > 0) {
         // check if `accept` is in the array `accepts` (generate from the specs) above
         const accept = headers['accept'] || headers['Accept'] || undefined;
-        if (accept !== undefined && accept in accepts) {
+        if (accept !== undefined && accepts.includes(accept) > -1) {
           accepts = [accept]
         }        
         for (const prop in headers) {
@@ -818,7 +818,7 @@ export default class FakeApi {
       if (Object.keys(headers).length > 0) {
         // check if `accept` is in the array `accepts` (generate from the specs) above
         const accept = headers['accept'] || headers['Accept'] || undefined;
-        if (accept !== undefined && accept in accepts) {
+        if (accept !== undefined && accepts.includes(accept) > -1) {
           accepts = [accept]
         }        
         for (const prop in headers) {
@@ -905,7 +905,7 @@ export default class FakeApi {
       if (Object.keys(headers).length > 0) {
         // check if `accept` is in the array `accepts` (generate from the specs) above
         const accept = headers['accept'] || headers['Accept'] || undefined;
-        if (accept !== undefined && accept in accepts) {
+        if (accept !== undefined && accepts.includes(accept) > -1) {
           accepts = [accept]
         }        
         for (const prop in headers) {
@@ -968,7 +968,7 @@ export default class FakeApi {
       if (Object.keys(headers).length > 0) {
         // check if `accept` is in the array `accepts` (generate from the specs) above
         const accept = headers['accept'] || headers['Accept'] || undefined;
-        if (accept !== undefined && accept in accepts) {
+        if (accept !== undefined && accepts.includes(accept) > -1) {
           accepts = [accept]
         }        
         for (const prop in headers) {
@@ -1031,7 +1031,7 @@ export default class FakeApi {
       if (Object.keys(headers).length > 0) {
         // check if `accept` is in the array `accepts` (generate from the specs) above
         const accept = headers['accept'] || headers['Accept'] || undefined;
-        if (accept !== undefined && accept in accepts) {
+        if (accept !== undefined && accepts.includes(accept) > -1) {
           accepts = [accept]
         }        
         for (const prop in headers) {
@@ -1123,7 +1123,7 @@ export default class FakeApi {
       if (Object.keys(headers).length > 0) {
         // check if `accept` is in the array `accepts` (generate from the specs) above
         const accept = headers['accept'] || headers['Accept'] || undefined;
-        if (accept !== undefined && accept in accepts) {
+        if (accept !== undefined && accepts.includes(accept) > -1) {
           accepts = [accept]
         }        
         for (const prop in headers) {
